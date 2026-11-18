@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O·I — Réseau</title>
+<style>
+  html,body{margin:0;height:100%;background:#060a17;color:#cdd6f4;font-family:ui-monospace,Consolas,Menlo,monospace;overflow:hidden;cursor:none}
+  #barre{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid #1b2540;font-size:12px}
+  .pt{width:8px;height:8px;border-radius:50%;display:inline-block}
+  #titre{font-weight:700;letter-spacing:2px;color:#fff}
+  #onglets{display:flex;gap:6px;padding:8px 16px;border-bottom:1px solid #1b2540;flex-wrap:nowrap;overflow:hidden}
+  .og{font-size:11px;padding:5px 10px;border:1px solid #1b2540;border-radius:6px;white-space:nowrap;color:#8892b0}
+  .og.on{background:#4f7cff;color:#fff;border-color:#4f7cff}
+  canvas{display:block}
+</style>
+</head>
+<body>
+<div id="barre"><span class="pt" style="background:#e07a5f"></span><span class="pt" style="background:#f2c14e"></span><span class="pt" style="background:#34d399"></span>&nbsp;<span id="titre">RÉSEAU</span><span style="color:#8892b0">· one person intelligence · 9 pays connectés</span><span style="margin-left:auto;color:#34d399" id="etat">● en ligne</span></div>
+<div id="onglets"><span class="og on">Vue d'ensemble</span><span class="og">Savoirs</span><span class="og">Idées</span><span class="og">Produits</span><span class="og">Boutiques</span><span class="og">Contenus</span><span class="og">Mobile Money</span><span class="og">WhatsApp</span><span class="og">Afrique francophone</span></div>
+<canvas id="c"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d'),D=devicePixelRatio||1;let W,H;
+function taille(){W=innerWidth;H=innerHeight-80;c.width=W*D;c.height=H*D;c.style.height=H+'px';x.setTransform(D,0,0,D,0,0)}
+addEventListener('resize',()=>{taille();construit()});taille();
+const cols=[["Savoir","#6d8dff",["Coiffure","Cuisine","Couture","Élevage","Savon","Tresses","Pâtisserie","Agriculture"]],
+["Idée","#8b5cf6",["Guide 30 coiffures","Recettes du pays","Patrons couture","Poulets en 45 j","Savon maison","Gâteaux de fête"]],
+["Produit","#34d399",["PDF 20 pages","Check-list","Fiches recettes","Calendrier","Modèles","Bonus vidéo"]],
+["Vente","#f2c14e",["Maketou","Chariow","WhatsApp","Mobile Money","Statuts","TikTok"]]];
+let blocs=[],liens=[];
+function construit(){
+  blocs=[];liens=[];
+  const marge=60,lx=(W-marge*2)/(cols.length);
+  cols.forEach((col,ci)=>{
+    const n=col[2].length,ly=(H-60)/n;
+    col[2].forEach((lab,i)=>blocs.push({ci,lab,c:col[1],x:marge+ci*lx+lx*.18,y:40+i*ly+ly*.5,w:Math.min(170,lx*.62),on:0}));
+  });
+  blocs.forEach((b,i)=>{if(b.ci<3){const cand=blocs.filter(o=>o.ci===b.ci+1);for(let k=0;k<2;k++)liens.push([i,blocs.indexOf(cand[Math.floor(Math.random()*cand.length)])])}});
+}
+construit();
+const flux=[];
+function dessine(t){
+  x.clearRect(0,0,W,H);
+  x.fillStyle="rgba(136,146,176,.25)";
+  for(let gx=0;gx<W;gx+=28)for(let gy=0;gy<H;gy+=28)x.fillRect(gx,gy,1,1);
+  cols.forEach((col,ci)=>{const lx=(W-120)/cols.length;x.fillStyle="#8892b0";x.font="11px Consolas,Menlo,monospace";x.fillText(col[0].toUpperCase()+"S",60+ci*lx+lx*.18,22)});
+  liens.forEach(([a,b])=>{const A=blocs[a],B=blocs[b];const ax=A.x+A.w,bx=B.x;
+    x.strokeStyle="rgba(109,141,255,.28)";x.lineWidth=1;x.beginPath();x.moveTo(ax,A.y);x.bezierCurveTo(ax+50,A.y,bx-50,B.y,bx,B.y);x.stroke()});
+  if(Math.random()<.12)flux.push({l:liens[Math.floor(Math.random()*liens.length)],p:0});
+  for(let i=flux.length-1;i>=0;i--){const f=flux[i];f.p+=.012;if(f.p>1){blocs[f.l[1]].on=1;flux.splice(i,1);continue}
+    const A=blocs[f.l[0]],B=blocs[f.l[1]],ax=A.x+A.w,bx=B.x,p=f.p,q=1-p;
+    const px=q*q*q*ax+3*q*q*p*(ax+50)+3*q*p*p*(bx-50)+p*p*p*bx,py=q*q*q*A.y+3*q*q*p*A.y+3*q*p*p*B.y+p*p*p*B.y;
+    x.shadowBlur=12;x.shadowColor=B.c;x.fillStyle="#fff";x.beginPath();x.arc(px,py,2.2,0,7);x.fill();x.shadowBlur=0}
+  blocs.forEach(b=>{b.on*=.97;
+    x.fillStyle="#0c1324";x.strokeStyle=b.c;x.globalAlpha=.55+b.on*.45;x.lineWidth=1;
+    x.shadowBlur=6+b.on*22;x.shadowColor=b.c;x.beginPath();x.roundRect(b.x,b.y-13,b.w,26,6);x.fill();x.stroke();x.shadowBlur=0;x.globalAlpha=1;
+    x.fillStyle=b.c;x.beginPath();x.arc(b.x+11,b.y,3,0,7);x.fill();
+    x.fillStyle="#dbe3ff";x.font="12px Consolas,Menlo,monospace";x.fillText(b.lab,b.x+21,b.y+4)});
+  requestAnimationFrame(dessine);
+}
+requestAnimationFrame(dessine);
+addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{})});
+</script>
+</body>
+</html>

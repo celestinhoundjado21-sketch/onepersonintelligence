@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O·I — code</title>
+<style>
+  html,body{margin:0;height:100%;background:#05080f;overflow:hidden;cursor:none;font-family:ui-monospace,Consolas,Menlo,monospace;font-size:17px;line-height:1.65;color:#89ddff}
+  #e{padding:28px 0 0 0;white-space:pre}
+  .n{display:inline-block;width:56px;text-align:right;padding-right:22px;color:#3b4566}
+  .k{color:#c792ea}.f{color:#82aaff}.s{color:#c3e88d}.c{color:#546e7a;font-style:italic}.v{color:#f78c6c}.t{color:#ffcb6b}.p{color:#cdd6f4}
+  #cur{display:inline-block;width:9px;height:19px;background:#6d8dff;vertical-align:-3px;animation:b 1s steps(2) infinite}
+  @keyframes b{50%{opacity:0}}
+</style>
+</head>
+<body>
+<div id="e"></div>
+<script>
+const L=[
+'<span class="c"># One Person Intelligence — transforme un savoir en produit</span>',
+'<span class="k">from</span> <span class="p">opi</span> <span class="k">import</span> <span class="t">SecondCerveau</span>, <span class="t">Boutique</span>, <span class="t">Contenus</span>',
+'',
+'<span class="k">class</span> <span class="t">Createur</span>(<span class="t">SecondCerveau</span>):',
+'    <span class="k">def</span> <span class="f">__init__</span>(<span class="p">self</span>, savoir, pays):',
+'        <span class="p">self</span>.savoir = savoir',
+'        <span class="p">self</span>.pays = pays',
+'        <span class="p">self</span>.memoire = <span class="p">self</span>.<span class="f">charger</span>(<span class="s">"01-MEMOIRE/"</span>)',
+'',
+'    <span class="k">def</span> <span class="f">trouver_idee</span>(<span class="p">self</span>):',
+'        <span class="c"># 12 questions, 3 idées de produits</span>',
+'        reponses = <span class="p">self</span>.<span class="f">onboarding</span>(questions=<span class="v">12</span>)',
+'        <span class="k">return</span> <span class="p">self</span>.<span class="f">meilleure_idee</span>(reponses, top=<span class="v">3</span>)',
+'',
+'    <span class="k">def</span> <span class="f">creer_produit</span>(<span class="p">self</span>, idee):',
+'        guide = <span class="p">self</span>.<span class="f">rediger</span>(idee, pages=<span class="v">20</span>, format=<span class="s">"PDF"</span>)',
+'        guide.<span class="f">ajouter</span>(<span class="s">"couverture"</span>, <span class="s">"sommaire"</span>, <span class="s">"bonus"</span>)',
+'        <span class="k">return</span> guide',
+'',
+'    <span class="k">def</span> <span class="f">mettre_en_vente</span>(<span class="p">self</span>, guide):',
+'        boutique = <span class="t">Boutique</span>(<span class="s">"Maketou"</span>, paiement=<span class="s">"Mobile Money"</span>)',
+'        boutique.<span class="f">publier</span>(guide, prix=<span class="s">"FCFA"</span>)',
+'        <span class="t">Contenus</span>(<span class="s">"TikTok"</span>, <span class="s">"WhatsApp"</span>).<span class="f">planifier</span>(jours=<span class="v">14</span>)',
+'        <span class="k">return</span> boutique.lien',
+'',
+'<span class="c"># ton savoir devient un produit</span>',
+'moi = <span class="t">Createur</span>(savoir=<span class="s">"coiffure"</span>, pays=<span class="s">"Bénin"</span>)',
+'idee = moi.<span class="f">trouver_idee</span>()',
+'guide = moi.<span class="f">creer_produit</span>(idee)',
+'lien = moi.<span class="f">mettre_en_vente</span>(guide)',
+'<span class="f">print</span>(<span class="s">"En ligne :"</span>, lien)',
+''];
+const e=document.getElementById('e');let i=0,j=0,html='';
+function lignes(){return L.slice(0,i).map((l,k)=>'<span class="n">'+(k+1)+'</span>'+l).join('\n')}
+function brut(s){const d=document.createElement('div');d.innerHTML=s;return d.textContent}
+function tape(){
+  if(i>=L.length){i=0;setTimeout(tape,1500);return}
+  const txt=brut(L[i]);
+  if(j<txt.length){j+=1+Math.floor(Math.random()*3);
+    e.innerHTML=lignes()+(i?'\n':'')+'<span class="n">'+(i+1)+'</span><span class="p">'+txt.slice(0,j).replace(/</g,'&lt;')+'</span><span id="cur"></span>';
+    setTimeout(tape,18+Math.random()*30)}
+  else{i++;j=0;e.innerHTML=lignes()+'<span id="cur"></span>';
+    const h=e.scrollHeight-innerHeight+80;if(h>0)e.style.transform='translateY(-'+h+'px)';
+    setTimeout(tape,120)}
+}
+tape();
+addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{})});
+</script>
+</body>
+</html>

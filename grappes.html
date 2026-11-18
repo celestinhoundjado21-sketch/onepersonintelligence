@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O·I — grappes</title>
+<style>html,body{margin:0;height:100%;background:#151515;overflow:hidden;cursor:none}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d'),D=devicePixelRatio||1;let W,H;
+function taille(){W=innerWidth;H=innerHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0)}
+addEventListener('resize',taille);taille();
+const groupes=[["#f08a3c",-.16,-.2,150],["#e0457b",.1,-.24,110],["#5fc46a",-.26,.05,90],["#e8a85a",.2,.04,140],["#9a6cf0",-.06,.24,160],["#4fb6d8",.07,.12,80],["#cfcfcf",.28,-.3,70]];
+const pts=[];
+groupes.forEach((g,gi)=>{
+  pts.push({gi,hub:1,ox:g[1],oy:g[2],r:0,a:0,s:6});
+  for(let i=0;i<g[3];i++){const r=Math.sqrt(Math.random())*(gi===6?.14:.11),a=Math.random()*6.28;pts.push({gi,hub:0,ox:g[1],oy:g[2],r,a,s:1.4+Math.random()*1.8,ph:Math.random()*6.28,born:Math.random()*2500})}
+});
+for(let i=0;i<40;i++)pts.push({gi:6,hub:0,ox:-.34+Math.random()*.06,oy:-.1+i*.008,r:0,a:0,s:1.4,solo:1,ph:i,born:Math.random()*2500});
+let t0=null;
+function dessine(t){
+  if(t0===null)t0=t;const el=t-t0;
+  x.fillStyle="#151515";x.fillRect(0,0,W,H);
+  const S=Math.min(W,H)*1.15,cx=W/2,cy=H/2;
+  const hubs={};
+  pts.forEach(p=>{
+    const a=p.a+t*.00005*(p.gi%2?1:-1);
+    p.x=cx+(p.ox+Math.cos(a)*p.r)*S+Math.sin(t*.001+(p.ph||0))*1.5;
+    p.y=cy+(p.oy+Math.sin(a)*p.r)*S+Math.cos(t*.0012+(p.ph||0))*1.5;
+    if(p.hub)hubs[p.gi]=p;
+  });
+  x.lineWidth=.5;
+  pts.forEach(p=>{if(p.hub||p.solo||el<p.born)return;const h=hubs[p.gi];if(!h)return;x.strokeStyle=groupes[p.gi][0]+"33";x.beginPath();x.moveTo(h.x,h.y);x.lineTo(p.x,p.y);x.stroke()});
+  pts.forEach(p=>{
+    if(!p.hub&&el<p.born)return;
+    const g=Math.min(1,(el-(p.born||0))/600);
+    x.globalAlpha=p.hub?1:.9*g;
+    x.shadowBlur=p.hub?22:5;x.shadowColor=groupes[p.gi][0];
+    x.fillStyle=p.hub?"#ffd27a":groupes[p.gi][0];
+    x.beginPath();x.arc(p.x,p.y,p.s*(p.hub?1+Math.sin(t*.003)*.15:1),0,7);x.fill();
+  });
+  x.globalAlpha=1;x.shadowBlur=0;
+  requestAnimationFrame(dessine);
+}
+requestAnimationFrame(dessine);
+addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});t0=null});
+</script>
+</body>
+</html>
