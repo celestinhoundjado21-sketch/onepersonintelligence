@@ -162,6 +162,32 @@ ol.how { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: #cfd6ee;
 .btn.shine { position: relative; overflow: hidden; }
 .btn.shine::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); animation: sweep 3.2s ease-in-out infinite; }
 @keyframes sweep { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+@media (min-width: 900px) {
+  /* Ordinateur : page large, accueil en deux colonnes, grilles plus larges. */
+  body { font-size: 17px; }
+  .app { max-width: 1120px; padding: 30px 48px 190px; }
+  .brand { justify-content: flex-start; font-size: 18px; }
+  .brand svg { width: 30px; height: 30px; }
+  #view, .bar { width: 100%; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .bar { margin-top: 26px; margin-bottom: 40px; }
+  h1 { font-size: 54px; } h2 { font-size: 40px; }
+  .sub { font-size: 18px; margin-top: 14px; }
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 34px; }
+  .tile { min-height: 110px; font-size: 15.5px; padding: 18px; }
+  .tile.wide { grid-column: span 2; }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cta { padding-bottom: 30px; }
+  .cta .in { max-width: 520px; }
+  .orb-wrap { transform: scale(1.25); height: 360px; }
+  body.home #view { max-width: none; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); column-gap: 64px; align-items: center; margin-top: 30px; }
+  body.home #view > .road { grid-column: 2; grid-row: 1 / span 6; margin-top: 0; }
+  body.home #view > :not(.road) { grid-column: 1; }
+  body.home .bar { display: none; }
+  body.home .cta { left: 48px; right: auto; width: min(560px, calc(50% - 40px)); margin-left: max(0px, calc((100vw - 1120px) / 2)); background: none; padding: 0 0 40px; }
+  body.home .cta .in { margin: 0; }
+  body.home .app { padding-bottom: 60px; }
+  body.home #foot { position: fixed; right: 48px; bottom: 18px; max-width: 380px; margin: 0; text-align: right; }
+}
 @media (prefers-reduced-motion: reduce) { #net, .mini-orb *, .grad, .rise, .hero-badges span, .btn.shine::after { animation: none !important; opacity: 1; transform: none; }
   .orb, .orb::before, .aura, .orbit, .spark { animation: none; } .track i, .slot ul { transition: none; } }
 </style>
@@ -229,7 +255,7 @@ function charger() { try { const l = localStorage.getItem("opi-v4"); if (l) S = 
 function aller(e) { S.ecran = e; sauver(); render(); window.scrollTo(0, 0); }
 function barre(pct, retour) { $("bar").innerHTML = retour ? `<button id="back" aria-label="Retour">←</button><div class="track"><i style="width:${pct}%"></i></div>` : ""; if (retour) $("back").onclick = retour; }
 function cta(html) { $("ctain").innerHTML = html; $("cta").hidden = !html; }
-function render() { reseau(S.ecran === "accueil"); ({ accueil: vAccueil, code: vCode, question: vQuestion, cherche: vCherche, idee: vIdee, acces: vAcces, message: vMessage, route: vRoute })[S.ecran](); }
+function render() { reseau(S.ecran === "accueil"); document.body.classList.toggle("home", S.ecran === "accueil"); ({ accueil: vAccueil, code: vCode, question: vQuestion, cherche: vCherche, idee: vIdee, acces: vAcces, message: vMessage, route: vRoute })[S.ecran](); }
 
 let NET = null;
 function reseau(on) {
