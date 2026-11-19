@@ -264,7 +264,9 @@ function vAccueil() {
     </div>`;
   const reprise = S.idee !== null;
   cta(`<button class="btn shine" id="go">${reprise ? "Reprendre où j'en étais →" : "Trouver mon idée gratuitement →"}</button>
+       ${reprise ? '<button class="link" id="zero">↺ Recommencer à zéro (nouvelle idée)</button>' : ''}
        ${S.ouvert ? '<p class="ok" style="text-align:center">✅ Ton accès à vie est activé</p>' : '<button class="link" id="j">J\'ai déjà acheté : entrer mon code d\'accès</button>'}`);
+  if ($("zero")) $("zero").onclick = () => { const o = S.ouvert; S = neuf(); S.ouvert = o; sauver(); render(); };
   $("go").onclick = () => reprise ? aller(S.ouvert ? (S.route ? "route" : "message") : "idee") : (S.q = 0, aller("question"));
   const j = $("j"); if (j) j.onclick = () => aller("code");
   let m = 0; const rot = $("rot");
@@ -617,7 +619,9 @@ function choixEcran(titre, sous, liste, choix, retour) {
   $("view").querySelectorAll("[data-k]").forEach(b => b.onclick = () => { choix(b.dataset.k); sauver(); });
 }
 
-charger(); render();
+charger();
+if (new URLSearchParams(location.search).has("zero")) { S = neuf(); sauver(); history.replaceState(null, "", location.pathname); }
+render();
 </script>
 </body>
 </html>
