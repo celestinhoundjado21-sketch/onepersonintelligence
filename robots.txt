@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /partenaire/
+
+Sitemap: https://onepersonintelligence.com/sitemap.xml
