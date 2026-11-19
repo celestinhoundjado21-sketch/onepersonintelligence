@@ -64,12 +64,35 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .range input::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--night); border: 3px solid var(--violet); box-shadow: 0 0 0 6px rgba(139,92,246,.18); cursor: pointer; }
 .range input::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--night); border: 3px solid var(--violet); cursor: pointer; }
 .range .ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 12px; font-family: var(--display); font-variant-numeric: tabular-nums; }
-.orb-wrap { position: relative; height: 230px; display: grid; place-items: center; margin-top: 6px; }
-.orb { width: 118px; height: 118px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #c9d6ff 0%, #6d8dff 28%, #2a49c9 62%, #0d1a55 100%); box-shadow: 0 0 60px 10px rgba(79,124,255,.45), inset -10px -14px 30px rgba(0,0,0,.35); display: grid; place-items: center; font-size: 26px; animation: pulse 2.4s ease-in-out infinite; }
-.ring { position: absolute; width: 170px; height: 170px; border-radius: 50%; border: 2px solid transparent; border-left-color: rgba(109,141,255,.7); border-bottom-color: rgba(109,141,255,.25); animation: spin 2.2s linear infinite; }
-.chipf { position: absolute; font-size: 11px; color: #5d6890; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: rgba(12,19,36,.7); white-space: nowrap; }
+.orb-wrap { position: relative; height: 290px; display: grid; place-items: center; margin-top: 4px; perspective: 700px; }
+.aura { position: absolute; width: 230px; height: 230px; border-radius: 50%; background: conic-gradient(from 0deg, rgba(79,124,255,0), rgba(109,141,255,.55), rgba(139,92,246,.5), rgba(52,211,153,.35), rgba(79,124,255,0)); filter: blur(26px); animation: spin 6s linear infinite; opacity: .85; }
+.orb { position: relative; width: 132px; height: 132px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 32% 28%, #ffffff 0%, #c9d6ff 9%, #7d98ff 26%, #3a57e0 50%, #1a2a8a 74%, #070d33 100%); box-shadow: 0 0 70px 14px rgba(79,124,255,.5), 0 0 140px 40px rgba(139,92,246,.18), inset -14px -18px 34px rgba(0,0,0,.45), inset 8px 10px 26px rgba(255,255,255,.18); animation: pulse 2.6s ease-in-out infinite; }
+.orb::before { content: ""; position: absolute; inset: -40%; background: conic-gradient(from 90deg, transparent 0 40%, rgba(255,255,255,.22) 50%, transparent 60% 100%); animation: spin 3.2s linear infinite; mix-blend-mode: screen; }
+.orb::after { content: ""; position: absolute; left: 18%; top: 12%; width: 34%; height: 22%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,255,255,.75), rgba(255,255,255,0) 70%); filter: blur(2px); }
+.orbit { position: absolute; border-radius: 50%; border: 1px solid rgba(169,184,255,.28); transform-style: preserve-3d; }
+.orbit i { position: absolute; top: -4px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px 3px rgba(169,184,255,.9); }
+.o1 { width: 200px; height: 200px; animation: orb1 4.2s linear infinite; }
+.o2 { width: 240px; height: 240px; border-color: rgba(139,92,246,.3); animation: orb2 6.5s linear infinite; }
+.o2 i { background: #c4b5fd; box-shadow: 0 0 12px 3px rgba(139,92,246,.9); }
+.o3 { width: 170px; height: 170px; border-color: rgba(52,211,153,.25); animation: orb3 3.4s linear infinite; }
+.o3 i { width: 6px; height: 6px; background: #a7f3d0; box-shadow: 0 0 10px 3px rgba(52,211,153,.9); }
+.prog { position: absolute; width: 268px; height: 268px; transform: rotate(-90deg); }
+.prog circle { fill: none; stroke-width: 3; }
+.prog .bg { stroke: rgba(27,37,64,.9); }
+.prog .fg { stroke: url(#gp); stroke-linecap: round; transition: stroke-dashoffset .6s ease; }
+.pct { position: absolute; bottom: 2px; font-family: var(--display); font-size: 13px; color: #a9b8ff; letter-spacing: 1px; font-variant-numeric: tabular-nums; }
+.spark { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #dbe3ff; box-shadow: 0 0 6px 2px rgba(169,184,255,.8); animation: float 3.5s ease-in-out infinite; opacity: 0; }
+.phase { text-align: center; min-height: 48px; margin-top: 6px; }
+.phase b { display: block; font-family: var(--display); font-size: 17px; }
+.phase small { color: var(--muted); font-size: 13px; }
+.chipf { position: absolute; font-size: 11px; color: #5d6890; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: rgba(12,19,36,.7); white-space: nowrap; transition: color .4s, border-color .4s; }
+.chipf.on { color: #dbe3ff; border-color: #3b4f9a; }
 @keyframes spin { to { transform: rotate(360deg); } }
-@keyframes pulse { 50% { transform: scale(1.05); box-shadow: 0 0 80px 16px rgba(79,124,255,.55), inset -10px -14px 30px rgba(0,0,0,.35); } }
+@keyframes pulse { 50% { transform: scale(1.05); box-shadow: 0 0 90px 18px rgba(79,124,255,.6), 0 0 160px 50px rgba(139,92,246,.22), inset -14px -18px 34px rgba(0,0,0,.45), inset 8px 10px 26px rgba(255,255,255,.18); } }
+@keyframes orb1 { from { transform: rotateX(72deg) rotateZ(0deg); } to { transform: rotateX(72deg) rotateZ(360deg); } }
+@keyframes orb2 { from { transform: rotateX(68deg) rotateY(28deg) rotateZ(360deg); } to { transform: rotateX(68deg) rotateY(28deg) rotateZ(0deg); } }
+@keyframes orb3 { from { transform: rotateX(76deg) rotateY(-35deg) rotateZ(0deg); } to { transform: rotateX(76deg) rotateY(-35deg) rotateZ(360deg); } }
+@keyframes float { 0% { opacity: 0; transform: translateY(10px) scale(.6); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px) scale(1.1); } }
 .slot { position: relative; height: 132px; overflow: hidden; margin: 10px auto 0; width: 100%; border-radius: 14px; background: linear-gradient(180deg, rgba(12,19,36,0), rgba(12,19,36,.9), rgba(12,19,36,0)); }
 .slot ul { list-style: none; margin: 0; padding: 0; transition: transform .25s ease; }
 .slot li { height: 44px; display: grid; place-items: center; font-family: var(--display); font-weight: 600; font-size: 18px; color: #4c567a; text-align: center; padding: 0 10px; }
@@ -101,7 +124,7 @@ ol.how { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: #cfd6ee;
 .foot { margin-top: 34px; font-size: 11.5px; color: #59627f; text-align: center; line-height: 1.5; }
 .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .hero-badges span { font-size: 12.5px; color: #b6c1e6; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; }
-@media (prefers-reduced-motion: reduce) { .orb, .ring { animation: none; } .track i, .slot ul { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .orb, .orb::before, .aura, .orbit, .spark { animation: none; } .track i, .slot ul { transition: none; } }
 </style>
 </head>
 <body>
@@ -121,22 +144,30 @@ const CODE_HASH = "a31b1d0088998829d62ab96a846f13f485ff58f748cbb2b70012d9ae994b4
 const CLAUDE_URL = "https://claude.ai/new";
 
 const DOMAINES = [
-  ["elevage", "🐔", "Élevage et agriculture"], ["cuisine", "🍲", "Cuisine et traiteur"], ["beaute", "💇🏾‍♀️", "Coiffure et beauté"],
-  ["couture", "🧵", "Couture et mode"], ["commerce", "🛍️", "Petit commerce"], ["ecole", "📚", "École et examens"],
-  ["maison", "🌿", "Astuces de grand-mère"], ["famille", "💍", "Famille et couple"], ["numerique", "📱", "Réseaux sociaux"], ["artisanat", "🧼", "Artisanat et fabrication"]
+  ["whatsapp", "💼", "Vendre sur WhatsApp et Facebook"], ["elevage", "🐔", "Élevage et agriculture"], ["numerique", "📱", "IA, téléphone et Mobile Money"],
+  ["concours", "🎓", "Concours et examens"], ["cuisine", "🍲", "Cuisine et pâtisserie à vendre"], ["foi", "🙏🏾", "Foi et spiritualité"],
+  ["famille", "❤️", "Couple et famille"], ["argent", "💰", "Argent et épargne"], ["bienetre", "🌿", "Bien-être naturel"],
+  ["beaute", "💇🏾‍♀️", "Beauté et coiffure"], ["couture", "🧵", "Couture et mode"], ["langues", "🗣️", "Langues"]
 ];
+/* 3 idées par niche : [débutant, pratique, expert] — prix indicatifs (recherche du 19 nov. 2026) */
 const IDEES = {
-  elevage: [["🐣", "Réussir sa première bande de poulets", "Élever 50 poulets de chair sans perdre la moitié des poussins", 5000], ["🥬", "Maraîchage sur petite surface", "Produire et vendre des légumes sur une petite parcelle", 4000], ["🐟", "Élevage de poissons en bac", "Lancer un petit élevage de poissons avec peu d'espace", 6000]],
-  cuisine: [["🎉", "Lancer son service traiteur", "Calculer, fixer ses prix et livrer pour 50 à 300 invités", 5000], ["🥤", "Jus naturels à vendre", "Fabriquer et vendre des jus locaux qui se conservent", 3000], ["🍛", "Recettes rentables du quotidien", "Des plats faciles en quantité, avec une vraie marge", 3500]],
-  beaute: [["💁🏾‍♀️", "Des tresses qui tiennent", "Les gestes et soins pour des tresses qui durent des semaines", 4000], ["🧴", "Soins naturels pour cheveux crépus", "Une routine simple avec des produits locaux", 3500], ["💄", "Maquilleuse pour événements", "Trouver ses premières clientes et fixer ses tarifs", 5000]],
-  couture: [["📐", "Patrons faciles en pagne", "Coudre des modèles qui se vendent avec des patrons simples", 5000], ["✂️", "Couturière à domicile", "Démarrer, trouver ses clientes et livrer à temps", 4500], ["👜", "Accessoires en pagne", "Sacs, foulards et nœuds avec les chutes de tissu", 3500]],
-  commerce: [["📲", "Vendre sur WhatsApp sans boutique", "Trouver ses clients et vendre chaque jour avec son téléphone", 5000], ["📦", "Acheter moins cher, revendre vite", "S'approvisionner en gardant une vraie marge", 5000], ["🧮", "Gérer son commerce sans perte", "Noter, calculer et garder ses bénéfices", 3500]],
-  ecole: [["📝", "Réussir son examen", "Un plan de révision simple et les erreurs qui coûtent des points", 3000], ["👨‍👩‍👧", "Aider son enfant à mieux lire", "15 minutes par jour à la maison pour progresser", 3500], ["🗣️", "Langue locale pour la diaspora", "Les premiers mots et phrases à apprendre en famille", 5000]],
-  maison: [["🌿", "Astuces de grand-mère pour la maison", "Des astuces naturelles et économiques pour le quotidien", 3000], ["🧹", "Produits d'entretien naturels", "Fabriquer ses produits ménagers à petit prix", 3000], ["🎄", "Recettes et traditions des fêtes", "Préparer les fêtes à l'africaine sans se ruiner", 3500]],
-  famille: [["💍", "Organiser son mariage sans se ruiner", "Budget, liste et étapes pour un mariage réussi", 5000], ["💑", "Un couple solide au quotidien", "Des habitudes simples pour mieux communiquer", 4000], ["🙏🏾", "30 jours de prière guidée", "Un rendez-vous quotidien pendant un mois", 3000]],
-  numerique: [["🎬", "Vidéos TikTok qui vendent", "Des vidéos simples, sans visage, pour attirer des clients", 5000], ["💬", "WhatsApp Business pour vendre", "Catalogue, statuts et réponses rapides", 4000], ["🤖", "L'IA pour son petit business", "Gagner du temps chaque jour avec l'IA", 5000]],
-  artisanat: [["🧼", "Fabriquer et vendre son savon", "Une recette fiable, l'emballage et la vente sur WhatsApp", 5000], ["🕯️", "Bougies et parfums d'intérieur", "Des produits qui plaisent avec peu de matériel", 4000], ["📿", "Perles et bijoux faits main", "Créer des bijoux qui se vendent et fixer ses prix", 3500]]
+  whatsapp: [["📲", "Vendre tous les jours sur WhatsApp Business", "30 messages prêts à copier pour vendre chaque jour", 3000], ["🎨", "50 modèles de statuts et d'affiches", "Des visuels Canva prêts pour ta boutique", 5000], ["🎧", "Mes 10 premiers clients sur Facebook", "Une mini-formation audio, sans publicité", 10000]],
+  elevage: [["🐣", "Démarrer 100 poulets de chair", "Budget, calendrier et vaccins, étape par étape", 5000], ["📊", "Calculer la rentabilité de sa bande", "Une fiche simple pour savoir si tu gagnes vraiment", 3000], ["🌾", "Fabriquer sa provende soi-même", "Une alimentation moins chère pour tes animaux", 7000]],
+  numerique: [["🛡️", "Protéger son Mobile Money des arnaques", "Les 15 pièges à connaître pour ne plus se faire voler", 2000], ["✍️", "L'IA pour écrire ses annonces de vente", "Des annonces qui donnent envie, en quelques minutes", 3000], ["🤖", "100 prompts IA pour commerçants", "Des phrases prêtes à copier dans Claude ou ChatGPT", 5000]],
+  concours: [["📚", "Fiches de révision BEPC ou BAC", "L'essentiel d'une matière en quelques pages", 2000], ["📝", "Sujets corrigés d'un concours national", "S'entraîner avec de vrais sujets et leurs corrigés", 5000], ["🎤", "Réussir l'oral et le dossier de concours", "Les questions fréquentes et comment y répondre", 5000]],
+  cuisine: [["🥟", "20 snacks à vendre devant l'école", "Avec le coût et le prix de vente de chaque recette", 3000], ["🥤", "Lancer ses jus naturels et yaourts", "Fabriquer, conserver et vendre", 4000], ["🎂", "Gâteaux d'anniversaire pour débutantes", "Une mini-formation pas à pas", 15000]],
+  foi: [["🙏🏾", "30 jours de prière pour la famille", "Un carnet de prière pour chaque jour du mois", 2000], ["📖", "Plan de lecture biblique ou coranique", "Un plan avec une fiche pour chaque jour", 2000], ["🕊️", "21 jours de jeûne et de méditation", "Un programme guidé en PDF et en audio", 3000]],
+  famille: [["💑", "Gérer l'argent du foyer à deux", "Des règles simples pour éviter les disputes", 3000], ["💍", "Préparer son mariage avec un petit budget", "Budget, liste et étapes pour un beau mariage", 3000], ["👨‍👩‍👧", "Éduquer ses enfants sans crier", "30 situations du quotidien et quoi faire", 4000]],
+  argent: [["📒", "Cahier de caisse et de crédit clients", "À imprimer, pour ne plus perdre d'argent", 2000], ["🧮", "Gérer son argent avec 50 000 FCFA par mois", "Un budget simple qui tient tout le mois", 3000], ["🤝", "Organiser une tontine sans disputes", "Les règles claires qui protègent tout le monde", 3000]],
+  bienetre: [["🍵", "Plantes et tisanes du quotidien", "Ce qu'on sait et les précautions à prendre", 3000], ["🧴", "Soins naturels de la peau et des cheveux", "Karité, huiles et routines simples", 3000], ["🥗", "30 jours pour manger plus sain", "Avec les produits du marché, sans se ruiner", 4000]],
+  beaute: [["💁🏾‍♀️", "50 modèles de tresses", "Avec la durée et le prix conseillé de chacun", 2000], ["💈", "Remplir son salon et fidéliser ses clientes", "Faire revenir tes clientes, encore et encore", 4000], ["🎥", "Nattes collées pour débutantes", "Mini-formation filmée sur les mains, sans visage", 10000]],
+  couture: [["💵", "Fixer ses prix et éviter les impayés", "Gagner vraiment sur chaque commande", 3000], ["📐", "5 patrons de modèles en pagne", "Du S au XXL, prêts à imprimer", 5000], ["👗", "Coudre une robe en pagne pas à pas", "Une mini-formation simple", 15000]],
+  langues: [["🇬🇧", "Anglais pour commerçants et chauffeurs", "Les phrases utiles, en audio", 3000], ["🌍", "Langue locale pour les enfants de la diaspora", "Fon, wolof, lingala… les premiers mots en famille", 5000], ["💬", "30 jours de vocaux pour apprendre", "Une leçon audio par jour sur WhatsApp", 7000]]
 };
+const NIVEAUX = [["debutant", "🌱", "Je débute, je connais les bases"], ["pratique", "💪", "Je pratique depuis un moment"], ["expert", "🏆", "J'en vis, je suis expert"]];
+const HEURES = [["0.5", "⏱️", "30 minutes"], ["1", "🕐", "1 heure"], ["2", "🕑", "2 heures"], ["4", "🕓", "4 heures"], ["6", "🔥", "6 heures ou plus"]];
+const format = prix => prix >= 10000 ? "Mini-formation" : "Guide PDF";
+function joursLancement(idee) { const h = Number(S.heures) || 1, base = h >= 4 ? 1 : h >= 2 ? 1 : h >= 1 ? 2 : 4; return format(idee.prix) === "Mini-formation" ? base * 2 : base; }
 const CIBLES = [["👩🏾", "Les femmes"], ["🧑🏾‍🎓", "Les jeunes et étudiants"], ["👨‍👩‍👧", "Les parents"], ["🧑🏾‍💼", "Les commerçants"], ["🧑🏾‍🌾", "Éleveurs et agriculteurs"], ["✈️", "La diaspora"]];
 const PAYS = [["🇧🇯", "Bénin"], ["🇨🇮", "Côte d'Ivoire"], ["🇸🇳", "Sénégal"], ["🇨🇲", "Cameroun"], ["🇹🇬", "Togo"], ["🇧🇫", "Burkina Faso"], ["🇲🇱", "Mali"], ["🇬🇦", "Gabon"], ["🇬🇳", "Guinée"], ["🇨🇩", "RDC"], ["🌍", "Autre pays"], ["✈️", "Diaspora"]];
 const BOUTIQUES = {
@@ -146,14 +177,14 @@ const BOUTIQUES = {
 };
 const RESEAUX = { statuts: ["🟢", "Statuts WhatsApp", "Tes contacts, qui te font déjà confiance."], tiktok: ["🎵", "TikTok", "Des vidéos courtes pour toucher des inconnus."], facebook: ["📘", "Facebook", "Groupes et Reels, un public plus large."] };
 
-const ETAPES_Q = ["domaines", "cible", "pays", "visage", "savoir", "objectif"];
+const ETAPES_Q = ["domaines", "niveau", "cible", "pays", "visage", "heures", "savoir", "objectif"];
 let S = neuf();
-function neuf() { return { ecran: "accueil", q: 0, domaines: [], cible: [], pays: "", visage: "", savoir: "", objectif: 150000, idx: 0, idee: null, ouvert: false, route: null, boutique: null, reseau: null, faits: {} }; }
+function neuf() { return { ecran: "accueil", q: 0, domaines: [], cible: [], pays: "", visage: "", savoir: "", niveau: "", heures: "", objectif: 150000, idx: 0, idee: null, ouvert: false, route: null, boutique: null, reseau: null, faits: {} }; }
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const nb = n => new Intl.NumberFormat("fr-FR").format(Math.round(n)).replace(/ /g, " ");
-function sauver() { try { localStorage.setItem("opi-v3", JSON.stringify(S)); } catch (e) {} }
-function charger() { try { const l = localStorage.getItem("opi-v3"); if (l) S = Object.assign(neuf(), JSON.parse(l)); } catch (e) {} if (S.ecran === "cherche") S.ecran = S.idee ? "idee" : "question"; }
+function sauver() { try { localStorage.setItem("opi-v4", JSON.stringify(S)); } catch (e) {} }
+function charger() { try { const l = localStorage.getItem("opi-v4"); if (l) S = Object.assign(neuf(), JSON.parse(l)); } catch (e) {} if (S.ecran === "cherche") S.ecran = S.idee ? "idee" : "question"; }
 function aller(e) { S.ecran = e; sauver(); render(); window.scrollTo(0, 0); }
 function barre(pct, retour) { $("bar").innerHTML = retour ? `<button id="back" aria-label="Retour">←</button><div class="track"><i style="width:${pct}%"></i></div>` : ""; if (retour) $("back").onclick = retour; }
 function cta(html) { $("ctain").innerHTML = html; $("cta").hidden = !html; }
@@ -204,7 +235,9 @@ function vQuestion() {
   barre(pct, () => { if (S.q === 0) aller("accueil"); else { S.q--; aller("question"); } });
   let h = "", pret = true;
   const tuiles = (liste, choisis, attr, wide) => `<div class="grid">${liste.map(([k, e, n]) => `<button class="tile ${wide ? "wide" : ""} ${choisis(k) ? "on" : ""}" data-${attr}="${esc(k)}"><span class="ic">${e}</span><span>${esc(n ?? k)}</span><span class="box">${choisis(k) ? "✓" : ""}</span></button>`).join("")}</div>`;
-  if (id === "domaines") { h = `<h2>Qu'est-ce que tu sais faire ?</h2><p class="sub">Choisis jusqu'à 3 domaines.</p>` + tuiles(DOMAINES, k => S.domaines.includes(k), "d"); pret = S.domaines.length > 0; }
+  if (id === "domaines") { h = `<h2>Dans quoi es-tu fort ?</h2><p class="sub">Ton métier ou ton savoir. Choisis jusqu'à 3 domaines.</p>` + tuiles(DOMAINES, k => S.domaines.includes(k), "d"); pret = S.domaines.length > 0; }
+  if (id === "niveau") { h = `<h2>Quel est ton niveau ?</h2><p class="sub">On adapte ton idée : un premier guide simple, ou une vraie formation.</p>` + tuiles(NIVEAUX, k => S.niveau === k, "n", true); pret = !!S.niveau; }
+  if (id === "heures") { h = `<h2>Combien de temps par jour pour ton projet ?</h2><p class="sub">Sois honnête : on calcule ton rythme de lancement avec ce temps.</p>` + tuiles(HEURES, k => S.heures === k, "h", true); pret = !!S.heures; }
   if (id === "cible") { h = `<h2>Qui veux-tu aider ?</h2><p class="sub">Une ou plusieurs réponses.</p>` + tuiles(CIBLES.map(([e, n]) => [n, e, n]), k => S.cible.includes(k), "c"); pret = S.cible.length > 0; }
   if (id === "pays") { h = `<h2>Où vis-tu ?</h2>` + tuiles(PAYS.map(([e, n]) => [n, e, n]), k => S.pays === k, "p"); pret = !!S.pays; }
   if (id === "visage") { h = `<h2>Tu acceptes de te montrer en vidéo ?</h2><p class="sub">Aucun problème si tu préfères rester discret : beaucoup vendent sans montrer leur visage.</p>` + tuiles([["oui", "🎥", "Oui, je peux me montrer"], ["non", "🙈", "Non, je reste discret"]], k => S.visage === k, "v", true); pret = !!S.visage; }
@@ -214,12 +247,14 @@ function vQuestion() {
       <div class="range"><input type="range" id="r" min="25000" max="1000000" step="25000" value="${S.objectif}" style="--p:${p}%" aria-label="Objectif mensuel en FCFA"><div class="ends"><span>25 000</span><span>1 000 000 FCFA</span></div></div>`; }
   $("view").innerHTML = h;
   cta(`<button class="btn" id="go" ${pret ? "" : "disabled"}>${id === "objectif" ? "Trouver mon idée ✨" : "Continuer →"}</button>`);
-  const maj = () => { $("go").disabled = !({ domaines: S.domaines.length, cible: S.cible.length, pays: S.pays, visage: S.visage }[id] ?? true); };
+  const maj = () => { $("go").disabled = !({ domaines: S.domaines.length, niveau: S.niveau, heures: S.heures, cible: S.cible.length, pays: S.pays, visage: S.visage }[id] ?? true); };
   $("view").querySelectorAll(".tile").forEach(b => b.onclick = () => {
     if (b.dataset.d) { const k = b.dataset.d, i = S.domaines.indexOf(k); if (i >= 0) S.domaines.splice(i, 1); else if (S.domaines.length < 3) S.domaines.push(k); else return; }
     if (b.dataset.c) { const k = b.dataset.c, i = S.cible.indexOf(k); i >= 0 ? S.cible.splice(i, 1) : S.cible.push(k); }
     if (b.dataset.p) S.pays = b.dataset.p;
     if (b.dataset.v) S.visage = b.dataset.v;
+    if (b.dataset.n) S.niveau = b.dataset.n;
+    if (b.dataset.h) S.heures = b.dataset.h;
     sauver(); vQuestion();
   });
   const r = $("r"); if (r) r.oninput = () => { S.objectif = Number(r.value); $("m").textContent = nb(S.objectif) + " FCFA"; r.style.setProperty("--p", ((S.objectif - 25000) / 975000 * 100) + "%"); };
@@ -229,28 +264,64 @@ function vQuestion() {
 }
 
 function candidats() { return S.domaines.flatMap(d => IDEES[d].map(([e, t, p, prix]) => ({ e, t, p, prix, d }))); }
-function choisir() { const l = candidats(), ordre = [0, 3, 6, 1, 4, 7, 2, 5, 8].filter(i => i < l.length); S.idee = l[ordre[S.idx % ordre.length]]; }
+function choisir() {
+  const dep = { debutant: 0, pratique: 1, expert: 2 }[S.niveau] ?? 0, n = S.domaines.length, ordre = [];
+  for (let r = 0; r < 3; r++) for (let d = 0; d < n; d++) ordre.push(d * 3 + (dep + r) % 3);
+  const l = candidats(); S.idee = l[ordre[S.idx % ordre.length]];
+}
 
 function vCherche() {
   barre(100, null);
   choisir();
+  const DUREE = 42000;
   const noms = candidats().map(x => x.t).concat(["Guide PDF", "Fiches pratiques", "Mini-formation"]);
   const liste = [...noms, ...noms, ...noms, S.idee.t];
-  const autour = S.domaines.map(k => DOMAINES.find(x => x[0] === k)[2].split(" ")[0]).concat(["Guide PDF", "Mobile Money", "WhatsApp", "Fiches", "Mini-formation", "Bonus"]).slice(0, 6);
-  const pos = [[8, 12], [70, 6], [2, 48], [74, 44], [14, 80], [66, 84]];
+  const autour = S.domaines.map(k => DOMAINES.find(x => x[0] === k)[2].split(" ")[0]).concat(["Guide PDF", "Mobile Money", "WhatsApp", "Prix en FCFA", "Mini-formation", "Bonus"]).slice(0, 6);
+  const pos = [[2, 8], [66, 4], [0, 46], [70, 44], [6, 84], [64, 88]];
+  const sparks = Array.from({ length: 14 }, (_, k) => `<span class="spark" style="left:${20 + Math.random() * 60}%;top:${25 + Math.random() * 50}%;animation-delay:${(k * .25).toFixed(2)}s"></span>`).join("");
+  const phases = [
+    ["🧠", "J'écoute ton savoir…", "Ton domaine, ton niveau, ton temps."],
+    ["🌍", "Je regarde ton pays et ton public…", `${S.pays || "Afrique francophone"} · ${S.cible.join(", ").toLowerCase()}`],
+    ["📊", "Je croise avec les niches qui se vendent…", "Celles qui aident à gagner ou à protéger son argent."],
+    ["💰", "Je cherche le bon prix en FCFA…", "Un premier achat facile, sans méfiance."],
+    ["🎯", "Je calcule ton nombre de ventes…", `Pour ton objectif de ${nb(S.objectif)} FCFA par mois.`],
+    ["✨", "Je choisis ton idée…", "Plus que quelques secondes."]
+  ];
+  const R = 128, C = 2 * Math.PI * R;
   $("view").innerHTML = `
-    <div class="orb-wrap">${autour.map((n, i) => `<span class="chipf" style="left:${pos[i][0]}%;top:${pos[i][1]}%">${esc(n)}</span>`).join("")}<span class="ring"></span><div class="orb">✨</div></div>
-    <p class="eyebrow" style="text-align:center">Je cherche ton idée…</p>
-    <div class="slot"><ul id="ul">${liste.map(n => `<li>${esc(n)}</li>`).join("")}</ul></div>`;
+    <div class="orb-wrap">
+      ${autour.map((n, i) => `<span class="chipf" id="ch${i}" style="left:${pos[i][0]}%;top:${pos[i][1]}%">${esc(n)}</span>`).join("")}
+      <svg class="prog" viewBox="0 0 268 268" aria-hidden="true"><defs><linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34d399"/><stop offset=".5" stop-color="#4f7cff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><circle class="bg" cx="134" cy="134" r="${R}"/><circle class="fg" id="fg" cx="134" cy="134" r="${R}" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg>
+      <span class="aura"></span>
+      <span class="orbit o2"><i></i></span><span class="orbit o1"><i></i></span><span class="orbit o3"><i></i></span>
+      <div class="orb"></div>${sparks}
+      <span class="pct" id="pct">0 %</span>
+    </div>
+    <div class="phase" id="ph" aria-live="polite"></div>
+    <div class="slot" id="slot" style="opacity:.25"><ul id="ul">${liste.map(n => `<li>${esc(n)}</li>`).join("")}</ul></div>`;
   cta("");
-  const ul = $("ul"), lis = ul.children, total = lis.length;
-  let i = 0, delai = 70;
-  (function tour() {
-    if (!document.body.contains(ul)) return;
+  const debut = Date.now(), fg = $("fg"), ul = $("ul"), lis = ul.children, total = lis.length;
+  let finie = false, i = 0, delai = 70, rouleau = false, skip = false;
+  const montrer = k => { const [e, t, d] = phases[k]; $("ph").innerHTML = `<b>${e} ${t}</b><small>${esc(d)}</small>`; };
+  montrer(0);
+  const fin = () => { if (finie) return; finie = true; setTimeout(() => aller("idee"), 700); };
+  function tour() {
+    if (!document.body.contains(ul) || finie) return;
     [...lis].forEach((li, k) => li.classList.toggle("mid", k === i + 1));
     ul.style.transform = `translateY(${-i * 44}px)`;
-    if (i < total - 2) { i++; delai = Math.min(delai * 1.06, 420); setTimeout(tour, delai); }
-    else setTimeout(() => aller("idee"), 900);
+    if (i < total - 2) { i++; delai = Math.min(delai * 1.07, 480); setTimeout(tour, delai); } else fin();
+  }
+  (function tick() {
+    if (!document.body.contains(fg) || finie) return;
+    const t = Date.now() - debut, p = Math.min(1, t / DUREE);
+    fg.style.strokeDashoffset = C * (1 - p);
+    $("pct").textContent = Math.floor(p * 100) + " %";
+    const k = Math.min(phases.length - 1, Math.floor(p * phases.length));
+    if ($("ph").dataset.k != k) { $("ph").dataset.k = k; montrer(k); }
+    autour.forEach((_, j) => { const c = $("ch" + j); if (c) c.classList.toggle("on", (Math.floor(t / 900) + j) % 3 === 0); });
+    if (!rouleau && (p > .78 || skip)) { rouleau = true; $("slot").style.opacity = 1; tour(); }
+    if (!skip && t > 15000 && !$("passer")) { cta(`<button class="link" id="passer">Voir mon idée tout de suite</button>`); $("passer").onclick = () => { skip = true; cta(""); }; }
+    setTimeout(tick, 120);
   })();
 }
 
@@ -265,9 +336,11 @@ function vIdee() {
       <p class="sub" style="margin:0">${esc(d.p)}.</p>
       <div class="stats">
         <div class="stat"><small>Prix conseillé</small><b>${nb(d.prix)} F</b></div>
-        <div class="stat"><small>Format</small><b>Guide PDF</b></div>
+        <div class="stat"><small>Format</small><b>${format(d.prix)}</b></div>
         <div class="stat"><small>Pour ${nb(S.objectif)} F/mois</small><b>≈ ${v} ventes</b></div>
         <div class="stat"><small>Soit par jour</small><b>≈ ${Math.max(1, Math.ceil(v / 30))} vente${Math.ceil(v / 30) > 1 ? "s" : ""}</b></div>
+        <div class="stat"><small>Ton temps</small><b>${esc(HEURES.find(x => x[0] === S.heures)?.[2] || "1 heure")}/jour</b></div>
+        <div class="stat"><small>En vente dans</small><b>≈ ${joursLancement(d)} jour${joursLancement(d) > 1 ? "s" : ""}</b></div>
       </div>
       <p class="small" style="color:var(--muted);font-size:13px;margin:0">Choisie à partir de ton domaine « ${esc(dom[2])} »${S.savoir ? " et de ton savoir" : ""}, pour ${esc(S.cible.join(", ").toLowerCase())} ${S.pays && !["Autre pays", "Diaspora"].includes(S.pays) ? "au " + esc(S.pays) : ""}. C'est un calcul, pas une promesse.</p>
     </div>`;
@@ -306,6 +379,8 @@ function vAcces() {
 
 function profil() {
   return `- Domaine(s) : ${S.domaines.map(k => DOMAINES.find(x => x[0] === k)[2]).join(", ")}
+- Mon niveau : ${NIVEAUX.find(x => x[0] === S.niveau)?.[2] || "(non précisé)"}
+- Temps disponible : ${HEURES.find(x => x[0] === S.heures)?.[2] || "1 heure"} par jour
 - Mon savoir : ${S.savoir || "(non précisé)"}
 - Pays : ${S.pays}
 - Je veux aider : ${S.cible.join(", ")}
@@ -319,7 +394,7 @@ function base() {
 Mon profil :
 ${profil()}
 
-Mon produit : « ${d.t} » — ${d.p}. Prix conseillé : ${nb(d.prix)} FCFA (à convertir si mon pays n'utilise pas le FCFA).
+Mon produit (${format(d.prix).toLowerCase()}) : « ${d.t} » — ${d.p}. Prix conseillé : ${nb(d.prix)} FCFA (à convertir si mon pays n'utilise pas le FCFA).
 
 Règles : français simple, phrases courtes, tutoiement ; aucune promesse de revenus ; n'invente aucun chiffre, aucune loi, aucun témoignage ; adapte tout à mon pays.`;
 }
@@ -335,7 +410,8 @@ Ta mission : créer mon produit complet, prêt à vendre.
    - 6 à 8 chapitres courts, dans l'ordre, avec des exemples de la vie de tous les jours dans mon pays et mon expérience ;
    - un chapitre « Les erreurs à éviter » ;
    - un plan d'action final en check-list ;
-   - 15 à 25 pages, lisibles sur téléphone.
+   - 15 à 25 pages, lisibles sur téléphone ;
+   - si mon produit est une mini-formation : découpe-le en 5 à 8 leçons courtes, avec le texte à lire en audio ou à filmer sur les mains, sans montrer de visage.
    Là où il manque une information que moi seul connais, écris [À COMPLÉTER : …].
 3. Crée le guide en fichier PDF à télécharger, avec une couverture (titre, sous-titre, mon prénom) et un sommaire. Si tu ne peux pas créer de fichier, donne-moi le texte complet, bien présenté.
 4. Termine par la description détaillée d'une image de couverture, à donner à un générateur d'images.`,
