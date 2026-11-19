@@ -151,21 +151,22 @@ const DOMAINES = [
 ];
 /* 3 idées par niche : [débutant, pratique, expert] — prix indicatifs (recherche du 19 nov. 2026) */
 const IDEES = {
-  whatsapp: [["📲", "Vendre tous les jours sur WhatsApp Business", "30 messages prêts à copier pour vendre chaque jour", 3000], ["🎨", "50 modèles de statuts et d'affiches", "Des visuels Canva prêts pour ta boutique", 5000], ["🎧", "Mes 10 premiers clients sur Facebook", "Une mini-formation audio, sans publicité", 10000]],
-  elevage: [["🐣", "Démarrer 100 poulets de chair", "Budget, calendrier et vaccins, étape par étape", 5000], ["📊", "Calculer la rentabilité de sa bande", "Une fiche simple pour savoir si tu gagnes vraiment", 3000], ["🌾", "Fabriquer sa provende soi-même", "Une alimentation moins chère pour tes animaux", 7000]],
-  numerique: [["🛡️", "Protéger son Mobile Money des arnaques", "Les 15 pièges à connaître pour ne plus se faire voler", 2000], ["✍️", "L'IA pour écrire ses annonces de vente", "Des annonces qui donnent envie, en quelques minutes", 3000], ["🤖", "100 prompts IA pour commerçants", "Des phrases prêtes à copier dans Claude ou ChatGPT", 5000]],
-  concours: [["📚", "Fiches de révision BEPC ou BAC", "L'essentiel d'une matière en quelques pages", 2000], ["📝", "Sujets corrigés d'un concours national", "S'entraîner avec de vrais sujets et leurs corrigés", 5000], ["🎤", "Réussir l'oral et le dossier de concours", "Les questions fréquentes et comment y répondre", 5000]],
-  cuisine: [["🥟", "20 snacks à vendre devant l'école", "Avec le coût et le prix de vente de chaque recette", 3000], ["🥤", "Lancer ses jus naturels et yaourts", "Fabriquer, conserver et vendre", 4000], ["🎂", "Gâteaux d'anniversaire pour débutantes", "Une mini-formation pas à pas", 15000]],
-  foi: [["🙏🏾", "30 jours de prière pour la famille", "Un carnet de prière pour chaque jour du mois", 2000], ["📖", "Plan de lecture biblique ou coranique", "Un plan avec une fiche pour chaque jour", 2000], ["🕊️", "21 jours de jeûne et de méditation", "Un programme guidé en PDF et en audio", 3000]],
-  famille: [["💑", "Gérer l'argent du foyer à deux", "Des règles simples pour éviter les disputes", 3000], ["💍", "Préparer son mariage avec un petit budget", "Budget, liste et étapes pour un beau mariage", 3000], ["👨‍👩‍👧", "Éduquer ses enfants sans crier", "30 situations du quotidien et quoi faire", 4000]],
-  argent: [["📒", "Cahier de caisse et de crédit clients", "À imprimer, pour ne plus perdre d'argent", 2000], ["🧮", "Gérer son argent avec 50 000 FCFA par mois", "Un budget simple qui tient tout le mois", 3000], ["🤝", "Organiser une tontine sans disputes", "Les règles claires qui protègent tout le monde", 3000]],
-  bienetre: [["🍵", "Plantes et tisanes du quotidien", "Ce qu'on sait et les précautions à prendre", 3000], ["🧴", "Soins naturels de la peau et des cheveux", "Karité, huiles et routines simples", 3000], ["🥗", "30 jours pour manger plus sain", "Avec les produits du marché, sans se ruiner", 4000]],
-  beaute: [["💁🏾‍♀️", "50 modèles de tresses", "Avec la durée et le prix conseillé de chacun", 2000], ["💈", "Remplir son salon et fidéliser ses clientes", "Faire revenir tes clientes, encore et encore", 4000], ["🎥", "Nattes collées pour débutantes", "Mini-formation filmée sur les mains, sans visage", 10000]],
-  couture: [["💵", "Fixer ses prix et éviter les impayés", "Gagner vraiment sur chaque commande", 3000], ["📐", "5 patrons de modèles en pagne", "Du S au XXL, prêts à imprimer", 5000], ["👗", "Coudre une robe en pagne pas à pas", "Une mini-formation simple", 15000]],
-  langues: [["🇬🇧", "Anglais pour commerçants et chauffeurs", "Les phrases utiles, en audio", 3000], ["🌍", "Langue locale pour les enfants de la diaspora", "Fon, wolof, lingala… les premiers mots en famille", 5000], ["💬", "30 jours de vocaux pour apprendre", "Une leçon audio par jour sur WhatsApp", 7000]]
+  whatsapp: [["📲", "Vendre tous les jours sur WhatsApp Business", "30 messages prêts à copier pour vendre chaque jour", 3000, "Les 30 messages à copier-coller · Quand et à qui les envoyer · Répondre à « c'est trop cher » · Relancer sans déranger"], ["🎨", "50 modèles de statuts et d'affiches", "Des visuels Canva prêts pour ta boutique", 5000, "50 visuels prêts à modifier dans Canva · Comment changer prix et photos · Le calendrier de publication"], ["🎧", "Mes 10 premiers clients sur Facebook", "Une mini-formation audio, sans publicité", 10000, "5 leçons audio courtes · Où trouver tes clients · Les messages à envoyer · Le plan sur 7 jours"]],
+  elevage: [["🐣", "Démarrer 100 poulets de chair", "Budget, calendrier et vaccins, étape par étape", 5000, "Le budget de départ · Le matériel · Le calendrier jour par jour · Les vaccins · Vendre ses poulets"], ["📊", "Calculer la rentabilité de sa bande", "Une fiche simple pour savoir si tu gagnes vraiment", 3000, "Une fiche à remplir · Les coûts à noter · Comment savoir si tu gagnes · Un exemple chiffré"], ["🌾", "Fabriquer sa provende soi-même", "Une alimentation moins chère pour tes animaux", 7000, "Les ingrédients et où les trouver · Les dosages par âge · Comment conserver · Ce que tu économises"]],
+  numerique: [["🛡️", "Protéger son Mobile Money des arnaques", "Les 15 pièges à connaître pour ne plus se faire voler", 2000, "Les 15 arnaques les plus courantes · Comment les reconnaître · Les bons réflexes · Que faire si on t'a volé"], ["✍️", "L'IA pour écrire ses annonces de vente", "Des annonces qui donnent envie, en quelques minutes", 3000, "Comment demander à l'IA · 20 exemples d'annonces · Les erreurs à éviter · Ton annonce en 5 minutes"], ["🤖", "100 prompts IA pour commerçants", "Des phrases prêtes à copier dans Claude ou ChatGPT", 5000, "100 phrases à copier dans Claude ou ChatGPT · Classées par besoin : vendre, répondre, publier, calculer"]],
+  concours: [["📚", "Fiches de révision BEPC ou BAC", "L'essentiel d'une matière en quelques pages", 2000, "Le cours résumé en fiches · Les formules et dates à retenir · Des exercices corrigés · Le plan de révision"], ["📝", "Sujets corrigés d'un concours national", "S'entraîner avec de vrais sujets et leurs corrigés", 5000, "Les sujets des années passées · Les corrigés expliqués · Les pièges fréquents · Un planning d'entraînement"], ["🎤", "Réussir l'oral et le dossier de concours", "Les questions fréquentes et comment y répondre", 5000, "Les questions qu'on pose souvent · Comment y répondre · Préparer son dossier · Gérer le stress"]],
+  cuisine: [["🥟", "20 snacks à vendre devant l'école", "Avec le coût et le prix de vente de chaque recette", 3000, "20 recettes simples · Le coût de chaque recette · Le prix de vente conseillé · Comment emballer"], ["🥤", "Lancer ses jus naturels et yaourts", "Fabriquer, conserver et vendre", 4000, "Les recettes · L'hygiène et la conservation · Les bouteilles et étiquettes · Fixer ses prix"], ["🎂", "Gâteaux d'anniversaire pour débutantes", "Une mini-formation pas à pas", 15000, "6 leçons pas à pas · Le matériel de base · Les recettes · La décoration · Les prix à demander"]],
+  foi: [["🙏🏾", "30 jours de prière pour la famille", "Un carnet de prière pour chaque jour du mois", 2000, "Une prière pour chaque jour · Un thème par semaine · Une page pour noter ses intentions"], ["📖", "Plan de lecture biblique ou coranique", "Un plan avec une fiche pour chaque jour", 2000, "Un plan sur 30 ou 90 jours · Une fiche par jour · Les questions pour méditer"], ["🕊️", "21 jours de jeûne et de méditation", "Un programme guidé en PDF et en audio", 3000, "Le programme jour par jour · Les conseils pour tenir · Les textes de méditation · Les audios"]],
+  famille: [["💑", "Gérer l'argent du foyer à deux", "Des règles simples pour éviter les disputes", 3000, "Comment parler d'argent sans se disputer · Le budget du couple · Épargner ensemble · Des exemples"], ["💍", "Préparer son mariage avec un petit budget", "Budget, liste et étapes pour un beau mariage", 3000, "La liste des dépenses · Comment économiser sur chaque poste · Le calendrier · Les erreurs à éviter"], ["👨‍👩‍👧", "Éduquer ses enfants sans crier", "30 situations du quotidien et quoi faire", 4000, "30 situations du quotidien · Quoi dire et quoi faire · Les routines qui aident"]],
+  argent: [["📒", "Cahier de caisse et de crédit clients", "À imprimer, pour ne plus perdre d'argent", 2000, "Des pages à imprimer · Noter ventes, dépenses et crédits · Faire le bilan du mois"], ["🧮", "Gérer son argent avec 50 000 FCFA par mois", "Un budget simple qui tient tout le mois", 3000, "La méthode du budget simple · Un exemple chiffré · Épargner même un peu · Le tableau à remplir"], ["🤝", "Organiser une tontine sans disputes", "Les règles claires qui protègent tout le monde", 3000, "Les règles à écrire ensemble · Le cahier de suivi · Que faire si quelqu'un ne paie pas"]],
+  bienetre: [["🍵", "Plantes et tisanes du quotidien", "Ce qu'on sait et les précautions à prendre", 3000, "15 plantes courantes · Comment les préparer · Les précautions · Quand voir un médecin"], ["🧴", "Soins naturels de la peau et des cheveux", "Karité, huiles et routines simples", 3000, "Les produits naturels utiles · Des routines simples · Des recettes maison · Les précautions"], ["🥗", "30 jours pour manger plus sain", "Avec les produits du marché, sans se ruiner", 4000, "Un menu par jour · La liste de courses au marché · Des recettes faciles et pas chères"]],
+  beaute: [["💁🏾‍♀️", "50 modèles de tresses", "Avec la durée et le prix conseillé de chacun", 2000, "50 modèles avec photo à ajouter · La durée de chaque modèle · Le prix conseillé · Les soins après"], ["💈", "Remplir son salon et fidéliser ses clientes", "Faire revenir tes clientes, encore et encore", 4000, "Attirer de nouvelles clientes · Les faire revenir · Les messages WhatsApp à envoyer · Les offres"], ["🎥", "Nattes collées pour débutantes", "Mini-formation filmée sur les mains, sans visage", 10000, "5 leçons filmées sur les mains · Le matériel · Les étapes · Les erreurs de débutante"]],
+  couture: [["💵", "Fixer ses prix et éviter les impayés", "Gagner vraiment sur chaque commande", 3000, "Calculer le vrai coût d'une tenue · Fixer son prix · Demander une avance · Gérer les retards"], ["📐", "5 patrons de modèles en pagne", "Du S au XXL, prêts à imprimer", 5000, "5 patrons à imprimer du S au XXL · Les mesures · Le métrage de tissu · Les étapes de couture"], ["👗", "Coudre une robe en pagne pas à pas", "Une mini-formation simple", 15000, "6 leçons pas à pas · Prendre les mesures · Couper · Coudre · Les finitions"]],
+  langues: [["🇬🇧", "Anglais pour commerçants et chauffeurs", "Les phrases utiles, en audio", 3000, "Les 200 phrases utiles · Saluer, vendre, négocier, indiquer le chemin · En audio"], ["🌍", "Langue locale pour les enfants de la diaspora", "Fon, wolof, lingala… les premiers mots en famille", 5000, "Les premiers mots · Les phrases de la famille · Des jeux simples · Les audios"], ["💬", "30 jours de vocaux pour apprendre", "Une leçon audio par jour sur WhatsApp", 7000, "Une leçon audio par jour sur WhatsApp · Un petit exercice · Un bilan chaque semaine"]]
 };
 const NIVEAUX = [["debutant", "🌱", "Je débute, je connais les bases"], ["pratique", "💪", "Je pratique depuis un moment"], ["expert", "🏆", "J'en vis, je suis expert"]];
 const HEURES = [["0.5", "⏱️", "30 minutes"], ["1", "🕐", "1 heure"], ["2", "🕑", "2 heures"], ["4", "🕓", "4 heures"], ["6", "🔥", "6 heures ou plus"]];
+const lieu = p => ({ "Côte d'Ivoire": "en", "Guinée": "en", "RDC": "en" }[p] || "au") + " " + p;
 const format = prix => prix >= 10000 ? "Mini-formation" : "Guide PDF";
 function joursLancement(idee) { const h = Number(S.heures) || 1, base = h >= 4 ? 1 : h >= 2 ? 1 : h >= 1 ? 2 : 4; return format(idee.prix) === "Mini-formation" ? base * 2 : base; }
 const CIBLES = [["👩🏾", "Les femmes"], ["🧑🏾‍🎓", "Les jeunes et étudiants"], ["👨‍👩‍👧", "Les parents"], ["🧑🏾‍💼", "Les commerçants"], ["🧑🏾‍🌾", "Éleveurs et agriculteurs"], ["✈️", "La diaspora"]];
@@ -263,7 +264,7 @@ function vQuestion() {
   maj();
 }
 
-function candidats() { return S.domaines.flatMap(d => IDEES[d].map(([e, t, p, prix]) => ({ e, t, p, prix, d }))); }
+function candidats() { return S.domaines.flatMap(d => IDEES[d].map(([e, t, p, prix, c]) => ({ e, t, p, prix, c, d }))); }
 function choisir() {
   const dep = { debutant: 0, pratique: 1, expert: 2 }[S.niveau] ?? 0, n = S.domaines.length, ordre = [];
   for (let r = 0; r < 3; r++) for (let d = 0; d < n; d++) ordre.push(d * 3 + (dep + r) % 3);
@@ -273,7 +274,7 @@ function choisir() {
 function vCherche() {
   barre(100, null);
   choisir();
-  const DUREE = 42000;
+  const DUREE = 30000;
   const noms = candidats().map(x => x.t).concat(["Guide PDF", "Fiches pratiques", "Mini-formation"]);
   const liste = [...noms, ...noms, ...noms, S.idee.t];
   const autour = S.domaines.map(k => DOMAINES.find(x => x[0] === k)[2].split(" ")[0]).concat(["Guide PDF", "Mobile Money", "WhatsApp", "Prix en FCFA", "Mini-formation", "Bonus"]).slice(0, 6);
@@ -320,7 +321,7 @@ function vCherche() {
     if ($("ph").dataset.k != k) { $("ph").dataset.k = k; montrer(k); }
     autour.forEach((_, j) => { const c = $("ch" + j); if (c) c.classList.toggle("on", (Math.floor(t / 900) + j) % 3 === 0); });
     if (!rouleau && (p > .78 || skip)) { rouleau = true; $("slot").style.opacity = 1; tour(); }
-    if (!skip && t > 15000 && !$("passer")) { cta(`<button class="link" id="passer">Voir mon idée tout de suite</button>`); $("passer").onclick = () => { skip = true; cta(""); }; }
+    if (!skip && t > 10000 && !$("passer")) { cta(`<button class="link" id="passer">Voir mon idée tout de suite</button>`); $("passer").onclick = () => { skip = true; cta(""); }; }
     setTimeout(tick, 120);
   })();
 }
@@ -342,7 +343,19 @@ function vIdee() {
         <div class="stat"><small>Ton temps</small><b>${esc(HEURES.find(x => x[0] === S.heures)?.[2] || "1 heure")}/jour</b></div>
         <div class="stat"><small>En vente dans</small><b>≈ ${joursLancement(d)} jour${joursLancement(d) > 1 ? "s" : ""}</b></div>
       </div>
-      <p class="small" style="color:var(--muted);font-size:13px;margin:0">Choisie à partir de ton domaine « ${esc(dom[2])} »${S.savoir ? " et de ton savoir" : ""}, pour ${esc(S.cible.join(", ").toLowerCase())} ${S.pays && !["Autre pays", "Diaspora"].includes(S.pays) ? "au " + esc(S.pays) : ""}. C'est un calcul, pas une promesse.</p>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <b>📦 Ce que tu vas créer, concrètement</b>
+      <ul class="list">
+        <li>${format(d.prix) === "Guide PDF" ? "📘 Un <b>guide PDF</b> de 15 à 25 pages, facile à lire sur téléphone." : "🎬 Une <b>mini-formation</b> de 5 à 8 leçons courtes (texte à lire en audio ou à filmer sur les mains)."}</li>
+        <li>📑 <b>Dedans :</b> ${esc(d.c || "")}.</li>
+        <li>✍️ <b>Qui l'écrit ?</b> Claude, l'IA. Tu réponds à 3 questions sur ton expérience, il rédige tout. Toi, tu relis.</li>
+        <li>🛒 <b>Comment tu le vends ?</b> À ${nb(d.prix)} FCFA. Ton client paie en Mobile Money et reçoit le fichier tout seul.</li>
+        <li>👥 <b>Pour qui ?</b> ${esc(S.cible.join(", ").toLowerCase() || "ton public")}.</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:12px;padding:14px 18px">
+      <p class="small" style="color:var(--muted);font-size:13px;margin:0">Choisie à partir de ton domaine « ${esc(dom[2])} »${S.savoir ? " et de ton savoir" : ""}, pour ${esc(S.cible.join(", ").toLowerCase())} ${S.pays && !["Autre pays", "Diaspora"].includes(S.pays) ? esc(lieu(S.pays)) : ""}. C'est un calcul, pas une promesse.</p>
     </div>`;
   cta(`<button class="btn" id="go">Créer ce produit maintenant →</button><button class="link" id="autre">Me proposer une autre idée</button>`);
   $("go").onclick = () => aller(S.ouvert ? "message" : "acces");
@@ -394,7 +407,7 @@ function base() {
 Mon profil :
 ${profil()}
 
-Mon produit (${format(d.prix).toLowerCase()}) : « ${d.t} » — ${d.p}. Prix conseillé : ${nb(d.prix)} FCFA (à convertir si mon pays n'utilise pas le FCFA).
+Mon produit (${format(d.prix).toLowerCase()}) : « ${d.t} » — ${d.p}. Contenu prévu : ${d.c || ""}. Prix conseillé : ${nb(d.prix)} FCFA (à convertir si mon pays n'utilise pas le FCFA).
 
 Règles : français simple, phrases courtes, tutoiement ; aucune promesse de revenus ; n'invente aucun chiffre, aucune loi, aucun témoignage ; adapte tout à mon pays.`;
 }
