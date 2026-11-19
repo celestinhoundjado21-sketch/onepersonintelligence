@@ -124,10 +124,34 @@ ol.how { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: #cfd6ee;
 .foot { margin-top: 34px; font-size: 11.5px; color: #59627f; text-align: center; line-height: 1.5; }
 .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .hero-badges span { font-size: 12.5px; color: #b6c1e6; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; }
-@media (prefers-reduced-motion: reduce) { .orb, .orb::before, .aura, .orbit, .spark { animation: none; } .track i, .slot ul { transition: none; } }
+#net { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s; }
+#net.on { opacity: 1; }
+.app, .cta { position: relative; z-index: 1; }
+.cta { position: fixed; }
+.mini-orb { position: relative; width: 74px; height: 74px; margin: 6px 0 18px; }
+.mini-orb .core { position: absolute; inset: 9px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #fff 0%, #c9d6ff 10%, #7d98ff 30%, #3a57e0 55%, #0d1a55 100%); box-shadow: 0 0 34px 6px rgba(79,124,255,.55); animation: pulse2 2.8s ease-in-out infinite; }
+.mini-orb .halo { position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(from 0deg, transparent, rgba(109,141,255,.6), rgba(139,92,246,.5), rgba(52,211,153,.4), transparent); filter: blur(10px); animation: spin 5s linear infinite; }
+.mini-orb .ring2 { position: absolute; inset: -2px; border-radius: 50%; border: 1px solid rgba(169,184,255,.35); transform: rotateX(70deg); animation: orb1 4s linear infinite; }
+.mini-orb .ring2 i { position: absolute; top: -3px; left: 50%; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px 3px rgba(169,184,255,.9); }
+@keyframes pulse2 { 50% { transform: scale(1.06); box-shadow: 0 0 48px 10px rgba(79,124,255,.7); } }
+.rot { display: inline-block; color: #a9b8ff; transition: opacity .35s, transform .35s; }
+.rot.out { opacity: 0; transform: translateY(8px); }
+.grad { background: linear-gradient(90deg, #fff 0%, #c9d6ff 35%, #a78bfa 65%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 6s linear infinite; }
+@keyframes shine { to { background-position: 200% center; } }
+.rise { opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+.hero-badges span { animation: bob 4s ease-in-out infinite; }
+.hero-badges span:nth-child(2) { animation-delay: .5s; } .hero-badges span:nth-child(3) { animation-delay: 1s; } .hero-badges span:nth-child(4) { animation-delay: 1.5s; }
+@keyframes bob { 50% { transform: translateY(-3px); } }
+.btn.shine { position: relative; overflow: hidden; }
+.btn.shine::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); animation: sweep 3.2s ease-in-out infinite; }
+@keyframes sweep { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+@media (prefers-reduced-motion: reduce) { #net, .mini-orb *, .grad, .rise, .hero-badges span, .btn.shine::after { animation: none !important; opacity: 1; transform: none; }
+  .orb, .orb::before, .aura, .orbit, .spark { animation: none; } .track i, .slot ul { transition: none; } }
 </style>
 </head>
 <body>
+<canvas id="net" aria-hidden="true"></canvas>
 <div class="app">
   <div class="brand"><svg viewBox="0 0 1024 1024" aria-hidden="true"><g transform="translate(-40,-12)"><circle cx="512" cy="548" r="178" fill="none" stroke="#fff" stroke-width="84"/><rect x="470" y="236" width="84" height="584" rx="42" fill="#fff" stroke="#060a17" stroke-width="22" paint-order="stroke"/><path d="M760 196 C768 246 778 256 828 264 C778 272 768 282 760 332 C752 282 742 272 692 264 C742 256 752 246 760 196 Z" fill="#6d8dff"/></g></svg>One Person Intelligence</div>
   <div class="bar" id="bar"></div>
@@ -189,23 +213,47 @@ function charger() { try { const l = localStorage.getItem("opi-v4"); if (l) S = 
 function aller(e) { S.ecran = e; sauver(); render(); window.scrollTo(0, 0); }
 function barre(pct, retour) { $("bar").innerHTML = retour ? `<button id="back" aria-label="Retour">←</button><div class="track"><i style="width:${pct}%"></i></div>` : ""; if (retour) $("back").onclick = retour; }
 function cta(html) { $("ctain").innerHTML = html; $("cta").hidden = !html; }
-function render() { ({ accueil: vAccueil, code: vCode, question: vQuestion, cherche: vCherche, idee: vIdee, acces: vAcces, message: vMessage, route: vRoute })[S.ecran](); }
+function render() { reseau(S.ecran === "accueil"); ({ accueil: vAccueil, code: vCode, question: vQuestion, cherche: vCherche, idee: vIdee, acces: vAcces, message: vMessage, route: vRoute })[S.ecran](); }
 
+let NET = null;
+function reseau(on) {
+  const c = $("net"); if (!c) return;
+  c.classList.toggle("on", on);
+  if (!on) { if (NET) { cancelAnimationFrame(NET.raf); NET = null; } return; }
+  if (NET || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const x = c.getContext("2d"), D = Math.min(2, devicePixelRatio || 1);
+  let W, H; const fit = () => { W = innerWidth; H = innerHeight; c.width = W * D; c.height = H * D; x.setTransform(D, 0, 0, D, 0, 0); }; fit(); addEventListener("resize", fit);
+  const cols = ["109,141,255", "139,92,246", "52,211,153"];
+  const pts = Array.from({ length: Math.min(46, Math.round(innerWidth / 14)) }, () => ({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18, r: 1 + Math.random() * 1.6, c: cols[Math.floor(Math.random() * 3)], ph: Math.random() * 6.3 }));
+  NET = { raf: 0 };
+  (function f(t) {
+    x.clearRect(0, 0, W, H);
+    for (const p of pts) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
+    for (let i = 0; i < pts.length; i++) for (let k = i + 1; k < pts.length; k++) { const a = pts[i], b = pts[k], d = Math.hypot(a.x - b.x, a.y - b.y); if (d < 120) { x.strokeStyle = `rgba(109,141,255,${(1 - d / 120) * .16})`; x.lineWidth = .7; x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke(); } }
+    for (const p of pts) { const g = .45 + .35 * Math.sin(t * .0015 + p.ph); x.fillStyle = `rgba(${p.c},${g})`; x.shadowBlur = 8; x.shadowColor = `rgba(${p.c},.9)`; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 7); x.fill(); }
+    x.shadowBlur = 0;
+    if (NET) NET.raf = requestAnimationFrame(f);
+  })(0);
+}
 function vAccueil() {
   barre(0, null);
+  const METIERS = ["🍲 cuisine", "🐔 élevage", "💇🏾‍♀️ coiffure", "🧵 couture", "💼 vente WhatsApp", "🎓 concours", "🙏🏾 foi", "🌿 bien-être"];
   $("view").innerHTML = `
-    <p class="eyebrow">Ton premier produit numérique</p>
-    <h1 style="margin-top:12px">Trouve ton idée.<br>Crée ton produit en quelques minutes.</h1>
-    <p class="sub">Tu coches ce que tu sais faire, tu choisis ton objectif : ton idée apparaît. Ensuite, Claude crée ton guide complet et tu le mets en vente en moins de 24 heures. Sans rien installer.</p>
-    <div class="hero-badges"><span>⚡ 1 minute de questions</span><span>📘 Guide PDF complet</span><span>📲 Mobile Money</span><span>🛡️ Garantie 14 jours</span></div>
+    <div class="mini-orb rise" aria-hidden="true"><span class="halo"></span><span class="core"></span><span class="ring2"><i></i></span></div>
+    <p class="eyebrow rise" style="animation-delay:.1s">Ton savoir en <span class="rot" id="rot">${METIERS[0]}</span></p>
+    <h1 class="rise" style="margin-top:12px;animation-delay:.2s"><span class="grad">Trouve ton idée.</span><br>Crée ton produit en quelques minutes.</h1>
+    <p class="sub rise" style="animation-delay:.35s">Tu coches ce que tu sais faire, tu choisis ton objectif : ton idée apparaît. Ensuite, Claude crée ton guide complet et tu le mets en vente en moins de 24 heures. Sans rien installer.</p>
+    <div class="hero-badges rise" style="animation-delay:.5s"><span>⚡ 30 secondes</span><span>📘 Guide PDF complet</span><span>📲 Mobile Money</span><span>🛡️ Garantie 14 jours</span></div>
     <div class="road">
-      ${[["✅", "Coche ce que tu sais faire", "Élevage, cuisine, coiffure, commerce…"], ["🎯", "Choisis ton objectif du mois", "On calcule combien de ventes il faut."], ["✨", "Découvre ton idée", "Un produit tiré de ton savoir, avec son prix."], ["📘", "Claude crée ton produit", "Ton guide PDF prêt à vendre."], ["🏪", "Vends-le", "Maketou, Chariow ou WhatsApp, pas à pas."]].map(([e, t, d]) => `<div class="step" style="cursor:default"><span class="n">${e}</span><span><b>${t}</b><small>${d}</small></span></div>`).join("")}
+      ${[["✅", "Coche ce que tu sais faire", "Élevage, cuisine, coiffure, commerce…"], ["🎯", "Choisis ton objectif du mois", "On calcule combien de ventes il faut."], ["✨", "Découvre ton idée", "Un produit tiré de ton savoir, avec son prix."], ["📘", "Claude crée ton produit", "Ton guide PDF prêt à vendre."], ["🏪", "Vends-le", "Maketou, Chariow ou WhatsApp, pas à pas."]].map(([e, t, d], k) => `<div class="step rise" style="cursor:default;animation-delay:${(.65 + k * .12).toFixed(2)}s"><span class="n">${e}</span><span><b>${t}</b><small>${d}</small></span></div>`).join("")}
     </div>`;
   const reprise = S.idee !== null;
-  cta(`<button class="btn" id="go">${reprise ? "Reprendre où j'en étais →" : "Trouver mon idée gratuitement →"}</button>
+  cta(`<button class="btn shine" id="go">${reprise ? "Reprendre où j'en étais →" : "Trouver mon idée gratuitement →"}</button>
        ${S.ouvert ? '<p class="ok" style="text-align:center">✅ Ton accès à vie est activé</p>' : '<button class="link" id="j">J\'ai déjà acheté : entrer mon code d\'accès</button>'}`);
   $("go").onclick = () => reprise ? aller(S.ouvert ? (S.route ? "route" : "message") : "idee") : (S.q = 0, aller("question"));
   const j = $("j"); if (j) j.onclick = () => aller("code");
+  let m = 0; const rot = $("rot");
+  (function tourne() { if (!document.body.contains(rot)) return; setTimeout(() => { if (!document.body.contains(rot)) return; rot.classList.add("out"); setTimeout(() => { m = (m + 1) % METIERS.length; rot.textContent = METIERS[m]; rot.classList.remove("out"); tourne(); }, 350); }, 1900); })();
 }
 
 function vCode() {
