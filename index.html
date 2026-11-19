@@ -58,6 +58,7 @@ h1 { font-size: 34px; } h2 { font-size: 29px; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 26px; }
 .tile { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 14px 13px; min-height: 86px; color: var(--text); font: inherit; font-size: 14.5px; font-weight: 500; text-align: left; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transition: border-color .15s, background .15s; }
 .tile .ic { font-size: 22px; line-height: 1; }
+.tile .ic .flag { width: 30px; height: 22px; border-radius: 4px; object-fit: cover; display: block; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
 .tile .box { position: absolute; top: 12px; right: 12px; width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #2a3556; display: grid; place-items: center; font-size: 11px; color: var(--night); }
 .tile.on { border-color: var(--blue); background: #101c3d; }
 .tile.on .box { background: var(--blue); border-color: var(--blue); color: #fff; }
@@ -236,6 +237,7 @@ const lieu = p => ({ "Côte d'Ivoire": "en", "Guinée": "en", "RDC": "en" }[p] |
 const format = prix => prix >= 10000 ? "Mini-formation" : "Guide PDF";
 function joursLancement(idee) { const h = Number(S.heures) || 1, base = h >= 4 ? 1 : h >= 2 ? 1 : h >= 1 ? 2 : 4; return format(idee.prix) === "Mini-formation" ? base * 2 : base; }
 const CIBLES = [["👩🏾", "Les femmes"], ["🧑🏾‍🎓", "Les jeunes et étudiants"], ["👨‍👩‍👧", "Les parents"], ["🧑🏾‍💼", "Les commerçants"], ["🧑🏾‍🌾", "Éleveurs et agriculteurs"], ["✈️", "La diaspora"]];
+const DRAP = { "Bénin": "bj", "Côte d'Ivoire": "ci", "Sénégal": "sn", "Cameroun": "cm", "Togo": "tg", "Burkina Faso": "bf", "Mali": "ml", "Gabon": "ga", "Guinée": "gn", "RDC": "cd" };
 const PAYS = [["🇧🇯", "Bénin"], ["🇨🇮", "Côte d'Ivoire"], ["🇸🇳", "Sénégal"], ["🇨🇲", "Cameroun"], ["🇹🇬", "Togo"], ["🇧🇫", "Burkina Faso"], ["🇲🇱", "Mali"], ["🇬🇦", "Gabon"], ["🇬🇳", "Guinée"], ["🇨🇩", "RDC"], ["🌍", "Autre pays"], ["✈️", "Diaspora"]];
 const BOUTIQUES = {
   maketou: ["🛒", "Maketou", "Paiement Mobile Money, ton PDF livré automatiquement.", ["Ouvre Maketou et crée ton compte.", "Crée ta boutique avec un des noms proposés par Claude.", "Ajoute la description et ta couverture comme image.", "Indique ton numéro Mobile Money pour recevoir ton argent.", "Crée le produit : colle le titre, le prix et la description de Claude.", "Ajoute ton PDF comme fichier livré après paiement.", "Publie, puis fais un achat test avec un proche.", "Copie le lien de ton produit pour le partager."]],
@@ -332,7 +334,7 @@ function vQuestion() {
   if (id === "niveau") { h = `<h2>Quel est ton niveau ?</h2><p class="sub">On adapte ton idée : un premier guide simple, ou une vraie formation.</p>` + tuiles(NIVEAUX, k => S.niveau === k, "n", true); pret = !!S.niveau; }
   if (id === "heures") { h = `<h2>Combien de temps par jour pour ton projet ?</h2><p class="sub">Sois honnête : on calcule ton rythme de lancement avec ce temps.</p>` + tuiles(HEURES, k => S.heures === k, "h", true); pret = !!S.heures; }
   if (id === "cible") { h = `<h2>Qui veux-tu aider ?</h2><p class="sub">Une ou plusieurs réponses.</p>` + tuiles(CIBLES.map(([e, n]) => [n, e, n]), k => S.cible.includes(k), "c"); pret = S.cible.length > 0; }
-  if (id === "pays") { h = `<h2>Où vis-tu ?</h2>` + tuiles(PAYS.map(([e, n]) => [n, e, n]), k => S.pays === k, "p"); pret = !!S.pays; }
+  if (id === "pays") { h = `<h2>Où vis-tu ?</h2>` + tuiles(PAYS.map(([e, n]) => [n, DRAP[n] ? `<img class="flag" src="/drapeaux/${DRAP[n]}.svg" alt="">` : e, n]), k => S.pays === k, "p"); pret = !!S.pays; }
   if (id === "visage") { h = `<h2>Tu acceptes de te montrer en vidéo ?</h2><p class="sub">Aucun problème si tu préfères rester discret : beaucoup vendent sans montrer leur visage.</p>` + tuiles([["oui", "🎥", "Oui, je peux me montrer"], ["non", "🙈", "Non, je reste discret"]], k => S.visage === k, "v", true); pret = !!S.visage; }
   if (id === "savoir") { h = `<h2>Ton savoir, en une phrase</h2><p class="sub">Ce que tu fais mieux que les autres, ou ce qu'on te demande souvent. Facultatif, mais ça rend ton produit unique.</p><textarea class="field" id="f" placeholder="Ex. j'élève des poulets depuis 3 ans et je perds très peu de poussins.">${esc(S.savoir)}</textarea>`; }
   if (id === "objectif") { const p = (S.objectif - 25000) / 975000 * 100; h = `<h2>Combien tu veux gagner en plus par mois ?</h2>
