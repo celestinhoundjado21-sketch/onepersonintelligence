@@ -434,8 +434,9 @@ function vAcces() {
     <p class="sub">Un seul paiement, et l'outil est à toi pour toujours : pour cette idée et toutes celles qui suivront.</p>
     <div class="card glow" style="margin-top:20px">
       <ul class="list">
-        <li>📘 Le message prêt pour que Claude crée ton guide PDF complet</li>
-        <li>🏪 La mise en vente pas à pas : Maketou, Chariow ou WhatsApp</li>
+        <li>📘 Claude fabrique ton guide PDF complet, avec sa couverture</li>
+        <li>🎬 2 vidéos publicitaires prêtes à poster</li>
+        <li>🏪 Où et comment vendre, expliqué depuis zéro : WhatsApp, Maketou ou Chariow</li>
         <li>📣 7 jours de publications prêtes à poster</li>
         <li>💬 Les réponses pour transformer les messages en ventes</li>
         <li>♾️ Autant de produits que tu veux, mises à jour comprises</li>
@@ -477,7 +478,7 @@ Règles : français simple, phrases courtes, tutoiement ; aucune promesse de rev
 const MSG = {
   produit: () => `${base()}
 
-Ta mission : fabriquer TOUT mon produit, du début à la fin, jusqu'au fichier PDF fini avec sa couverture, prêt à vendre. Je débute avec l'IA : ne me demande jamais d'installer quoi que ce soit, ne me donne pas de code à copier, fais tout toi-même. Avance étape par étape, et à chaque étape dis-moi en une phrase où on en est (« Étape 2 sur 5 »).
+Ta mission : fabriquer TOUT mon produit, du début à la fin, jusqu'au fichier PDF fini avec sa couverture, prêt à vendre. Je débute avec l'IA : ne me demande jamais d'installer quoi que ce soit, ne me donne pas de code à copier, fais tout toi-même. Avance étape par étape, et à chaque étape dis-moi en une phrase où on en est (« Étape 2 sur 8 »).
 
 ÉTAPE 1 — Mes infos (un seul message, puis attends ma réponse)
 Pose-moi 5 questions courtes, numérotées, faciles à répondre même en vocal :
@@ -513,8 +514,32 @@ Si tu ne peux pas créer de fichier dans cette conversation, dis-le-moi claireme
 ÉTAPE 5 — La vérification
 Relis tout le guide et corrige les fautes. Puis donne-moi :
 - la liste des [À COMPLÉTER] qui restent, avec la page ;
-- les 2 fichiers à télécharger ;
-- la phrase : « Ton produit est prêt. Retourne sur onepersonintelligence.com pour l'étape suivante : le mettre en vente. »`,
+- les 2 fichiers à télécharger.
+Puis enchaîne directement sur l'étape 6.
+
+ÉTAPE 6 — 2 vidéos publicitaires
+Crée 2 vidéos verticales (1080×1920, 15 à 20 secondes, format MP4) pour TikTok, Facebook et les statuts WhatsApp, ${S.visage === "oui" ? "que je peux aussi refaire face caméra si je veux" : "SANS jamais montrer de visage"} :
+- Vidéo 1 « Le problème » : une accroche forte en 1 phrase (un problème que vit ma cliente), puis 3 phrases courtes, puis la couverture du guide, puis « Écris-moi PRODUIT sur WhatsApp ».
+- Vidéo 2 « Ce qu'il y a dedans » : la couverture, puis 4 choses que la cliente va apprendre, une par écran, puis le prix et « Écris-moi PRODUIT sur WhatsApp ».
+Gros texte blanc centré, lisible sur téléphone, mêmes couleurs que la couverture, un écran toutes les 2 à 3 secondes, de l'animation simple (apparition, zoom léger).
+Pour chaque vidéo, donne aussi la légende à publier (avec 5 hashtags) et le type de musique à ajouter dans TikTok.
+Jamais de faux témoignage, jamais de promesse d'argent, jamais de fausse urgence.
+Si tu ne peux pas créer de fichier vidéo, dis-le en une phrase, puis crée pour chaque vidéo les 5 images verticales (1080×1920) à télécharger, et explique-moi en 5 étapes simples comment les assembler gratuitement dans CapCut (ou dans l'outil de montage de TikTok).
+
+ÉTAPE 7 — Où et comment vendre (je n'ai jamais vendu en ligne)
+Explique-moi d'abord, très simplement, en quelques lignes :
+- qu'on peut vendre un guide PDF juste avec WhatsApp et Mobile Money : la cliente paie sur mon numéro, je vérifie que l'argent est arrivé, je lui envoie le PDF ;
+- qu'il existe aussi des boutiques en ligne faites pour l'Afrique, comme Maketou ou Chariow : je mets mon PDF dedans, la cliente paie par Mobile Money sur un lien, et elle reçoit le PDF toute seule, même quand je dors ; ces sites prennent en général une commission sur chaque vente (dis-moi de vérifier le montant exact sur leur site, n'invente aucun chiffre) ;
+- un tableau simple qui compare : WhatsApp seul / boutique en ligne (ce qu'il faut, combien ça coûte pour commencer, avantages, limites).
+Puis pose-moi 2 questions : 1) As-tu un compte Mobile Money à ton nom ? 2) Veux-tu envoyer le PDF toi-même à chaque cliente, ou que ça se fasse tout seul ?
+Selon mes réponses, conseille-moi UN seul endroit pour commencer (le plus simple : WhatsApp ; ensuite une boutique quand les ventes arrivent), puis donne-moi :
+- les étapes à suivre, numérotées, une action par ligne ;
+- tous mes textes prêts à copier : nom de boutique, description en 2 lignes, fiche produit (titre, prix, description, ce que la cliente reçoit), message d'accueil WhatsApp Business, réponses aux questions « c'est combien ? », « comment je paie ? », « c'est une arnaque ? » ;
+- le message pour annoncer mon produit à mes contacts WhatsApp aujourd'hui.
+
+ÉTAPE 8 — La fin
+Termine par un récapitulatif court : mes fichiers (guide, image de couverture, 2 vidéos), où je vends, et mes 3 actions pour aujourd'hui. Puis : « Pour 7 jours de publications et tes réponses aux clients, retourne sur onepersonintelligence.com. »
+Si la conversation devient trop longue et que tu t'arrêtes au milieu, dis-moi d'écrire « continue ».`,
   boutique: () => `${base()}
 
 Mon guide est prêt. Je veux le vendre via : ${S.boutique ? BOUTIQUES[S.boutique][1] : "ma boutique"}.
@@ -554,7 +579,7 @@ function ecranMessage(cle, titre, sousTitre, apres, retour) {
   $("next").onclick = () => { S.faits[cle] = true; S.route = true; aller("route"); };
 }
 function vMessage() {
-  ecranMessage("produit", "Envoie ça à Claude", "Claude te pose 5 petites questions, puis fabrique tout : le contenu, la mise en page, la couverture et le PDF final. Tu n'installes rien : colle le message dans une nouvelle conversation et réponds-lui.",
+  ecranMessage("produit", "Envoie ça à Claude", "Claude te pose quelques petites questions, puis fabrique tout : ton guide PDF avec sa couverture, 2 vidéos publicitaires, et t'explique où et comment vendre. Tu n'installes rien : colle le message dans une nouvelle conversation et réponds-lui.",
     `<p class="sub" style="font-size:13.5px">💡 Pas encore de compte Claude ? Crée-le sur claude.ai avec ton e-mail. Si Claude te propose de « créer des fichiers », accepte : c'est ce qui te donne ton PDF.</p>`,
     () => aller("idee"));
 }
@@ -577,7 +602,7 @@ function ouvrir(k) {
   if (k === "produit") return aller("message");
   S.ecran = "route"; sauver(); window.scrollTo(0, 0);
   const retour = () => aller("route");
-  if (k === "boutique" && !S.boutique) return choixEcran("Où veux-tu vendre ?", "Tu pourras en ajouter un autre plus tard.", BOUTIQUES, v => { S.boutique = v; ouvrir("boutique"); }, retour);
+  if (k === "boutique" && !S.boutique) return choixEcran("Où veux-tu vendre ?", "Tu n'as jamais vendu en ligne ? Commence par WhatsApp : la cliente paie sur ton numéro Mobile Money, tu lui envoies le PDF. Quand les ventes arrivent, passe à une boutique (Maketou ou Chariow) : la cliente paie sur un lien et reçoit le PDF toute seule, même la nuit. Tu pourras en ajouter un autre plus tard.", BOUTIQUES, v => { S.boutique = v; ouvrir("boutique"); }, retour);
   if (k === "clients" && !S.reseau) return choixEcran("Où veux-tu trouver tes clients ?", "Claude te prépare une publication par jour pendant 7 jours.", RESEAUX, v => { S.reseau = v; ouvrir("clients"); }, retour);
   if (k === "boutique") return ecranMessage("boutique", `Vends sur ${BOUTIQUES[S.boutique][1]}`, "1. Envoie ce message à Claude pour recevoir tes textes. 2. Suis les étapes ci-dessous.",
     `<div class="card" style="margin-top:14px"><b>📋 Les étapes</b><ol class="how">${BOUTIQUES[S.boutique][3].map(e => `<li>${esc(e)}</li>`).join("")}</ol><button class="link" id="chg" style="align-self:flex-start">Changer d'endroit de vente</button></div>`, retour), lierChg("boutique");
