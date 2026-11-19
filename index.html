@@ -477,20 +477,44 @@ Règles : français simple, phrases courtes, tutoiement ; aucune promesse de rev
 const MSG = {
   produit: () => `${base()}
 
-Ta mission : créer mon produit complet, prêt à vendre.
+Ta mission : fabriquer TOUT mon produit, du début à la fin, jusqu'au fichier PDF fini avec sa couverture, prêt à vendre. Je débute avec l'IA : ne me demande jamais d'installer quoi que ce soit, ne me donne pas de code à copier, fais tout toi-même. Avance étape par étape, et à chaque étape dis-moi en une phrase où on en est (« Étape 2 sur 5 »).
 
-1. Pose-moi d'abord, en un seul message, 3 questions courtes sur mon expérience réelle (mes astuces, mes erreurs du début, un résultat concret). Attends ma réponse.
-2. Ensuite, sans autre question, crée le guide complet :
-   - un titre vendeur et un sous-titre qui dit le résultat ;
-   - une introduction (pour qui, ce que la lectrice saura faire, qui je suis) ;
-   - 6 à 8 chapitres courts, dans l'ordre, avec des exemples de la vie de tous les jours dans mon pays et mon expérience ;
-   - un chapitre « Les erreurs à éviter » ;
-   - un plan d'action final en check-list ;
-   - 15 à 25 pages, lisibles sur téléphone ;
-   - si mon produit est une mini-formation : découpe-le en 5 à 8 leçons courtes, avec le texte à lire en audio ou à filmer sur les mains, sans montrer de visage.
-   Là où il manque une information que moi seul connais, écris [À COMPLÉTER : …].
-3. Crée le guide en fichier PDF à télécharger, avec une couverture (titre, sous-titre, mon prénom) et un sommaire. Si tu ne peux pas créer de fichier, donne-moi le texte complet, bien présenté.
-4. Termine par la description détaillée d'une image de couverture, à donner à un générateur d'images.`,
+ÉTAPE 1 — Mes infos (un seul message, puis attends ma réponse)
+Pose-moi 5 questions courtes, numérotées, faciles à répondre même en vocal :
+1. Mon prénom (ou nom de marque) à mettre sur la couverture.
+2. Depuis combien de temps je fais ce métier, et un résultat concret dont je suis fier(e).
+3. Mes 3 meilleures astuces que les autres ne connaissent pas.
+4. Les erreurs que j'ai faites au début.
+5. Mon numéro WhatsApp à mettre à la fin du guide (je peux répondre « non »).
+Si je réponds très court, c'est normal : fais avec, ne me repose pas de questions.
+
+ÉTAPE 2 — Le plan
+Donne-moi le titre, le sous-titre (le résultat promis, sans promesse d'argent) et le sommaire en 8 à 10 lignes. Demande : « Je continue ? » Si je dis oui (ou n'importe quoi de positif), passe à la suite sans autre question.
+
+ÉTAPE 3 — Le contenu complet
+${S.idee.prix >= 10000 ? "C'est une mini-formation : 5 à 8 leçons courtes. Pour chaque leçon : l'objectif, le texte complet à lire en audio ou à dire en filmant seulement les mains (jamais le visage), puis un exercice simple. Ajoute un guide PDF d'accompagnement qui résume chaque leçon." : "C'est un guide PDF de 15 à 25 pages."} Contenu :
+- une introduction : pour qui, ce que la personne saura faire à la fin, qui je suis (avec mes réponses) ;
+- 6 à 8 chapitres courts, dans l'ordre, avec des exemples de la vie de tous les jours dans mon pays, des quantités et des étapes précises quand c'est utile ;
+- dans chaque chapitre, un encadré « 💡 Astuce » tiré de mes réponses quand c'est possible ;
+- un chapitre « Les erreurs à éviter » (avec les miennes) ;
+- une check-list finale « Ton plan d'action » ;
+- une dernière page : remerciement, mon prénom, mon WhatsApp si je l'ai donné, et « Ce guide est personnel, merci de ne pas le partager ».
+Là où il manque une information que moi seul connais (un prix local exact, une adresse…), écris [À COMPLÉTER : …] plutôt que d'inventer.
+
+ÉTAPE 4 — La mise en page et la couverture
+Crée toi-même le fichier PDF final, téléchargeable :
+- format A5 (agréable à lire sur téléphone), police lisible, texte assez grand, marges confortables, numéros de page ;
+- une couverture dessinée par toi : fond de couleur qui va avec mon métier, grand titre, sous-titre, mon prénom, un motif ou une illustration simple faite avec des formes (pas de photo de personne) ;
+- une page sommaire, chaque chapitre qui commence sur une nouvelle page avec un grand titre, les astuces dans des encadrés colorés, la check-list avec des cases à cocher ;
+- même style de couleurs du début à la fin.
+Crée aussi une image de la couverture seule, au format carré, pour mes statuts WhatsApp et mes publications.
+Si tu ne peux pas créer de fichier dans cette conversation, dis-le-moi clairement en une phrase, puis montre-moi le guide sous forme de page bien mise en page que je peux enregistrer en PDF, et explique-moi comment en 3 étapes simples.
+
+ÉTAPE 5 — La vérification
+Relis tout le guide et corrige les fautes. Puis donne-moi :
+- la liste des [À COMPLÉTER] qui restent, avec la page ;
+- les 2 fichiers à télécharger ;
+- la phrase : « Ton produit est prêt. Retourne sur onepersonintelligence.com pour l'étape suivante : le mettre en vente. »`,
   boutique: () => `${base()}
 
 Mon guide est prêt. Je veux le vendre via : ${S.boutique ? BOUTIQUES[S.boutique][1] : "ma boutique"}.
@@ -530,7 +554,7 @@ function ecranMessage(cle, titre, sousTitre, apres, retour) {
   $("next").onclick = () => { S.faits[cle] = true; S.route = true; aller("route"); };
 }
 function vMessage() {
-  ecranMessage("produit", "Envoie ça à Claude", "Claude te pose 3 petites questions sur ton expérience, puis crée ton guide complet en PDF. Colle le message dans une nouvelle conversation.",
+  ecranMessage("produit", "Envoie ça à Claude", "Claude te pose 5 petites questions, puis fabrique tout : le contenu, la mise en page, la couverture et le PDF final. Tu n'installes rien : colle le message dans une nouvelle conversation et réponds-lui.",
     `<p class="sub" style="font-size:13.5px">💡 Pas encore de compte Claude ? Crée-le sur claude.ai avec ton e-mail. Si Claude te propose de « créer des fichiers », accepte : c'est ce qui te donne ton PDF.</p>`,
     () => aller("idee"));
 }
