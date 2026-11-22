@@ -1,0 +1,14 @@
+{
+  "maj": "2026-11-22",
+  "note": "Rempli à la main par Mickael chaque semaine à partir des ventes Maketou par code promo. Aucune donnée personnelle ici : seulement l'identifiant revendeur.",
+  "revendeurs": {
+    "R-EXEMPLE": {
+      "codePromo": "EXEMPLE",
+      "actif": true,
+      "ventes": [
+        { "date": "2026-11-20", "guide": "guide-01", "montantXof": 3000, "commissionXof": 1500, "payee": true },
+        { "date": "2026-11-21", "guide": "guide-03", "montantXof": 3000, "commissionXof": 1500, "payee": false }
+      ]
+    }
+  }
+}

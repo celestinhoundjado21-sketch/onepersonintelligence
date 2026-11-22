@@ -1,0 +1,19 @@
+{
+  "maj": "2026-11-22",
+  "boutique": "https://one-person-intelligence.mymaketou.shop",
+  "niches": [
+    { "id": "elevage", "nom": "Élevage", "icone": "🐔" },
+    { "id": "bien-etre", "nom": "Bien-être et astuces", "icone": "🌿" },
+    { "id": "cuisine", "nom": "Cuisine", "icone": "🍲" },
+    { "id": "business", "nom": "Business et savoir-faire", "icone": "💼" },
+    { "id": "emploi", "nom": "Emploi et carrière", "icone": "📄" }
+  ],
+  "produits": [
+    { "id": "guide-01", "titre": "En 45 jours, vends tes 100 premiers poulets Goliath et signe ton premier contrat avec une poissonnerie", "prixXof": 3000, "niche": "elevage", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 1 },
+    { "id": "guide-02", "titre": "7 nuits avec la feuille de laurier…", "prixXof": 3000, "niche": "bien-etre", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 2 },
+    { "id": "guide-03", "titre": "5 épices qui partent comme des p…", "prixXof": 3000, "niche": "cuisine", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 3 },
+    { "id": "guide-04", "titre": "Transforme ton savoir-faire en un…", "prixXof": 3000, "niche": "business", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 4 },
+    { "id": "guide-05", "titre": "Stoppe l'hémorragie sur la prove…", "prixXof": 3500, "niche": "business", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 5 },
+    { "id": "guide-06", "titre": "Ne laisse plus ton CV finir à la p…", "prixXof": 2000, "niche": "emploi", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 6 }
+  ]
+}

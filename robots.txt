@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /partenaire/
+Disallow: /revendeurs/admin.html
 
 Sitemap: https://onepersonintelligence.com/sitemap.xml
