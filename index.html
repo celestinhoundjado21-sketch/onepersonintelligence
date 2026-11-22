@@ -4,653 +4,388 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://onepersonintelligence.com/">
-<title>One Person Intelligence</title>
-<meta name="description" content="Ton savoir devient un produit numérique, avec l'IA. Trouve ton idée gratuitement, crée ton guide et vends-le en Mobile Money.">
+<title>One Person Intelligence — Revends des guides en Mobile Money</title>
+<meta name="description" content="Revends des guides PDF prêts à vendre, avec leur lien et leur vidéo, et touche une commission en Mobile Money.">
 <meta name="theme-color" content="#060a17">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="One Person Intelligence">
-<meta property="og:title" content="One Person Intelligence — Ton savoir vaut de l'argent">
-<meta property="og:description" content="Trouve ton idée gratuitement, crée ton guide avec l'IA et vends-le en Mobile Money.">
+<meta property="og:title" content="One Person Intelligence — Snappe tes guides, reçois le lien et la vidéo">
+<meta property="og:description" content="Revends des guides PDF prêts à vendre, avec leur lien de vente et leur vidéo, et touche ta commission en Mobile Money.">
 <meta property="og:url" content="https://onepersonintelligence.com/">
 <meta property="og:image" content="https://onepersonintelligence.com/partage.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://onepersonintelligence.com/partage.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --night: #060a17;
-  --panel: #0c1324;
-  --panel-2: #111a30;
-  --line: #1b2540;
-  --text: #eef2ff;
-  --muted: #8892b0;
-  --blue: #4f7cff;
-  --glow: #6d8dff;
-  --green: #34d399;
-  --violet: #8b5cf6;
-  --coral: #e07a5f;
-  --display: "Sora", "Segoe UI", system-ui, sans-serif;
-  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
-  color-scheme: dark;
-}
-/* Mise en page : écran étroit centré, logo en haut, une question par écran, bouton principal blanc collé en bas. */
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-body { background: radial-gradient(120% 60% at 50% -10%, #0f1a3a 0%, var(--night) 55%) fixed, var(--night); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-.app { max-width: 460px; min-height: 100%; margin: 0 auto; padding: 22px 22px 170px; display: flex; flex-direction: column; }
-.brand { display: flex; align-items: center; justify-content: center; gap: 9px; font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: -.2px; }
-.brand svg { width: 26px; height: 26px; }
-.bar { display: flex; align-items: center; gap: 14px; margin: 22px 0 30px; min-height: 20px; }
-.bar button { background: none; border: none; color: var(--muted); font-size: 18px; cursor: pointer; padding: 0 4px; line-height: 1; }
-.track { flex: 1; height: 3px; background: var(--line); border-radius: 9px; overflow: hidden; }
-.track i { display: block; height: 100%; background: linear-gradient(90deg, var(--blue), var(--glow)); border-radius: 9px; transition: width .4s ease; }
-h1, h2 { font-family: var(--display); font-weight: 600; letter-spacing: -.6px; line-height: 1.12; margin: 0; text-wrap: balance; }
-h1 { font-size: 34px; } h2 { font-size: 29px; }
-.sub { color: var(--muted); margin-top: 10px; font-size: 15.5px; }
-.eyebrow { font-family: var(--display); font-size: 11px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--muted); }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 26px; }
-.tile { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 14px 13px; min-height: 86px; color: var(--text); font: inherit; font-size: 14.5px; font-weight: 500; text-align: left; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transition: border-color .15s, background .15s; }
-.tile .ic { font-size: 22px; line-height: 1; }
-.tile .ic .flag { width: 30px; height: 22px; border-radius: 4px; object-fit: cover; display: block; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
-.tile .box { position: absolute; top: 12px; right: 12px; width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #2a3556; display: grid; place-items: center; font-size: 11px; color: var(--night); }
-.tile.on { border-color: var(--blue); background: #101c3d; }
-.tile.on .box { background: var(--blue); border-color: var(--blue); color: #fff; }
-.tile.wide { grid-column: span 2; min-height: 64px; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; }
-.field { width: 100%; margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 15px; color: var(--text); font: inherit; min-height: 130px; resize: vertical; }
-.cta { position: fixed; left: 0; right: 0; bottom: 0; padding: 14px 22px 22px; background: linear-gradient(0deg, var(--night) 60%, rgba(6,10,23,0)); }
-.cta .in { max-width: 416px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-.btn { appearance: none; border: none; border-radius: 999px; padding: 16px 20px; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; width: 100%; background: #f1f1ee; color: #0b0f1c; text-align: center; text-decoration: none; display: block; }
-.btn:disabled { background: #1a2238; color: #56607e; cursor: not-allowed; }
-.btn.coral { background: var(--coral); color: #fff; box-shadow: 0 10px 30px rgba(224,122,95,.3); }
-.btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
-.link { background: none; border: none; color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; align-self: center; padding: 6px; }
-button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
-.amount { text-align: center; margin-top: 48px; }
-.amount b { display: block; font-family: var(--display); font-weight: 600; font-size: 50px; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; }
-.amount span { color: var(--muted); font-size: 14px; }
-.pill { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; border: 1px solid #2b3a73; color: #a9b8ff; border-radius: 999px; padding: 4px 11px; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; font-family: var(--display); }
-.range { margin-top: 44px; }
-.range input { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 9px; background: linear-gradient(90deg, var(--green) 0%, var(--blue) var(--p, 50%), var(--line) var(--p, 50%)); outline: none; }
-.range input::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--night); border: 3px solid var(--violet); box-shadow: 0 0 0 6px rgba(139,92,246,.18); cursor: pointer; }
-.range input::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--night); border: 3px solid var(--violet); cursor: pointer; }
-.range .ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 12px; font-family: var(--display); font-variant-numeric: tabular-nums; }
-.orb-wrap { position: relative; height: 290px; display: grid; place-items: center; margin-top: 4px; perspective: 700px; }
-.aura { position: absolute; width: 230px; height: 230px; border-radius: 50%; background: conic-gradient(from 0deg, rgba(79,124,255,0), rgba(109,141,255,.55), rgba(139,92,246,.5), rgba(52,211,153,.35), rgba(79,124,255,0)); filter: blur(26px); animation: spin 6s linear infinite; opacity: .85; }
-.orb { position: relative; width: 132px; height: 132px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 32% 28%, #ffffff 0%, #c9d6ff 9%, #7d98ff 26%, #3a57e0 50%, #1a2a8a 74%, #070d33 100%); box-shadow: 0 0 70px 14px rgba(79,124,255,.5), 0 0 140px 40px rgba(139,92,246,.18), inset -14px -18px 34px rgba(0,0,0,.45), inset 8px 10px 26px rgba(255,255,255,.18); animation: pulse 2.6s ease-in-out infinite; }
-.orb::before { content: ""; position: absolute; inset: -40%; background: conic-gradient(from 90deg, transparent 0 40%, rgba(255,255,255,.22) 50%, transparent 60% 100%); animation: spin 3.2s linear infinite; mix-blend-mode: screen; }
-.orb::after { content: ""; position: absolute; left: 18%; top: 12%; width: 34%; height: 22%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,255,255,.75), rgba(255,255,255,0) 70%); filter: blur(2px); }
-.orbit { position: absolute; border-radius: 50%; border: 1px solid rgba(169,184,255,.28); transform-style: preserve-3d; }
-.orbit i { position: absolute; top: -4px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px 3px rgba(169,184,255,.9); }
-.o1 { width: 200px; height: 200px; animation: orb1 4.2s linear infinite; }
-.o2 { width: 240px; height: 240px; border-color: rgba(139,92,246,.3); animation: orb2 6.5s linear infinite; }
-.o2 i { background: #c4b5fd; box-shadow: 0 0 12px 3px rgba(139,92,246,.9); }
-.o3 { width: 170px; height: 170px; border-color: rgba(52,211,153,.25); animation: orb3 3.4s linear infinite; }
-.o3 i { width: 6px; height: 6px; background: #a7f3d0; box-shadow: 0 0 10px 3px rgba(52,211,153,.9); }
-.prog { position: absolute; width: 268px; height: 268px; transform: rotate(-90deg); }
-.prog circle { fill: none; stroke-width: 3; }
-.prog .bg { stroke: rgba(27,37,64,.9); }
-.prog .fg { stroke: url(#gp); stroke-linecap: round; transition: stroke-dashoffset .6s ease; }
-.pct { position: absolute; bottom: 2px; font-family: var(--display); font-size: 13px; color: #a9b8ff; letter-spacing: 1px; font-variant-numeric: tabular-nums; }
-.spark { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #dbe3ff; box-shadow: 0 0 6px 2px rgba(169,184,255,.8); animation: float 3.5s ease-in-out infinite; opacity: 0; }
-.phase { text-align: center; min-height: 48px; margin-top: 6px; }
-.phase b { display: block; font-family: var(--display); font-size: 17px; }
-.phase small { color: var(--muted); font-size: 13px; }
-.chipf { position: absolute; font-size: 11px; color: #5d6890; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: rgba(12,19,36,.7); white-space: nowrap; transition: color .4s, border-color .4s; }
-.chipf.on { color: #dbe3ff; border-color: #3b4f9a; }
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes pulse { 50% { transform: scale(1.05); box-shadow: 0 0 90px 18px rgba(79,124,255,.6), 0 0 160px 50px rgba(139,92,246,.22), inset -14px -18px 34px rgba(0,0,0,.45), inset 8px 10px 26px rgba(255,255,255,.18); } }
-@keyframes orb1 { from { transform: rotateX(72deg) rotateZ(0deg); } to { transform: rotateX(72deg) rotateZ(360deg); } }
-@keyframes orb2 { from { transform: rotateX(68deg) rotateY(28deg) rotateZ(360deg); } to { transform: rotateX(68deg) rotateY(28deg) rotateZ(0deg); } }
-@keyframes orb3 { from { transform: rotateX(76deg) rotateY(-35deg) rotateZ(0deg); } to { transform: rotateX(76deg) rotateY(-35deg) rotateZ(360deg); } }
-@keyframes float { 0% { opacity: 0; transform: translateY(10px) scale(.6); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px) scale(1.1); } }
-.slot { position: relative; height: 132px; overflow: hidden; margin: 10px auto 0; width: 100%; border-radius: 14px; background: linear-gradient(180deg, rgba(12,19,36,0), rgba(12,19,36,.9), rgba(12,19,36,0)); }
-.slot ul { list-style: none; margin: 0; padding: 0; transition: transform .25s ease; }
-.slot li { height: 44px; display: grid; place-items: center; font-family: var(--display); font-weight: 600; font-size: 18px; color: #4c567a; text-align: center; padding: 0 10px; }
-.slot li.mid { color: var(--text); }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.card.glow { border-color: #2b3a73; box-shadow: 0 0 0 1px rgba(79,124,255,.15), 0 20px 60px rgba(30,50,140,.25); }
-.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.stat { background: var(--panel-2); border-radius: 12px; padding: 12px; }
-.stat small { display: block; color: var(--muted); font-size: 12px; }
-.stat b { font-family: var(--display); font-size: 18px; font-variant-numeric: tabular-nums; }
-.prompt-box { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 22px; }
-.prompt-box header { display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-.prompt-box header button { background: var(--panel-2); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 5px 10px; font: inherit; font-size: 12px; cursor: pointer; }
-.prompt-box pre { margin: 0; padding: 14px; max-height: 210px; overflow: auto; white-space: pre-wrap; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; line-height: 1.6; color: #b9c2de; }
-.road { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
-.step { display: flex; gap: 14px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; color: var(--text); font: inherit; text-align: left; cursor: pointer; width: 100%; }
-.step .n { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--panel-2); font-size: 16px; }
-.step.done .n { background: rgba(52,211,153,.15); }
-.step.now { border-color: var(--blue); }
-.step small { display: block; color: var(--muted); font-size: 13px; }
-ol.how { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: #cfd6ee; font-size: 15px; }
-.price { display: flex; align-items: baseline; gap: 10px; justify-content: center; font-family: var(--display); }
-.price s { color: var(--muted); font-size: 18px; }
-.price b { font-size: 38px; letter-spacing: -1px; }
-.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 15px; color: #cfd6ee; }
-.code-in { width: 100%; background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px; color: var(--text); font: inherit; font-family: var(--display); letter-spacing: 2px; text-transform: uppercase; text-align: center; font-size: 18px; }
-.err { color: #ff9b8a; font-size: 14px; text-align: center; }
-.ok { color: var(--green); font-size: 14px; }
-.foot { margin-top: 34px; font-size: 11.5px; color: #59627f; text-align: center; line-height: 1.5; }
-.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.hero-badges span { font-size: 12.5px; color: #b6c1e6; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; }
-#net { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s; }
-#net.on { opacity: 1; }
-.app, .cta { position: relative; z-index: 1; }
-.cta { position: fixed; }
-.mini-orb { position: relative; width: 74px; height: 74px; margin: 6px 0 18px; }
-.mini-orb .core { position: absolute; inset: 9px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #fff 0%, #c9d6ff 10%, #7d98ff 30%, #3a57e0 55%, #0d1a55 100%); box-shadow: 0 0 34px 6px rgba(79,124,255,.55); animation: pulse2 2.8s ease-in-out infinite; }
-.mini-orb .halo { position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(from 0deg, transparent, rgba(109,141,255,.6), rgba(139,92,246,.5), rgba(52,211,153,.4), transparent); filter: blur(10px); animation: spin 5s linear infinite; }
-.mini-orb .ring2 { position: absolute; inset: -2px; border-radius: 50%; border: 1px solid rgba(169,184,255,.35); transform: rotateX(70deg); animation: orb1 4s linear infinite; }
-.mini-orb .ring2 i { position: absolute; top: -3px; left: 50%; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px 3px rgba(169,184,255,.9); }
-@keyframes pulse2 { 50% { transform: scale(1.06); box-shadow: 0 0 48px 10px rgba(79,124,255,.7); } }
-.rot { display: inline-block; color: #a9b8ff; transition: opacity .35s, transform .35s; }
-.rot.out { opacity: 0; transform: translateY(8px); }
-.grad { background: linear-gradient(90deg, #fff 0%, #c9d6ff 35%, #a78bfa 65%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 6s linear infinite; }
-@keyframes shine { to { background-position: 200% center; } }
-.rise { opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
-@keyframes rise { to { opacity: 1; transform: none; } }
-.hero-badges span { animation: bob 4s ease-in-out infinite; }
-.hero-badges span:nth-child(2) { animation-delay: .5s; } .hero-badges span:nth-child(3) { animation-delay: 1s; } .hero-badges span:nth-child(4) { animation-delay: 1.5s; }
-@keyframes bob { 50% { transform: translateY(-3px); } }
-.btn.shine { position: relative; overflow: hidden; }
-.btn.shine::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); animation: sweep 3.2s ease-in-out infinite; }
-@keyframes sweep { 0%, 55% { left: -60%; } 100% { left: 130%; } }
-@media (min-width: 900px) {
-  /* Ordinateur : page large, accueil en deux colonnes, grilles plus larges. */
-  body { font-size: 17px; }
-  .app { max-width: 1120px; padding: 30px 48px 190px; }
-  .brand { justify-content: flex-start; font-size: 18px; }
-  .brand svg { width: 30px; height: 30px; }
-  #view, .bar { width: 100%; max-width: 780px; margin-left: auto; margin-right: auto; }
-  .bar { margin-top: 26px; margin-bottom: 40px; }
-  h1 { font-size: 54px; } h2 { font-size: 40px; }
-  .sub { font-size: 18px; margin-top: 14px; }
-  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 34px; }
-  .tile { min-height: 110px; font-size: 15.5px; padding: 18px; }
-  .tile.wide { grid-column: span 2; }
-  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .cta { padding-bottom: 30px; }
-  .cta .in { max-width: 520px; }
-  .orb-wrap { transform: scale(1.25); height: 360px; }
-  body.home #view { max-width: none; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); column-gap: 64px; align-items: center; margin-top: 30px; }
-  body.home #view > .road { grid-column: 2; grid-row: 1 / span 6; margin-top: 0; }
-  body.home #view > :not(.road) { grid-column: 1; }
-  body.home .bar { display: none; }
-  body.home .cta { left: 48px; right: auto; width: min(560px, calc(50% - 40px)); margin-left: max(0px, calc((100vw - 1120px) / 2)); background: none; padding: 0 0 40px; }
-  body.home .cta .in { margin: 0; }
-  body.home .app { padding-bottom: 60px; }
-  body.home #foot { position: fixed; right: 48px; bottom: 18px; max-width: 380px; margin: 0; text-align: right; }
-}
-@media (prefers-reduced-motion: reduce) { #net, .mini-orb *, .grad, .rise, .hero-badges span, .btn.shine::after { animation: none !important; opacity: 1; transform: none; }
-  .orb, .orb::before, .aura, .orbit, .spark { animation: none; } .track i, .slot ul { transition: none; } }
+:root{--night:#060a17;--panel:#0c1324;--panel-2:#111a30;--line:#1b2540;--text:#eef2ff;--muted:#8892b0;--blue:#4f7cff;--glow:#6d8dff;--green:#34d399;--violet:#8b5cf6;--gold:#f5c451;--display:"Sora","Segoe UI",system-ui,sans-serif;--body:"Figtree","Segoe UI",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(120% 60% at 50% -10%,#0f1a3a 0%,var(--night) 55%) fixed,var(--night);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.app{max-width:480px;margin:0 auto;padding:18px 18px 110px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:14px;line-height:1.2;color:var(--text);text-decoration:none}
+.brand svg{width:24px;height:24px}
+.plan-chip{white-space:nowrap;font-family:var(--display);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;border:1px solid #2b3a73;color:#a9b8ff;border-radius:999px;padding:5px 10px;background:none;cursor:pointer}
+.plan-chip.vip{border-color:#6b5520;color:var(--gold)}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.5px;line-height:1.15;margin:0}
+h1{font-size:30px}h2{font-size:24px}h3{font-size:17px}
+.sub{color:var(--muted);margin:8px 0 0;font-size:15px}
+.eyebrow{font-family:var(--display);font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:10px;align-items:center}
+.sp{margin-top:22px}
+.btn{appearance:none;border:none;border-radius:999px;padding:15px 18px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;width:100%;background:#f1f1ee;color:#0b0f1c;text-align:center;text-decoration:none;display:block}
+.btn:disabled{background:#1a2238;color:#56607e;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.gold{background:var(--gold);color:#1b1404}
+.btn.small{padding:10px 14px;font-size:14px;width:auto}
+.link{background:none;border:none;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:6px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.niches{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.niche{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--text);font:inherit;font-weight:600;font-size:14.5px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:84px}
+.niche .ic{font-size:22px;line-height:1}
+.niche small{color:var(--muted);font-weight:500;font-size:12px}
+.niche[aria-pressed="true"]{border-color:var(--blue);background:#101c3d}
+.niche:disabled{opacity:.4;cursor:not-allowed}
+.quota{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.quota b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:9px}
+.stepper{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px}
+.stepper button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--panel-2);color:var(--text);font-size:24px;cursor:pointer}
+.stepper button:disabled{opacity:.35;cursor:not-allowed}
+.stepper output{font-family:var(--display);font-size:46px;font-weight:600;min-width:80px;text-align:center;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.chips button{min-width:52px;padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit;font-weight:600;cursor:pointer}
+.chips button[aria-pressed="true"]{border-color:var(--blue);background:#101c3d}
+.chips button:disabled{opacity:.3;cursor:not-allowed}
+.vortex{position:relative;height:340px;display:grid;place-items:center}
+.vortex canvas{position:absolute;inset:0;width:100%;height:100%}
+.vortex .count{position:relative;text-align:center}
+.vortex .count b{display:block;font-family:var(--display);font-size:40px;font-variant-numeric:tabular-nums}
+.vortex .count small{color:#a9b8ff;font-size:13px;letter-spacing:1px}
+.phase{text-align:center;min-height:44px;font-family:var(--display);font-size:16px}
+.phase small{display:block;color:var(--muted);font-family:var(--body);font-size:13px}
+.guide{display:flex;flex-direction:column;gap:12px}
+.guide video{width:100%;border-radius:12px;background:#000;aspect-ratio:9/16;max-height:420px;object-fit:contain}
+.novid{border:1px dashed #2a3556;border-radius:12px;padding:16px;text-align:center;color:var(--muted);font-size:14px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kv div{background:var(--panel-2);border-radius:10px;padding:10px}
+.kv small{display:block;color:var(--muted);font-size:12px}
+.kv b{font-family:var(--display);font-variant-numeric:tabular-nums}
+.linkbox{display:flex;gap:8px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:8px 8px 8px 12px;font-size:13px;color:#b9c2de;overflow:hidden}
+.linkbox span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plans{display:grid;gap:12px;margin-top:16px}
+.plan{position:relative}
+.plan .price{font-family:var(--display);font-size:28px;font-weight:600}
+.plan .price small{font-size:14px;color:var(--muted);font-weight:500}
+.plan ul{margin:6px 0 0;padding-left:18px;color:#cfd6ee;font-size:14.5px;display:grid;gap:4px}
+.plan.vip{border-color:#6b5520;box-shadow:0 0 0 1px rgba(245,196,81,.12),0 20px 50px rgba(120,90,10,.18)}
+.plan .tag{position:absolute;top:14px;right:14px;font-size:11px;font-family:var(--display);letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.plan.current{border-color:var(--blue)}
+label{font-size:14px;color:#cfd6ee}
+input,select{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:13px;color:var(--text);font:inherit;margin-top:6px}
+.err{color:#ff9b8a;font-size:14px}.ok{color:var(--green);font-size:14px}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(6,10,23,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:5}
+nav.tabs .in{display:flex;max-width:480px;width:100%}
+nav.tabs button{flex:1;background:none;border:none;color:var(--muted);font:inherit;font-size:12px;padding:10px 4px 14px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav.tabs button span{font-size:20px;line-height:1}
+nav.tabs button[aria-current="page"]{color:var(--text)}
+.toast{position:fixed;left:50%;top:16px;transform:translateX(-50%) translateY(-160%);background:#0f2a1f;border:1px solid #1f6b4c;color:#d1fae5;border-radius:14px;padding:12px 16px;z-index:9;transition:transform .35s;max-width:92vw;font-size:14.5px}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.notif{display:flex;gap:10px;font-size:14px;color:#cfd6ee;padding:10px 0;border-bottom:1px solid var(--line)}
+.notif:last-child{border-bottom:none}
+.notif.new b{color:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 4px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:500;font-size:12px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;font-size:11px;border-radius:999px;padding:2px 8px;border:1px solid var(--line);color:var(--muted)}
+.badge.green{border-color:#1f6b4c;color:var(--green)}
+.foot{margin-top:28px;font-size:11.5px;color:#59627f;text-align:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (min-width:900px){.app{max-width:960px;padding:28px 40px 110px}.niches{grid-template-columns:repeat(5,minmax(0,1fr))}.plans{grid-template-columns:repeat(3,minmax(0,1fr))}.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}h1{font-size:42px}}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
 </style>
 </head>
 <body>
-<canvas id="net" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="app">
-  <div class="brand"><svg viewBox="0 0 1024 1024" aria-hidden="true"><g transform="translate(-40,-12)"><circle cx="512" cy="548" r="178" fill="none" stroke="#fff" stroke-width="84"/><rect x="470" y="236" width="84" height="584" rx="42" fill="#fff" stroke="#060a17" stroke-width="22" paint-order="stroke"/><path d="M760 196 C768 246 778 256 828 264 C778 272 768 282 760 332 C752 282 742 272 692 264 C742 256 752 246 760 196 Z" fill="#6d8dff"/></g></svg>One Person Intelligence</div>
-  <div class="bar" id="bar"></div>
-  <main id="view"><h1>Ton savoir vaut de l'argent.</h1></main>
-  <p class="foot" id="foot">Aucun revenu n'est garanti : tes résultats dépendent de ton travail, de ton projet et de ton marché.</p>
+  <header class="top">
+    <a class="brand" href="/"><svg viewBox="0 0 1024 1024" aria-hidden="true"><g transform="translate(-40,-12)"><circle cx="512" cy="548" r="178" fill="none" stroke="#fff" stroke-width="84"/><rect x="470" y="236" width="84" height="584" rx="42" fill="#fff" stroke="#060a17" stroke-width="22" paint-order="stroke"/><path d="M760 196 C768 246 778 256 828 264 C778 272 768 282 760 332 C752 282 742 272 692 264 C742 256 752 246 760 196 Z" fill="#6d8dff"/></g></svg>One Person Intelligence</a>
+    <button class="plan-chip" id="chip"></button>
+  </header>
+  <main id="view" class="sp"></main>
+  <p class="foot">Aucun revenu n'est garanti : tes commissions dépendent uniquement des ventes que tu fais.</p>
 </div>
-<div class="cta" id="cta"><div class="in" id="ctain"></div></div>
+<nav class="tabs" aria-label="Navigation"><div class="in">
+  <button data-tab="snap"><span aria-hidden="true">🎯</span>Snap</button>
+  <button data-tab="guides"><span aria-hidden="true">📦</span>Mes guides</button>
+  <button data-tab="univers"><span aria-hidden="true">🪐</span>Mon Univers</button>
+  <button data-tab="forfaits"><span aria-hidden="true">⚡</span>Forfaits</button>
+</div></nav>
 
 <script>
-/* Réglages de Mickael */
-const LIEN_ACHAT = "https://one-person-intelligence.mymaketou.shop/products/one-person-intelligence-acces-a-vie/checkout";                       // lien Maketou « accès à vie » (vide : le bouton ouvre WhatsApp)
-const WHATSAPP = "2290152024486";
-const CODE_HASH = "a31b1d0088998829d62ab96a846f13f485ff58f748cbb2b70012d9ae994b4010";
-const CLAUDE_URL = "https://claude.ai/new";
-
-const DOMAINES = [
-  ["whatsapp", "💼", "Vendre sur WhatsApp et Facebook"], ["elevage", "🐔", "Élevage et agriculture"], ["numerique", "📱", "IA, téléphone et Mobile Money"],
-  ["concours", "🎓", "Concours et examens"], ["cuisine", "🍲", "Cuisine et pâtisserie à vendre"], ["foi", "🙏🏾", "Foi et spiritualité"],
-  ["famille", "❤️", "Couple et famille"], ["argent", "💰", "Argent et épargne"], ["bienetre", "🌿", "Bien-être naturel"],
-  ["beaute", "💇🏾‍♀️", "Beauté et coiffure"], ["couture", "🧵", "Couture et mode"], ["langues", "🗣️", "Langues"]
-];
-/* 3 idées par niche : [débutant, pratique, expert] — prix indicatifs (recherche du 19 nov. 2026) */
-const IDEES = {
-  whatsapp: [["📲", "Vendre tous les jours sur WhatsApp Business", "30 messages prêts à copier pour vendre chaque jour", 3000, "Les 30 messages à copier-coller · Quand et à qui les envoyer · Répondre à « c'est trop cher » · Relancer sans déranger"], ["🎨", "50 modèles de statuts et d'affiches", "Des visuels Canva prêts pour ta boutique", 5000, "50 visuels prêts à modifier dans Canva · Comment changer prix et photos · Le calendrier de publication"], ["🎧", "Mes 10 premiers clients sur Facebook", "Une mini-formation audio, sans publicité", 10000, "5 leçons audio courtes · Où trouver tes clients · Les messages à envoyer · Le plan sur 7 jours"]],
-  elevage: [["🐣", "Démarrer 100 poulets de chair", "Budget, calendrier et vaccins, étape par étape", 5000, "Le budget de départ · Le matériel · Le calendrier jour par jour · Les vaccins · Vendre ses poulets"], ["📊", "Calculer la rentabilité de sa bande", "Une fiche simple pour savoir si tu gagnes vraiment", 3000, "Une fiche à remplir · Les coûts à noter · Comment savoir si tu gagnes · Un exemple chiffré"], ["🌾", "Fabriquer sa provende soi-même", "Une alimentation moins chère pour tes animaux", 7000, "Les ingrédients et où les trouver · Les dosages par âge · Comment conserver · Ce que tu économises"]],
-  numerique: [["🛡️", "Protéger son Mobile Money des arnaques", "Les 15 pièges à connaître pour ne plus se faire voler", 2000, "Les 15 arnaques les plus courantes · Comment les reconnaître · Les bons réflexes · Que faire si on t'a volé"], ["✍️", "L'IA pour écrire ses annonces de vente", "Des annonces qui donnent envie, en quelques minutes", 3000, "Comment demander à l'IA · 20 exemples d'annonces · Les erreurs à éviter · Ton annonce en 5 minutes"], ["🤖", "100 prompts IA pour commerçants", "Des phrases prêtes à copier dans Claude ou ChatGPT", 5000, "100 phrases à copier dans Claude ou ChatGPT · Classées par besoin : vendre, répondre, publier, calculer"]],
-  concours: [["📚", "Fiches de révision BEPC ou BAC", "L'essentiel d'une matière en quelques pages", 2000, "Le cours résumé en fiches · Les formules et dates à retenir · Des exercices corrigés · Le plan de révision"], ["📝", "Sujets corrigés d'un concours national", "S'entraîner avec de vrais sujets et leurs corrigés", 5000, "Les sujets des années passées · Les corrigés expliqués · Les pièges fréquents · Un planning d'entraînement"], ["🎤", "Réussir l'oral et le dossier de concours", "Les questions fréquentes et comment y répondre", 5000, "Les questions qu'on pose souvent · Comment y répondre · Préparer son dossier · Gérer le stress"]],
-  cuisine: [["🥟", "20 snacks à vendre devant l'école", "Avec le coût et le prix de vente de chaque recette", 3000, "20 recettes simples · Le coût de chaque recette · Le prix de vente conseillé · Comment emballer"], ["🥤", "Lancer ses jus naturels et yaourts", "Fabriquer, conserver et vendre", 4000, "Les recettes · L'hygiène et la conservation · Les bouteilles et étiquettes · Fixer ses prix"], ["🎂", "Gâteaux d'anniversaire pour débutantes", "Une mini-formation pas à pas", 15000, "6 leçons pas à pas · Le matériel de base · Les recettes · La décoration · Les prix à demander"]],
-  foi: [["🙏🏾", "30 jours de prière pour la famille", "Un carnet de prière pour chaque jour du mois", 2000, "Une prière pour chaque jour · Un thème par semaine · Une page pour noter ses intentions"], ["📖", "Plan de lecture biblique ou coranique", "Un plan avec une fiche pour chaque jour", 2000, "Un plan sur 30 ou 90 jours · Une fiche par jour · Les questions pour méditer"], ["🕊️", "21 jours de jeûne et de méditation", "Un programme guidé en PDF et en audio", 3000, "Le programme jour par jour · Les conseils pour tenir · Les textes de méditation · Les audios"]],
-  famille: [["💑", "Gérer l'argent du foyer à deux", "Des règles simples pour éviter les disputes", 3000, "Comment parler d'argent sans se disputer · Le budget du couple · Épargner ensemble · Des exemples"], ["💍", "Préparer son mariage avec un petit budget", "Budget, liste et étapes pour un beau mariage", 3000, "La liste des dépenses · Comment économiser sur chaque poste · Le calendrier · Les erreurs à éviter"], ["👨‍👩‍👧", "Éduquer ses enfants sans crier", "30 situations du quotidien et quoi faire", 4000, "30 situations du quotidien · Quoi dire et quoi faire · Les routines qui aident"]],
-  argent: [["📒", "Cahier de caisse et de crédit clients", "À imprimer, pour ne plus perdre d'argent", 2000, "Des pages à imprimer · Noter ventes, dépenses et crédits · Faire le bilan du mois"], ["🧮", "Gérer son argent avec 50 000 FCFA par mois", "Un budget simple qui tient tout le mois", 3000, "La méthode du budget simple · Un exemple chiffré · Épargner même un peu · Le tableau à remplir"], ["🤝", "Organiser une tontine sans disputes", "Les règles claires qui protègent tout le monde", 3000, "Les règles à écrire ensemble · Le cahier de suivi · Que faire si quelqu'un ne paie pas"]],
-  bienetre: [["🍵", "Plantes et tisanes du quotidien", "Ce qu'on sait et les précautions à prendre", 3000, "15 plantes courantes · Comment les préparer · Les précautions · Quand voir un médecin"], ["🧴", "Soins naturels de la peau et des cheveux", "Karité, huiles et routines simples", 3000, "Les produits naturels utiles · Des routines simples · Des recettes maison · Les précautions"], ["🥗", "30 jours pour manger plus sain", "Avec les produits du marché, sans se ruiner", 4000, "Un menu par jour · La liste de courses au marché · Des recettes faciles et pas chères"]],
-  beaute: [["💁🏾‍♀️", "50 modèles de tresses", "Avec la durée et le prix conseillé de chacun", 2000, "50 modèles avec photo à ajouter · La durée de chaque modèle · Le prix conseillé · Les soins après"], ["💈", "Remplir son salon et fidéliser ses clientes", "Faire revenir tes clientes, encore et encore", 4000, "Attirer de nouvelles clientes · Les faire revenir · Les messages WhatsApp à envoyer · Les offres"], ["🎥", "Nattes collées pour débutantes", "Mini-formation filmée sur les mains, sans visage", 10000, "5 leçons filmées sur les mains · Le matériel · Les étapes · Les erreurs de débutante"]],
-  couture: [["💵", "Fixer ses prix et éviter les impayés", "Gagner vraiment sur chaque commande", 3000, "Calculer le vrai coût d'une tenue · Fixer son prix · Demander une avance · Gérer les retards"], ["📐", "5 patrons de modèles en pagne", "Du S au XXL, prêts à imprimer", 5000, "5 patrons à imprimer du S au XXL · Les mesures · Le métrage de tissu · Les étapes de couture"], ["👗", "Coudre une robe en pagne pas à pas", "Une mini-formation simple", 15000, "6 leçons pas à pas · Prendre les mesures · Couper · Coudre · Les finitions"]],
-  langues: [["🇬🇧", "Anglais pour commerçants et chauffeurs", "Les phrases utiles, en audio", 3000, "Les 200 phrases utiles · Saluer, vendre, négocier, indiquer le chemin · En audio"], ["🌍", "Langue locale pour les enfants de la diaspora", "Fon, wolof, lingala… les premiers mots en famille", 5000, "Les premiers mots · Les phrases de la famille · Des jeux simples · Les audios"], ["💬", "30 jours de vocaux pour apprendre", "Une leçon audio par jour sur WhatsApp", 7000, "Une leçon audio par jour sur WhatsApp · Un petit exercice · Un bilan chaque semaine"]]
+/* ================= RÉGLAGES DE MICKAEL ================= */
+const REGLAGES = {
+  boutique: "https://one-person-intelligence.mymaketou.shop",
+  whatsapp: "2290152024486",
+  // Liens Maketou des 2 forfaits (à remplir). Vide : le bouton ouvre WhatsApp.
+  lienTurbo: "",
+  lienVip: "",
+  forfaits: {
+    gratuit: { nom: "Gratuit", prix: 0, quota: 1, taux: 0.50, niches: 1, jours: null },
+    turbo:   { nom: "Turbo", prix: 2000, quota: 10, taux: 0.65, niches: 99, jours: 30 },
+    vip20:   { nom: "VIP Pack 20", prix: 5000, quota: 20, taux: 0.70, niches: 99, jours: 30 }
+  },
+  // Empreintes SHA-256 des codes d'activation (les codes eux-mêmes sont dans le dépôt privé).
+  codes: {"turbo": ["4e76aaf3a5792835583ea9af05c266837b2d280fd5f7171cba1c137160056aca", "358f5794ae99c93702817ca5c3b9be5f3bea867cdd93eb8e410b75bc412af0e2", "c89ebbbc14b6b377ade673b23d629fb7e6a00ea089bc9673955b56d291a53049", "1aef5179473038dce67173e76134e6a95d2f268286352e62ba8d1011ddd09e2e", "42af998a3c9fdf5eddea256eb4cc9c843d7bf9dc0e3c697389bd0a75f582c8d0", "eac1365efbf298b40d5a1f792e4c23edf3ca6476bb3e5709b8b2539e605e5dcd", "13ae86ba791dee4e908e08760a1354372dedb0fd51503efc4132d80bbd321309", "9d584eb2fa7e7d23f513434b868b15240cfb6ae66a1e5a8205b5f8d9564b1b57", "490c14c332c67eb03f9f3bfd1829bcc566c42df9d8187fe217cf2068e0a9aaaf", "0720b2bb03035392f619b4683c8ac75c28bad6c1df8ce7256ebca9aa09c00c24"], "vip20": ["609156d7e300b68dac01c2d3ff31366ce9972db636fc98277a594bdf8da6b606", "4bfe1f667b10ea2439c0f8772fe9b7b8915e917d38e2dadd87ffa6258ab17131", "ed36bcc49eaae5e94c1e2db20c3d8424e55f0bbf78392d808e76a66774489b6a", "027b6b6729df4f71e33ab03f3053592fe54b5dd3310e86e58d4373b17bf521c2", "576bb4f8748516a36537ce2637bad958e4a5edba3950b780464b16b74ce3d451", "7077da3c8a59ac4f77172e8ae6d147988f7d44785781c1563487e25d000c6e76", "1e3d17ab221ea36bef73a6ab25fc3163f760f640dfddfb3ea04791ae7fb07c1f", "39d39c857c59219296f07c8b9a3b7ac015dca2c5d6ae9cfc053a68c194150050", "e3d5c1122775470e3f6b0059cba19bb5a7fac8e369c3d1b316221da83f17a711", "3229688d98a019b1e32af398f717b44fdd19392efeb9e28e9beeed9bf44f2c32"]}
 };
-const NIVEAUX = [["debutant", "🌱", "Je débute, je connais les bases"], ["pratique", "💪", "Je pratique depuis un moment"], ["expert", "🏆", "J'en vis, je suis expert"]];
-const HEURES = [["0.5", "⏱️", "30 minutes"], ["1", "🕐", "1 heure"], ["2", "🕑", "2 heures"], ["4", "🕓", "4 heures"], ["6", "🔥", "6 heures ou plus"]];
-const lieu = p => ({ "Côte d'Ivoire": "en", "Guinée": "en", "RDC": "en" }[p] || "au") + " " + p;
-const format = prix => prix >= 10000 ? "Mini-formation" : "Guide PDF";
-function joursLancement(idee) { const h = Number(S.heures) || 1, base = h >= 4 ? 1 : h >= 2 ? 1 : h >= 1 ? 2 : 4; return format(idee.prix) === "Mini-formation" ? base * 2 : base; }
-const CIBLES = [["👩🏾", "Les femmes"], ["🧑🏾‍🎓", "Les jeunes et étudiants"], ["👨‍👩‍👧", "Les parents"], ["🧑🏾‍💼", "Les commerçants"], ["🧑🏾‍🌾", "Éleveurs et agriculteurs"], ["✈️", "La diaspora"]];
-const DRAP = { "Bénin": "bj", "Côte d'Ivoire": "ci", "Sénégal": "sn", "Cameroun": "cm", "Togo": "tg", "Burkina Faso": "bf", "Mali": "ml", "Gabon": "ga", "Guinée": "gn", "RDC": "cd" };
-const PAYS = [["🇧🇯", "Bénin"], ["🇨🇮", "Côte d'Ivoire"], ["🇸🇳", "Sénégal"], ["🇨🇲", "Cameroun"], ["🇹🇬", "Togo"], ["🇧🇫", "Burkina Faso"], ["🇲🇱", "Mali"], ["🇬🇦", "Gabon"], ["🇬🇳", "Guinée"], ["🇨🇩", "RDC"], ["🌍", "Autre pays"], ["✈️", "Diaspora"]];
-const BOUTIQUES = {
-  maketou: ["🛒", "Maketou", "Paiement Mobile Money, ton PDF livré automatiquement.", ["Ouvre Maketou et crée ton compte.", "Crée ta boutique avec un des noms proposés par Claude.", "Ajoute la description et ta couverture comme image.", "Indique ton numéro Mobile Money pour recevoir ton argent.", "Crée le produit : colle le titre, le prix et la description de Claude.", "Ajoute ton PDF comme fichier livré après paiement.", "Publie, puis fais un achat test avec un proche.", "Copie le lien de ton produit pour le partager."]],
-  chariow: ["🏬", "Chariow", "Boutique numérique, Mobile Money, livraison automatique.", ["Ouvre Chariow et crée ton compte.", "Crée ta boutique avec un des noms proposés par Claude.", "Ajoute la description et ta couverture.", "Configure ton retrait Mobile Money.", "Crée un produit numérique avec les textes de Claude.", "Ajoute ton PDF comme fichier livré.", "Publie, puis fais un achat test.", "Copie le lien de ton produit."]],
-  whatsapp: ["💬", "WhatsApp seulement", "Le plus simple : paiement sur ton numéro, tu envoies le PDF.", ["Installe WhatsApp Business (gratuit).", "Profil : nom de ta boutique, description de 2 lignes, ta couverture en photo.", "Outils pour les professionnels → Catalogue : ajoute ton produit avec le texte de Claude.", "Active le message d'accueil proposé par Claude.", "Quand une cliente paie sur ton numéro Mobile Money, vérifie, puis envoie le PDF.", "Note chaque vente : prénom, date, montant."]]
-};
-const RESEAUX = { statuts: ["🟢", "Statuts WhatsApp", "Tes contacts, qui te font déjà confiance."], tiktok: ["🎵", "TikTok", "Des vidéos courtes pour toucher des inconnus."], facebook: ["📘", "Facebook", "Groupes et Reels, un public plus large."] };
+/* ======================================================= */
 
-const ETAPES_Q = ["domaines", "niveau", "cible", "pays", "visage", "heures", "savoir", "objectif"];
-let S = neuf();
-function neuf() { return { ecran: "accueil", q: 0, domaines: [], cible: [], pays: "", visage: "", savoir: "", niveau: "", heures: "", objectif: 150000, idx: 0, idee: null, ouvert: false, route: null, boutique: null, reseau: null, faits: {} }; }
+const CLE = "opi-revendeur-v1";
 const $ = id => document.getElementById(id);
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const nb = n => new Intl.NumberFormat("fr-FR").format(Math.round(n)).replace(/ /g, " ");
-function sauver() { try { localStorage.setItem("opi-v4", JSON.stringify(S)); } catch (e) {} }
-function charger() { try { const l = localStorage.getItem("opi-v4"); if (l) S = Object.assign(neuf(), JSON.parse(l)); } catch (e) {} if (S.ecran === "cherche") S.ecran = S.idee ? "idee" : "question"; }
-function aller(e) { S.ecran = e; sauver(); render(); window.scrollTo(0, 0); }
-function barre(pct, retour) { $("bar").innerHTML = retour ? `<button id="back" aria-label="Retour">←</button><div class="track"><i style="width:${pct}%"></i></div>` : ""; if (retour) $("back").onclick = retour; }
-function cta(html) { $("ctain").innerHTML = html; $("cta").hidden = !html; }
-function render() { reseau(S.ecran === "accueil"); document.body.classList.toggle("home", S.ecran === "accueil"); ({ accueil: vAccueil, code: vCode, question: vQuestion, cherche: vCherche, idee: vIdee, acces: vAcces, message: vMessage, route: vRoute })[S.ecran](); }
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fcfa = n => new Intl.NumberFormat("fr-FR").format(Math.round(n)) + " FCFA";
+let CAT = { niches: [], produits: [] }, VENTES = { revendeurs: {} };
+let S = charger();
+let onglet = "snap", choix = 1, enCours = false;
 
-let NET = null;
-function reseau(on) {
-  const c = $("net"); if (!c) return;
-  c.classList.toggle("on", on);
-  if (!on) { if (NET) { cancelAnimationFrame(NET.raf); NET = null; } return; }
-  if (NET || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const x = c.getContext("2d"), D = Math.min(2, devicePixelRatio || 1);
-  let W, H; const fit = () => { W = innerWidth; H = innerHeight; c.width = W * D; c.height = H * D; x.setTransform(D, 0, 0, D, 0, 0); }; fit(); addEventListener("resize", fit);
-  const cols = ["109,141,255", "139,92,246", "52,211,153"];
-  const pts = Array.from({ length: Math.min(46, Math.round(innerWidth / 14)) }, () => ({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18, r: 1 + Math.random() * 1.6, c: cols[Math.floor(Math.random() * 3)], ph: Math.random() * 6.3 }));
-  NET = { raf: 0 };
-  (function f(t) {
-    x.clearRect(0, 0, W, H);
-    for (const p of pts) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
-    for (let i = 0; i < pts.length; i++) for (let k = i + 1; k < pts.length; k++) { const a = pts[i], b = pts[k], d = Math.hypot(a.x - b.x, a.y - b.y); if (d < 120) { x.strokeStyle = `rgba(109,141,255,${(1 - d / 120) * .16})`; x.lineWidth = .7; x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke(); } }
-    for (const p of pts) { const g = .45 + .35 * Math.sin(t * .0015 + p.ph); x.fillStyle = `rgba(${p.c},${g})`; x.shadowBlur = 8; x.shadowColor = `rgba(${p.c},.9)`; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 7); x.fill(); }
-    x.shadowBlur = 0;
-    if (NET) NET.raf = requestAnimationFrame(f);
-  })(0);
+function neuf() {
+  return { id: "R-" + Array.from(crypto.getRandomValues(new Uint8Array(4)), b => "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[b % 32]).join(""),
+    forfait: "gratuit", achat: null, quota: REGLAGES.forfaits.gratuit.quota, utilises: 0,
+    niches: [], snaps: [], codesUtilises: [], profil: { prenom: "", momo: "", operateur: "" },
+    ventesVues: 0, notifs: [] };
 }
-function vAccueil() {
-  barre(0, null);
-  const METIERS = ["🍲 cuisine", "🐔 élevage", "💇🏾‍♀️ coiffure", "🧵 couture", "💼 vente WhatsApp", "🎓 concours", "🙏🏾 foi", "🌿 bien-être"];
+function charger() { try { const d = JSON.parse(localStorage.getItem(CLE)); if (d && d.id) return d; } catch (e) {} return neuf(); }
+function sauver() { try { localStorage.setItem(CLE, JSON.stringify(S)); } catch (e) {} }
+async function sha(t) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)); return Array.from(new Uint8Array(b), x => x.toString(16).padStart(2, "0")).join(""); }
+function toast(t) { const el = $("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 3800); }
+
+function F() { return REGLAGES.forfaits[S.forfait]; }
+function expire() { const f = F(); return f.jours && S.achat ? (Date.now() - S.achat) > f.jours * 864e5 : false; }
+function restant() { return expire() ? 0 : Math.max(0, S.quota - S.utilises); }
+function lienVente(p) {
+  const base = p.maketouUrl || REGLAGES.boutique;
+  return base + (base.includes("?") ? "&" : "?") + "ref=" + encodeURIComponent(S.id);
+}
+function codePromo() { const r = VENTES.revendeurs[S.id]; return r && r.actif ? r.codePromo : null; }
+
+async function activer(code, source) {
+  const c = String(code || "").trim().toUpperCase();
+  if (!c) return "Entre ton code.";
+  if (S.codesUtilises.includes(c)) return "Ce code a déjà été utilisé sur ce téléphone.";
+  const h = await sha(c);
+  const plan = REGLAGES.codes.turbo.includes(h) ? "turbo" : REGLAGES.codes.vip20.includes(h) ? "vip20" : null;
+  if (!plan) return "Code non reconnu. Vérifie-le ou écris à Mickael sur WhatsApp.";
+  S.forfait = plan; S.achat = Date.now(); S.quota = REGLAGES.forfaits[plan].quota; S.utilises = 0;
+  S.codesUtilises.push(c);
+  notif("⚡", "Forfait " + REGLAGES.forfaits[plan].nom + " activé : " + S.quota + " snaps.");
+  sauver(); toast("✅ Forfait " + REGLAGES.forfaits[plan].nom + " activé (" + S.quota + " snaps)");
+  return null;
+}
+function notif(ic, t) { S.notifs.unshift({ ic, t, d: Date.now(), nv: true }); S.notifs = S.notifs.slice(0, 40); }
+
+function puce() {
+  const c = $("chip"), f = F();
+  c.textContent = f.nom + " · " + restant() + " snap" + (restant() > 1 ? "s" : "");
+  c.className = "plan-chip" + (S.forfait === "vip20" ? " vip" : "");
+  c.onclick = () => aller("forfaits");
+}
+function aller(t) { onglet = t; render(); window.scrollTo(0, 0); }
+function render() {
+  puce();
+  document.querySelectorAll("nav.tabs button").forEach(b => { b.setAttribute("aria-current", b.dataset.tab === onglet ? "page" : "false"); b.onclick = () => aller(b.dataset.tab); });
+  ({ snap: vSnap, guides: vGuides, univers: vUnivers, forfaits: vForfaits })[onglet]();
+}
+
+/* ---------- SNAP ---------- */
+function dispo() {
+  const pris = new Set(S.snaps.map(s => s.id));
+  return CAT.produits.filter(p => !pris.has(p.id) && (!S.niches.length || S.niches.includes(p.niche))).sort((a, b) => (a.ordre || 99) - (b.ordre || 99));
+}
+function vSnap() {
+  const f = F(), r = restant(), max = Math.min(r, dispo().length);
+  choix = Math.max(max ? 1 : 0, Math.min(choix, max));
+  const limNiche = f.niches;
   $("view").innerHTML = `
-    <div class="mini-orb rise" aria-hidden="true"><span class="halo"></span><span class="core"></span><span class="ring2"><i></i></span></div>
-    <p class="eyebrow rise" style="animation-delay:.1s">Ton savoir en <span class="rot" id="rot">${METIERS[0]}</span></p>
-    <h1 class="rise" style="margin-top:12px;animation-delay:.2s"><span class="grad">Trouve ton idée.</span><br>Crée ton produit en quelques minutes.</h1>
-    <p class="sub rise" style="animation-delay:.35s">Tu coches ce que tu sais faire, tu choisis ton objectif : ton idée apparaît. Ensuite, Claude crée ton guide complet et tu le mets en vente en moins de 24 heures. Sans rien installer.</p>
-    <div class="hero-badges rise" style="animation-delay:.5s"><span>⚡ 30 secondes</span><span>📘 Guide PDF complet</span><span>📲 Mobile Money</span><span>🛡️ Garantie 14 jours</span></div>
-    <div class="road">
-      ${[["✅", "Coche ce que tu sais faire", "Élevage, cuisine, coiffure, commerce…"], ["🎯", "Choisis ton objectif du mois", "On calcule combien de ventes il faut."], ["✨", "Découvre ton idée", "Un produit tiré de ton savoir, avec son prix."], ["📘", "Claude crée ton produit", "Ton guide PDF prêt à vendre."], ["🏪", "Vends-le", "Maketou, Chariow ou WhatsApp, pas à pas."]].map(([e, t, d], k) => `<div class="step rise" style="cursor:default;animation-delay:${(.65 + k * .12).toFixed(2)}s"><span class="n">${e}</span><span><b>${t}</b><small>${d}</small></span></div>`).join("")}
-    </div>`;
-  const reprise = S.idee !== null;
-  cta(`<button class="btn shine" id="go">${reprise ? "Reprendre où j'en étais →" : "Trouver mon idée gratuitement →"}</button>
-       ${reprise ? '<button class="link" id="zero">↺ Recommencer à zéro (nouvelle idée)</button>' : ''}
-       ${S.ouvert ? '<p class="ok" style="text-align:center">✅ Ton accès à vie est activé</p>' : '<button class="link" id="j">J\'ai déjà acheté : entrer mon code d\'accès</button>'}`);
-  if ($("zero")) $("zero").onclick = () => { const o = S.ouvert; S = neuf(); S.ouvert = o; sauver(); render(); };
-  $("go").onclick = () => reprise ? aller(S.ouvert ? (S.route ? "route" : "message") : "idee") : (S.q = 0, aller("question"));
-  const j = $("j"); if (j) j.onclick = () => aller("code");
-  let m = 0; const rot = $("rot");
-  (function tourne() { if (!document.body.contains(rot)) return; setTimeout(() => { if (!document.body.contains(rot)) return; rot.classList.add("out"); setTimeout(() => { m = (m + 1) % METIERS.length; rot.textContent = METIERS[m]; rot.classList.remove("out"); tourne(); }, 350); }, 1900); })();
-}
-
-function vCode() {
-  barre(0, () => aller("accueil"));
-  $("view").innerHTML = `
-    <p class="eyebrow">Accès à vie</p>
-    <h2 style="margin-top:12px">Entre ton code d'accès</h2>
-    <p class="sub">Tu l'as reçu après ton paiement, dans le fichier « Ton accès ». Tu ne le tapes qu'une seule fois sur cet appareil.</p>
-    <input class="code-in" id="code" placeholder="OPI-XXXXXX" autocomplete="off" autocapitalize="characters" style="margin-top:26px" aria-label="Code d'accès">
-    <p class="err" id="err" hidden style="margin-top:12px"></p>`;
-  cta(`<button class="btn" id="ok">Activer mon accès →</button><button class="link" id="ach">Je n'ai pas encore de code</button>`);
-  $("code").focus();
-  $("ok").onclick = () => verifier($("code").value, $("err"), () => aller(S.idee ? "message" : "question"));
-  $("ach").onclick = () => aller(S.idee ? "acces" : "accueil");
-}
-async function verifier(v, err, suite) {
-  const c = v.trim().toUpperCase();
-  if (!c) { err.textContent = "Tape ton code d'accès."; err.hidden = false; return; }
-  try {
-    const h = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(c)))).map(b => b.toString(16).padStart(2, "0")).join("");
-    if (h !== CODE_HASH) { err.textContent = "Ce code ne fonctionne pas. Vérifie les lettres, ou écris-nous sur WhatsApp."; err.hidden = false; return; }
-    S.ouvert = true; S.q = 0; sauver(); suite();
-  } catch (e) { err.textContent = "Impossible de vérifier le code ici. Écris-nous sur WhatsApp."; err.hidden = false; }
-}
-
-function vQuestion() {
-  const id = ETAPES_Q[S.q], pct = Math.round((S.q + 1) / (ETAPES_Q.length + 1) * 100);
-  barre(pct, () => { if (S.q === 0) aller("accueil"); else { S.q--; aller("question"); } });
-  let h = "", pret = true;
-  const tuiles = (liste, choisis, attr, wide) => `<div class="grid">${liste.map(([k, e, n]) => `<button class="tile ${wide ? "wide" : ""} ${choisis(k) ? "on" : ""}" data-${attr}="${esc(k)}"><span class="ic">${e}</span><span>${esc(n ?? k)}</span><span class="box">${choisis(k) ? "✓" : ""}</span></button>`).join("")}</div>`;
-  if (id === "domaines") { h = `<h2>Dans quoi es-tu fort ?</h2><p class="sub">Ton métier ou ton savoir. Choisis jusqu'à 3 domaines.</p>` + tuiles(DOMAINES, k => S.domaines.includes(k), "d"); pret = S.domaines.length > 0; }
-  if (id === "niveau") { h = `<h2>Quel est ton niveau ?</h2><p class="sub">On adapte ton idée : un premier guide simple, ou une vraie formation.</p>` + tuiles(NIVEAUX, k => S.niveau === k, "n", true); pret = !!S.niveau; }
-  if (id === "heures") { h = `<h2>Combien de temps par jour pour ton projet ?</h2><p class="sub">Sois honnête : on calcule ton rythme de lancement avec ce temps.</p>` + tuiles(HEURES, k => S.heures === k, "h", true); pret = !!S.heures; }
-  if (id === "cible") { h = `<h2>Qui veux-tu aider ?</h2><p class="sub">Une ou plusieurs réponses.</p>` + tuiles(CIBLES.map(([e, n]) => [n, e, n]), k => S.cible.includes(k), "c"); pret = S.cible.length > 0; }
-  if (id === "pays") { h = `<h2>Où vis-tu ?</h2>` + tuiles(PAYS.map(([e, n]) => [n, DRAP[n] ? `<img class="flag" src="/drapeaux/${DRAP[n]}.svg" alt="">` : e, n]), k => S.pays === k, "p"); pret = !!S.pays; }
-  if (id === "visage") { h = `<h2>Tu acceptes de te montrer en vidéo ?</h2><p class="sub">Aucun problème si tu préfères rester discret : beaucoup vendent sans montrer leur visage.</p>` + tuiles([["oui", "🎥", "Oui, je peux me montrer"], ["non", "🙈", "Non, je reste discret"]], k => S.visage === k, "v", true); pret = !!S.visage; }
-  if (id === "savoir") { h = `<h2>Ton savoir, en une phrase</h2><p class="sub">Ce que tu fais mieux que les autres, ou ce qu'on te demande souvent. Facultatif, mais ça rend ton produit unique.</p><textarea class="field" id="f" placeholder="Ex. j'élève des poulets depuis 3 ans et je perds très peu de poussins.">${esc(S.savoir)}</textarea>`; }
-  if (id === "objectif") { const p = (S.objectif - 25000) / 975000 * 100; h = `<h2>Combien tu veux gagner en plus par mois ?</h2>
-      <div class="amount"><b id="m">${nb(S.objectif)} FCFA</b><span>par mois</span><br><span class="pill">🎯 Ton objectif</span></div>
-      <div class="range"><input type="range" id="r" min="25000" max="1000000" step="25000" value="${S.objectif}" style="--p:${p}%" aria-label="Objectif mensuel en FCFA"><div class="ends"><span>25 000</span><span>1 000 000 FCFA</span></div></div>`; }
-  $("view").innerHTML = h;
-  cta(`<button class="btn" id="go" ${pret ? "" : "disabled"}>${id === "objectif" ? "Trouver mon idée ✨" : "Continuer →"}</button>`);
-  const maj = () => { $("go").disabled = !({ domaines: S.domaines.length, niveau: S.niveau, heures: S.heures, cible: S.cible.length, pays: S.pays, visage: S.visage }[id] ?? true); };
-  $("view").querySelectorAll(".tile").forEach(b => b.onclick = () => {
-    if (b.dataset.d) { const k = b.dataset.d, i = S.domaines.indexOf(k); if (i >= 0) S.domaines.splice(i, 1); else if (S.domaines.length < 3) S.domaines.push(k); else return; }
-    if (b.dataset.c) { const k = b.dataset.c, i = S.cible.indexOf(k); i >= 0 ? S.cible.splice(i, 1) : S.cible.push(k); }
-    if (b.dataset.p) S.pays = b.dataset.p;
-    if (b.dataset.v) S.visage = b.dataset.v;
-    if (b.dataset.n) S.niveau = b.dataset.n;
-    if (b.dataset.h) S.heures = b.dataset.h;
-    sauver(); vQuestion();
+    <p class="eyebrow">Moteur de snap</p>
+    <h1 style="margin-top:8px">Snappe tes guides.<br>Reçois le lien et la vidéo.</h1>
+    <p class="sub">Choisis ta niche, lance le snap : tes guides apparaissent avec leur lien de vente et leur vidéo, prêts pour WhatsApp ou Facebook.</p>
+    <section class="sp">
+      <h3>1. Ta niche ${limNiche === 1 ? '<small class="sub" style="font-size:13px">(forfait Gratuit : 1 niche)</small>' : ''}</h3>
+      <div class="niches" id="niches">${CAT.niches.map(n => {
+        const on = S.niches.includes(n.id), nb = CAT.produits.filter(p => p.niche === n.id).length;
+        const bloque = !on && S.niches.length >= limNiche;
+        return `<button class="niche" data-n="${esc(n.id)}" aria-pressed="${on}" ${bloque ? "disabled" : ""}><span class="ic" aria-hidden="true">${esc(n.icone)}</span>${esc(n.nom)}<small>${nb} guide${nb > 1 ? "s" : ""}</small></button>`; }).join("")}</div>
+    </section>
+    <section class="card sp">
+      <div class="quota"><div><small class="sub" style="margin:0;display:block">Snaps restants · ${esc(f.nom)}</small><b>${r} / ${S.quota}</b></div><button class="btn small ghost" id="plus">Plus de snaps</button></div>
+      <div class="bar"><i style="width:${S.quota ? (100 * r / S.quota) : 0}%"></i></div>
+      ${expire() ? '<p class="err" style="margin:10px 0 0">Ton forfait a expiré (30 jours). Reprends un forfait pour snapper à nouveau.</p>' : ''}
+    </section>
+    <section class="sp">
+      <h3>2. Combien de guides ?</h3>
+      <div class="stepper"><button id="moins" aria-label="Un guide de moins" ${choix <= 1 ? "disabled" : ""}>−</button><output id="nb" aria-live="polite">${choix}</output><button id="ajout" aria-label="Un guide de plus" ${choix >= max ? "disabled" : ""}>+</button></div>
+      <div class="chips">${[1, 5, 10, 15, 20].map(v => `<button data-v="${v}" aria-pressed="${choix === v}" ${v > max ? "disabled" : ""}>${v}</button>`).join("")}</div>
+      <p class="sub" style="text-align:center">${max} guide${max > 1 ? "s" : ""} disponible${max > 1 ? "s" : ""} pour toi${!S.niches.length ? " (choisis d'abord ta niche)" : ""}.</p>
+    </section>
+    <div class="sp"><button class="btn" id="go" ${!S.niches.length || !max ? "disabled" : ""}>🎯 Lancer le snap</button></div>
+    ${r === 0 ? '<p class="sub" style="text-align:center">Quota épuisé : publie tes guides et attends tes ventes, ou reprends un forfait.</p>' : ''}`;
+  document.querySelectorAll(".niche").forEach(b => b.onclick = () => {
+    const id = b.dataset.n;
+    if (S.niches.includes(id)) { if (S.forfait === "gratuit" && S.snaps.length) { toast("Forfait Gratuit : ta niche est fixée après ton premier snap."); return; } S.niches = S.niches.filter(x => x !== id); }
+    else if (S.niches.length < limNiche) S.niches.push(id);
+    sauver(); render();
   });
-  const r = $("r"); if (r) r.oninput = () => { S.objectif = Number(r.value); $("m").textContent = nb(S.objectif) + " FCFA"; r.style.setProperty("--p", ((S.objectif - 25000) / 975000 * 100) + "%"); };
-  const f = $("f"); if (f) f.oninput = () => { S.savoir = f.value; };
-  $("go").onclick = () => { if (f) S.savoir = f.value.trim(); if (S.q < ETAPES_Q.length - 1) { S.q++; aller("question"); } else { S.idx = 0; aller("cherche"); } };
-  maj();
+  $("moins").onclick = () => { choix--; render(); };
+  $("ajout").onclick = () => { choix++; render(); };
+  document.querySelectorAll(".chips button").forEach(b => b.onclick = () => { choix = +b.dataset.v; render(); });
+  $("plus").onclick = () => aller("forfaits");
+  $("go").onclick = lancer;
 }
 
-function candidats() { return S.domaines.flatMap(d => IDEES[d].map(([e, t, p, prix, c]) => ({ e, t, p, prix, c, d }))); }
-function choisir() {
-  const dep = { debutant: 0, pratique: 1, expert: 2 }[S.niveau] ?? 0, n = S.domaines.length, ordre = [];
-  for (let r = 0; r < 3; r++) for (let d = 0; d < n; d++) ordre.push(d * 3 + (dep + r) % 3);
-  const l = candidats(); S.idee = l[ordre[S.idx % ordre.length]];
+function lancer() {
+  if (enCours) return;
+  const r = restant(), liste = dispo().slice(0, Math.min(choix, r));
+  if (!liste.length) return;
+  enCours = true;
+  $("view").innerHTML = `<p class="eyebrow" style="text-align:center">Snap en cours</p>
+    <div class="vortex"><canvas id="vx" aria-hidden="true"></canvas><div class="count"><b id="cpt">0/${liste.length}</b><small>GUIDES VERROUILLÉS</small></div></div>
+    <p class="phase" id="ph" aria-live="polite">Ouverture du catalogue…</p>`;
+  const fini = vortex($("vx"), liste.length, n => { $("cpt").textContent = n + "/" + liste.length; }, t => { $("ph").innerHTML = t; });
+  setTimeout(() => {
+    fini();
+    liste.forEach(p => S.snaps.push({ id: p.id, d: Date.now() }));
+    S.utilises += liste.length;
+    notif("🎯", liste.length + " guide" + (liste.length > 1 ? "s" : "") + " snappé" + (liste.length > 1 ? "s" : "") + ".");
+    sauver(); enCours = false;
+    resultats(liste);
+  }, 2600 + liste.length * 260);
 }
 
-function vCherche() {
-  barre(100, null);
-  choisir();
-  const DUREE = 30000;
-  const noms = candidats().map(x => x.t).concat(["Guide PDF", "Fiches pratiques", "Mini-formation"]);
-  const liste = [...noms, ...noms, ...noms, S.idee.t];
-  const autour = S.domaines.map(k => DOMAINES.find(x => x[0] === k)[2].split(" ")[0]).concat(["Guide PDF", "Mobile Money", "WhatsApp", "Prix en FCFA", "Mini-formation", "Bonus"]).slice(0, 6);
-  const pos = [[2, 8], [66, 4], [0, 46], [70, 44], [6, 84], [64, 88]];
-  const sparks = Array.from({ length: 14 }, (_, k) => `<span class="spark" style="left:${20 + Math.random() * 60}%;top:${25 + Math.random() * 50}%;animation-delay:${(k * .25).toFixed(2)}s"></span>`).join("");
-  const phases = [
-    ["🧠", "J'écoute ton savoir…", "Ton domaine, ton niveau, ton temps."],
-    ["🌍", "Je regarde ton pays et ton public…", `${S.pays || "Afrique francophone"} · ${S.cible.join(", ").toLowerCase()}`],
-    ["📊", "Je croise avec les niches qui se vendent…", "Celles qui aident à gagner ou à protéger son argent."],
-    ["💰", "Je cherche le bon prix en FCFA…", "Un premier achat facile, sans méfiance."],
-    ["🎯", "Je calcule ton nombre de ventes…", `Pour ton objectif de ${nb(S.objectif)} FCFA par mois.`],
-    ["✨", "Je choisis ton idée…", "Plus que quelques secondes."]
-  ];
-  const R = 128, C = 2 * Math.PI * R;
-  $("view").innerHTML = `
-    <div class="orb-wrap">
-      ${autour.map((n, i) => `<span class="chipf" id="ch${i}" style="left:${pos[i][0]}%;top:${pos[i][1]}%">${esc(n)}</span>`).join("")}
-      <svg class="prog" viewBox="0 0 268 268" aria-hidden="true"><defs><linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34d399"/><stop offset=".5" stop-color="#4f7cff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><circle class="bg" cx="134" cy="134" r="${R}"/><circle class="fg" id="fg" cx="134" cy="134" r="${R}" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg>
-      <span class="aura"></span>
-      <span class="orbit o2"><i></i></span><span class="orbit o1"><i></i></span><span class="orbit o3"><i></i></span>
-      <div class="orb"></div>${sparks}
-      <span class="pct" id="pct">0 %</span>
-    </div>
-    <div class="phase" id="ph" aria-live="polite"></div>
-    <div class="slot" id="slot" style="opacity:.25"><ul id="ul">${liste.map(n => `<li>${esc(n)}</li>`).join("")}</ul></div>`;
-  cta("");
-  const debut = Date.now(), fg = $("fg"), ul = $("ul"), lis = ul.children, total = lis.length;
-  let finie = false, i = 0, delai = 70, rouleau = false, skip = false;
-  const montrer = k => { const [e, t, d] = phases[k]; $("ph").innerHTML = `<b>${e} ${t}</b><small>${esc(d)}</small>`; };
-  montrer(0);
-  const fin = () => { if (finie) return; finie = true; setTimeout(() => aller("idee"), 700); };
-  function tour() {
-    if (!document.body.contains(ul) || finie) return;
-    [...lis].forEach((li, k) => li.classList.toggle("mid", k === i + 1));
-    ul.style.transform = `translateY(${-i * 44}px)`;
-    if (i < total - 2) { i++; delai = Math.min(delai * 1.07, 480); setTimeout(tour, delai); } else fin();
+function vortex(cv, n, onCount, onPhase) {
+  const ctx = cv.getContext("2d"), dpr = Math.min(2, devicePixelRatio || 1);
+  const W = cv.clientWidth, H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
+  const cx = W / 2, cy = H / 2, R = Math.min(W, H) * 0.44, t0 = performance.now();
+  const dur = 2600 + n * 260, reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const parts = Array.from({ length: 90 }, () => ({ a: Math.random() * 6.283, r: R * (0.4 + Math.random() * 0.75), v: 0.6 + Math.random() * 1.2, s: 0.6 + Math.random() * 1.8 }));
+  const cibles = Array.from({ length: n }, (_, i) => ({ a: (i / n) * 6.283 + 0.4, r: R * (0.55 + (i % 3) * 0.12), lock: 0 }));
+  const phases = [[0, "Ouverture du catalogue…<small>On parcourt les guides de ta niche</small>"], [0.3, "Filtrage…<small>On écarte ceux que tu as déjà</small>"], [0.55, "Verrouillage de tes guides…<small>Lien de vente et vidéo associés</small>"], [0.95, "C'est prêt ✓"]];
+  let raf, ph = -1, comptes = 0;
+  function frame(now) {
+    const k = Math.min(1, (now - t0) / dur), t = (now - t0) / 1000;
+    ctx.clearRect(0, 0, W, H);
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.1); g.addColorStop(0, "rgba(79,124,255,.25)"); g.addColorStop(1, "rgba(6,10,23,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.1, 0, 6.283); ctx.fill();
+    for (let i = 1; i <= 4; i++) { ctx.strokeStyle = `rgba(169,184,255,${0.08 + i * 0.04})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, R * i / 4, 0, 6.283); ctx.stroke(); }
+    const sw = reduit ? 0 : t * 3.2;
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(sw);
+    const cg = ctx.createConicGradient ? ctx.createConicGradient(0, 0, 0) : null;
+    if (cg) { cg.addColorStop(0, "rgba(109,141,255,.55)"); cg.addColorStop(0.12, "rgba(139,92,246,.15)"); cg.addColorStop(0.2, "rgba(0,0,0,0)"); cg.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = cg; ctx.beginPath(); ctx.moveTo(0, 0); ctx.arc(0, 0, R, 0, 6.283); ctx.fill(); }
+    ctx.strokeStyle = "rgba(220,228,255,.9)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(R, 0); ctx.stroke(); ctx.restore();
+    parts.forEach(p => { if (!reduit) { p.a += 0.012 * p.v; p.r -= 0.25 * p.v * (0.5 + k); if (p.r < 8) { p.r = R * (0.8 + Math.random() * 0.4); } }
+      ctx.fillStyle = `rgba(200,212,255,${Math.min(1, p.r / R)})`; ctx.beginPath(); ctx.arc(cx + Math.cos(p.a) * p.r, cy + Math.sin(p.a) * p.r, p.s, 0, 6.283); ctx.fill(); });
+    let locked = 0;
+    cibles.forEach((c, i) => { const seuil = 0.45 + 0.5 * (i + 1) / n; const x = cx + Math.cos(c.a) * c.r, y = cy + Math.sin(c.a) * c.r;
+      if (k >= seuil) { c.lock = Math.min(1, c.lock + 0.08); locked++; }
+      ctx.strokeStyle = c.lock ? `rgba(52,211,153,${0.5 + c.lock / 2})` : "rgba(169,184,255,.4)"; ctx.lineWidth = 1.5;
+      const s = 10 + (1 - c.lock) * 8; ctx.strokeRect(x - s / 2, y - s / 2 * 1.3, s, s * 1.3);
+      if (c.lock) { ctx.beginPath(); ctx.arc(x, y, 18 * c.lock, 0, 6.283); ctx.stroke(); } });
+    if (locked !== comptes) { comptes = locked; onCount(locked); }
+    const p = phases.filter(q => k >= q[0]).length - 1; if (p !== ph) { ph = p; onPhase(phases[p][1]); }
+    raf = requestAnimationFrame(frame);
   }
-  (function tick() {
-    if (!document.body.contains(fg) || finie) return;
-    const t = Date.now() - debut, p = Math.min(1, t / DUREE);
-    fg.style.strokeDashoffset = C * (1 - p);
-    $("pct").textContent = Math.floor(p * 100) + " %";
-    const k = Math.min(phases.length - 1, Math.floor(p * phases.length));
-    if ($("ph").dataset.k != k) { $("ph").dataset.k = k; montrer(k); }
-    autour.forEach((_, j) => { const c = $("ch" + j); if (c) c.classList.toggle("on", (Math.floor(t / 900) + j) % 3 === 0); });
-    if (!rouleau && (p > .78 || skip)) { rouleau = true; $("slot").style.opacity = 1; tour(); }
-    if (!skip && t > 10000 && !$("passer")) { cta(`<button class="link" id="passer">Voir mon idée tout de suite</button>`); $("passer").onclick = () => { skip = true; cta(""); }; }
-    setTimeout(tick, 120);
-  })();
+  raf = requestAnimationFrame(frame);
+  return () => { cancelAnimationFrame(raf); onCount(n); };
 }
 
-function vIdee() {
-  const d = S.idee, v = Math.ceil(S.objectif / d.prix), dom = DOMAINES.find(x => x[0] === d.d);
-  barre(100, () => { S.q = ETAPES_Q.length - 1; aller("question"); });
-  $("view").innerHTML = `
-    <p class="eyebrow">Ton idée est trouvée ✓</p>
-    <div class="card glow" style="margin-top:14px">
-      <span style="font-size:40px;line-height:1">${d.e}</span>
-      <h2>${esc(d.t)}</h2>
-      <p class="sub" style="margin:0">${esc(d.p)}.</p>
-      <div class="stats">
-        <div class="stat"><small>Prix conseillé</small><b>${nb(d.prix)} F</b></div>
-        <div class="stat"><small>Format</small><b>${format(d.prix)}</b></div>
-        <div class="stat"><small>Pour ${nb(S.objectif)} F/mois</small><b>≈ ${v} ventes</b></div>
-        <div class="stat"><small>Soit par jour</small><b>≈ ${Math.max(1, Math.ceil(v / 30))} vente${Math.ceil(v / 30) > 1 ? "s" : ""}</b></div>
-        <div class="stat"><small>Ton temps</small><b>${esc(HEURES.find(x => x[0] === S.heures)?.[2] || "1 heure")}/jour</b></div>
-        <div class="stat"><small>En vente dans</small><b>≈ ${joursLancement(d)} jour${joursLancement(d) > 1 ? "s" : ""}</b></div>
-      </div>
-    </div>
-    <div class="card" style="margin-top:12px">
-      <b>📦 Ce que tu vas créer, concrètement</b>
-      <ul class="list">
-        <li>${format(d.prix) === "Guide PDF" ? "📘 Un <b>guide PDF</b> de 15 à 25 pages, facile à lire sur téléphone." : "🎬 Une <b>mini-formation</b> de 5 à 8 leçons courtes (texte à lire en audio ou à filmer sur les mains)."}</li>
-        <li>📑 <b>Dedans :</b> ${esc(d.c || "")}.</li>
-        <li>✍️ <b>Qui l'écrit ?</b> Claude, l'IA. Tu réponds à 3 questions sur ton expérience, il rédige tout. Toi, tu relis.</li>
-        <li>🛒 <b>Comment tu le vends ?</b> À ${nb(d.prix)} FCFA. Ton client paie en Mobile Money et reçoit le fichier tout seul.</li>
-        <li>👥 <b>Pour qui ?</b> ${esc(S.cible.join(", ").toLowerCase() || "ton public")}.</li>
-      </ul>
-    </div>
-    <div class="card" style="margin-top:12px;padding:14px 18px">
-      <p class="small" style="color:var(--muted);font-size:13px;margin:0">Choisie à partir de ton domaine « ${esc(dom[2])} »${S.savoir ? " et de ton savoir" : ""}, pour ${esc(S.cible.join(", ").toLowerCase())} ${S.pays && !["Autre pays", "Diaspora"].includes(S.pays) ? esc(lieu(S.pays)) : ""}. C'est un calcul, pas une promesse.</p>
-    </div>`;
-  cta(`<button class="btn" id="go">Créer ce produit maintenant →</button><button class="link" id="autre">Me proposer une autre idée</button>`);
-  $("go").onclick = () => aller(S.ouvert ? "message" : "acces");
-  $("autre").onclick = () => { S.idx++; choisir(); sauver(); vIdee(); };
+function carte(p) {
+  const f = F(), lien = lienVente(p), code = codePromo();
+  const msg = "📘 " + p.titre + "\n" + fcfa(p.prixXof) + ", payé en Mobile Money.\n👉 " + lien + (code ? "\nCode promo : " + code : "");
+  return `<article class="card guide">
+    <div><p class="eyebrow">${esc(p.id)}${p.provisoire ? " · provisoire" : ""}</p><h3 style="margin-top:6px">${esc(p.titre)}</h3></div>
+    ${p.videoUrl ? `<video src="${esc(p.videoUrl)}" controls playsinline preload="metadata"></video>` : '<div class="novid">🎬 Vidéo bientôt disponible pour ce guide</div>'}
+    <div class="kv"><div><small>Prix de vente</small><b>${fcfa(p.prixXof)}</b></div><div><small>Ta part (${Math.round(f.taux * 100)} %)</small><b>${fcfa(p.prixXof * f.taux)}</b></div></div>
+    <div class="linkbox"><span>${esc(lien)}</span><button class="btn small ghost" data-copy="${esc(lien)}">Copier</button></div>
+    ${code ? '<p class="ok" style="margin:0">Ton code promo : <b>' + esc(code) + '</b> (à donner à tes clients)</p>' : '<p class="sub" style="margin:0;font-size:13px">Pour que tes ventes soient comptées, active ton code revendeur dans Mon Univers.</p>'}
+    <div class="row"><a class="btn small" style="flex:1" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(msg)}">Partager sur WhatsApp</a>${p.videoUrl ? `<a class="btn small ghost" style="flex:1" href="${esc(p.videoUrl)}" download>Télécharger la vidéo</a>` : ""}</div>
+  </article>`;
+}
+function brancherCopie() { document.querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.copy); toast("Lien copié ✓"); } catch (e) { toast("Copie impossible : appuie longtemps sur le lien."); } }); }
+function resultats(liste) {
+  $("view").innerHTML = `<p class="eyebrow">Snap terminé ✓</p><h2 style="margin-top:8px">${liste.length} guide${liste.length > 1 ? "s" : ""} prêt${liste.length > 1 ? "s" : ""} à vendre</h2>
+    <p class="sub">Snaps restants : ${restant()} / ${S.quota}</p><div class="results stack sp">${liste.map(carte).join("")}</div>
+    <div class="sp stack"><button class="btn ghost" id="enc">Snapper d'autres guides</button></div>`;
+  brancherCopie(); $("enc").onclick = () => aller("snap"); puce();
+}
+function vGuides() {
+  const mes = S.snaps.map(s => CAT.produits.find(p => p.id === s.id)).filter(Boolean);
+  $("view").innerHTML = `<p class="eyebrow">Mes guides</p><h2 style="margin-top:8px">${mes.length} guide${mes.length > 1 ? "s" : ""} snappé${mes.length > 1 ? "s" : ""}</h2>
+    ${mes.length ? '<div class="results stack sp">' + mes.map(carte).join("") + "</div>" : '<p class="sub">Tu n\'as encore rien snappé.</p><div class="sp"><button class="btn" id="vs">Aller au snap</button></div>'}`;
+  brancherCopie(); if ($("vs")) $("vs").onclick = () => aller("snap");
 }
 
-function vAcces() {
-  barre(100, () => aller("idee"));
-  const wa = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Bonjour, je veux l'accès à vie à One Person Intelligence.")}`;
-  $("view").innerHTML = `
-    <p class="eyebrow">Accès à vie</p>
-    <h2 style="margin-top:12px">Ton idée est prête. Crée ton produit.</h2>
-    <p class="sub">Un seul paiement, et l'outil est à toi pour toujours : pour cette idée et toutes celles qui suivront.</p>
-    <div class="card glow" style="margin-top:20px">
-      <ul class="list">
-        <li>📘 Claude fabrique ton guide PDF complet, avec sa couverture</li>
-        <li>🎬 2 vidéos publicitaires prêtes à poster</li>
-        <li>🏪 Où et comment vendre, expliqué depuis zéro : WhatsApp, Maketou ou Chariow</li>
-        <li>📣 7 jours de publications prêtes à poster</li>
-        <li>💬 Les réponses pour transformer les messages en ventes</li>
-        <li>♾️ Autant de produits que tu veux, mises à jour comprises</li>
-      </ul>
-      <div class="price"><s>15 000 F</s><b>10 000 FCFA</b></div>
-      <p style="text-align:center;color:var(--muted);font-size:13px;margin:0">Paiement unique · Mobile Money · Garantie 14 jours si tu as fait le travail</p>
-    </div>
-    <div class="card" style="margin-top:12px">
-      <b>🔑 Déjà acheté ?</b>
-      <input class="code-in" id="code" placeholder="OPI-XXXXXX" autocomplete="off" autocapitalize="characters" aria-label="Code d'accès">
-      <p class="err" id="err" hidden></p>
-      <button class="btn ghost" id="ok">Activer mon code</button>
-    </div>`;
-  cta(`<a class="btn" href="${esc(LIEN_ACHAT || wa)}" target="_blank" rel="noopener">Obtenir mon accès à vie →</a>`);
-  $("ok").onclick = () => verifier($("code").value, $("err"), () => aller("message"));
+/* ---------- MON UNIVERS ---------- */
+function vUnivers() {
+  const r = VENTES.revendeurs[S.id], ventes = r ? r.ventes : [];
+  const total = ventes.reduce((a, v) => a + v.commissionXof, 0), paye = ventes.filter(v => v.payee).reduce((a, v) => a + v.commissionXof, 0);
+  const p = S.profil;
+  const msg = "Bonjour Mickael, je veux activer mon code revendeur.\nID : " + S.id + "\nPrénom : " + (p.prenom || "…") + "\nMobile Money : " + (p.operateur || "…") + " " + (p.momo || "…");
+  $("view").innerHTML = `<p class="eyebrow">Mon Univers</p><h2 style="margin-top:8px">${p.prenom ? "Salut " + esc(p.prenom) + " 👋🏾" : "Ton espace revendeur"}</h2>
+    <section class="card sp stack">
+      <div class="kv"><div><small>Commissions gagnées</small><b>${fcfa(total)}</b></div><div><small>Déjà payé</small><b>${fcfa(paye)}</b></div><div><small>Ventes</small><b>${ventes.length}</b></div><div><small>Forfait</small><b>${esc(F().nom)}</b></div></div>
+      <p class="sub" style="margin:0;font-size:12.5px">Mis à jour le ${esc(VENTES.maj || "—")}. Paiement chaque dimanche par Mobile Money.</p>
+    </section>
+    <section class="sp"><h3>Mes ventes</h3>
+      ${ventes.length ? '<table class="sp"><thead><tr><th>Date</th><th>Guide</th><th class="num">Ta part</th><th>Statut</th></tr></thead><tbody>' + ventes.slice().reverse().map(v => '<tr><td>' + esc(v.date) + '</td><td>' + esc(v.guide) + '</td><td class="num">' + fcfa(v.commissionXof) + '</td><td>' + (v.payee ? '<span class="badge green">payé</span>' : '<span class="badge">à payer</span>') + '</td></tr>').join("") + '</tbody></table>' : '<p class="sub">Aucune vente pour l\'instant. Partage tes guides sur WhatsApp et Facebook.</p>'}
+    </section>
+    <section class="sp"><h3>Notifications</h3><div class="card" style="margin-top:10px">${S.notifs.length ? S.notifs.map(n => '<div class="notif' + (n.nv ? " new" : "") + '"><span aria-hidden="true">' + n.ic + '</span><div><b>' + esc(n.t) + '</b><br><small class="sub" style="margin:0;font-size:12px">' + new Date(n.d).toLocaleString("fr-FR") + '</small></div></div>').join("") : '<p class="sub" style="margin:0">Rien pour l\'instant.</p>'}</div></section>
+    <section class="card sp stack"><h3>Mon profil et mon paiement</h3>
+      <p class="sub" style="margin:0">Ton ID revendeur : <b style="color:var(--text)">${esc(S.id)}</b> · Code promo : ${codePromo() ? '<b class="ok">' + esc(codePromo()) + '</b>' : '<span class="badge">pas encore activé</span>'}</p>
+      <label>Prénom<input id="pr" value="${esc(p.prenom)}" autocomplete="given-name"></label>
+      <label>Opérateur Mobile Money<select id="op">${["", "MTN MoMo", "Moov Money", "Orange Money", "Wave", "Autre"].map(o => '<option' + (o === p.operateur ? " selected" : "") + '>' + o + '</option>').join("")}</select></label>
+      <label>Numéro Mobile Money (avec l'indicatif)<input id="mm" value="${esc(p.momo)}" inputmode="tel" autocomplete="tel" placeholder="+229 …"></label>
+      <button class="btn" id="save">Enregistrer</button>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/${REGLAGES.whatsapp}?text=${encodeURIComponent(msg)}">Activer mon code revendeur sur WhatsApp</a>
+      <p class="sub" style="margin:0;font-size:12.5px">Ton numéro reste sur ton téléphone : il n'est envoyé à Mickael que si tu appuies sur le bouton WhatsApp.</p>
+    </section>`;
+  $("save").onclick = () => { S.profil = { prenom: $("pr").value.trim(), operateur: $("op").value, momo: $("mm").value.trim() }; sauver(); toast("Profil enregistré ✓"); render(); };
+  S.notifs.forEach(n => n.nv = false); sauver();
 }
 
-function profil() {
-  return `- Domaine(s) : ${S.domaines.map(k => DOMAINES.find(x => x[0] === k)[2]).join(", ")}
-- Mon niveau : ${NIVEAUX.find(x => x[0] === S.niveau)?.[2] || "(non précisé)"}
-- Temps disponible : ${HEURES.find(x => x[0] === S.heures)?.[2] || "1 heure"} par jour
-- Mon savoir : ${S.savoir || "(non précisé)"}
-- Pays : ${S.pays}
-- Je veux aider : ${S.cible.join(", ")}
-- Montrer mon visage en vidéo : ${S.visage === "oui" ? "oui" : "non"}
-- Objectif : ${nb(S.objectif)} FCFA de plus par mois`;
-}
-function base() {
-  const d = S.idee;
-  return `Tu es mon coach One Person Intelligence. J'habite en Afrique francophone et je transforme mon savoir en produit numérique vendu par Mobile Money et WhatsApp.
-
-Mon profil :
-${profil()}
-
-Mon produit (${format(d.prix).toLowerCase()}) : « ${d.t} » — ${d.p}. Contenu prévu : ${d.c || ""}. Prix conseillé : ${nb(d.prix)} FCFA (à convertir si mon pays n'utilise pas le FCFA).
-
-Règles : français simple, phrases courtes, tutoiement ; aucune promesse de revenus ; n'invente aucun chiffre, aucune loi, aucun témoignage ; adapte tout à mon pays.`;
-}
-const MSG = {
-  produit: () => `${base()}
-
-Ta mission : fabriquer TOUT mon produit, du début à la fin, jusqu'au fichier PDF fini avec sa couverture, prêt à vendre. Je débute avec l'IA : ne me demande jamais d'installer quoi que ce soit, ne me donne pas de code à copier, fais tout toi-même. Avance étape par étape, et à chaque étape dis-moi en une phrase où on en est (« Étape 2 sur 8 »).
-
-ÉTAPE 1 — Mes infos (un seul message, puis attends ma réponse)
-Pose-moi 5 questions courtes, numérotées, faciles à répondre même en vocal :
-1. Mon prénom (ou nom de marque) à mettre sur la couverture.
-2. Depuis combien de temps je fais ce métier, et un résultat concret dont je suis fier(e).
-3. Mes 3 meilleures astuces que les autres ne connaissent pas.
-4. Les erreurs que j'ai faites au début.
-5. Mon numéro WhatsApp à mettre à la fin du guide (je peux répondre « non »).
-Si je réponds très court, c'est normal : fais avec, ne me repose pas de questions.
-
-ÉTAPE 2 — Le plan
-Donne-moi le titre, le sous-titre (le résultat promis, sans promesse d'argent) et le sommaire en 8 à 10 lignes. Demande : « Je continue ? » Si je dis oui (ou n'importe quoi de positif), passe à la suite sans autre question.
-
-ÉTAPE 3 — Le contenu complet
-${S.idee.prix >= 10000 ? "C'est une mini-formation : 5 à 8 leçons courtes. Pour chaque leçon : l'objectif, le texte complet à lire en audio ou à dire en filmant seulement les mains (jamais le visage), puis un exercice simple. Ajoute un guide PDF d'accompagnement qui résume chaque leçon." : "C'est un guide PDF de 15 à 25 pages."} Contenu :
-- une introduction : pour qui, ce que la personne saura faire à la fin, qui je suis (avec mes réponses) ;
-- 6 à 8 chapitres courts, dans l'ordre, avec des exemples de la vie de tous les jours dans mon pays, des quantités et des étapes précises quand c'est utile ;
-- dans chaque chapitre, un encadré « 💡 Astuce » tiré de mes réponses quand c'est possible ;
-- un chapitre « Les erreurs à éviter » (avec les miennes) ;
-- une check-list finale « Ton plan d'action » ;
-- une dernière page : remerciement, mon prénom, mon WhatsApp si je l'ai donné, et « Ce guide est personnel, merci de ne pas le partager ».
-Là où il manque une information que moi seul connais (un prix local exact, une adresse…), écris [À COMPLÉTER : …] plutôt que d'inventer.
-
-ÉTAPE 4 — La mise en page et la couverture
-Crée toi-même le fichier PDF final, téléchargeable :
-- format A5 (agréable à lire sur téléphone), police lisible, texte assez grand, marges confortables, numéros de page ;
-- une couverture dessinée par toi : fond de couleur qui va avec mon métier, grand titre, sous-titre, mon prénom, un motif ou une illustration simple faite avec des formes (pas de photo de personne) ;
-- une page sommaire, chaque chapitre qui commence sur une nouvelle page avec un grand titre, les astuces dans des encadrés colorés, la check-list avec des cases à cocher ;
-- même style de couleurs du début à la fin.
-Crée aussi une image de la couverture seule, au format carré, pour mes statuts WhatsApp et mes publications.
-Si tu ne peux pas créer de fichier dans cette conversation, dis-le-moi clairement en une phrase, puis montre-moi le guide sous forme de page bien mise en page que je peux enregistrer en PDF, et explique-moi comment en 3 étapes simples.
-
-ÉTAPE 5 — La vérification
-Relis tout le guide et corrige les fautes. Puis donne-moi :
-- la liste des [À COMPLÉTER] qui restent, avec la page ;
-- les 2 fichiers à télécharger.
-Puis enchaîne directement sur l'étape 6.
-
-ÉTAPE 6 — 2 vidéos publicitaires
-Crée 2 vidéos verticales (1080×1920, 15 à 20 secondes, format MP4) pour TikTok, Facebook et les statuts WhatsApp, ${S.visage === "oui" ? "que je peux aussi refaire face caméra si je veux" : "SANS jamais montrer de visage"} :
-- Vidéo 1 « Le problème » : une accroche forte en 1 phrase (un problème que vit ma cliente), puis 3 phrases courtes, puis la couverture du guide, puis « Écris-moi PRODUIT sur WhatsApp ».
-- Vidéo 2 « Ce qu'il y a dedans » : la couverture, puis 4 choses que la cliente va apprendre, une par écran, puis le prix et « Écris-moi PRODUIT sur WhatsApp ».
-Gros texte blanc centré, lisible sur téléphone, mêmes couleurs que la couverture, un écran toutes les 2 à 3 secondes, de l'animation simple (apparition, zoom léger).
-Pour chaque vidéo, donne aussi la légende à publier (avec 5 hashtags) et le type de musique à ajouter dans TikTok.
-Jamais de faux témoignage, jamais de promesse d'argent, jamais de fausse urgence.
-Si tu ne peux pas créer de fichier vidéo, dis-le en une phrase, puis crée pour chaque vidéo les 5 images verticales (1080×1920) à télécharger, et explique-moi en 5 étapes simples comment les assembler gratuitement dans CapCut (ou dans l'outil de montage de TikTok).
-
-ÉTAPE 7 — Où et comment vendre (je n'ai jamais vendu en ligne)
-Explique-moi d'abord, très simplement, en quelques lignes :
-- qu'on peut vendre un guide PDF juste avec WhatsApp et Mobile Money : la cliente paie sur mon numéro, je vérifie que l'argent est arrivé, je lui envoie le PDF ;
-- qu'il existe aussi des boutiques en ligne faites pour l'Afrique, comme Maketou ou Chariow : je mets mon PDF dedans, la cliente paie par Mobile Money sur un lien, et elle reçoit le PDF toute seule, même quand je dors ; ces sites prennent en général une commission sur chaque vente (dis-moi de vérifier le montant exact sur leur site, n'invente aucun chiffre) ;
-- un tableau simple qui compare : WhatsApp seul / boutique en ligne (ce qu'il faut, combien ça coûte pour commencer, avantages, limites).
-Puis pose-moi 2 questions : 1) As-tu un compte Mobile Money à ton nom ? 2) Veux-tu envoyer le PDF toi-même à chaque cliente, ou que ça se fasse tout seul ?
-Selon mes réponses, conseille-moi UN seul endroit pour commencer (le plus simple : WhatsApp ; ensuite une boutique quand les ventes arrivent), puis donne-moi :
-- les étapes à suivre, numérotées, une action par ligne ;
-- tous mes textes prêts à copier : nom de boutique, description en 2 lignes, fiche produit (titre, prix, description, ce que la cliente reçoit), message d'accueil WhatsApp Business, réponses aux questions « c'est combien ? », « comment je paie ? », « c'est une arnaque ? » ;
-- le message pour annoncer mon produit à mes contacts WhatsApp aujourd'hui.
-
-ÉTAPE 8 — La fin
-Termine par un récapitulatif court : mes fichiers (guide, image de couverture, 2 vidéos), où je vends, et mes 3 actions pour aujourd'hui. Puis : « Pour 7 jours de publications et tes réponses aux clients, retourne sur onepersonintelligence.com. »
-Si la conversation devient trop longue et que tu t'arrêtes au milieu, dis-moi d'écrire « continue ».`,
-  boutique: () => `${base()}
-
-Mon guide est prêt. Je veux le vendre via : ${S.boutique ? BOUTIQUES[S.boutique][1] : "ma boutique"}.
-Prépare, prêt à copier :
-1. 5 noms de boutique simples et faciles à retenir, et celui que tu conseilles ;
-2. la description de la boutique en 2 lignes ;
-3. la fiche produit : titre, prix normal et prix de lancement, description de 5 lignes, liste de ce que la cliente reçoit, « livraison immédiate après paiement » ;
-4. ${S.boutique === "whatsapp" ? "le message d'accueil automatique WhatsApp Business et 3 réponses rapides (prix, paiement Mobile Money, livraison)" : "le message à envoyer avec le lien de mon produit"}.
-Un emoji devant chaque partie.`,
-  clients: () => `${base()}
-
-Mon produit est en vente. Prépare 7 jours de publications pour ${S.reseau ? RESEAUX[S.reseau][1] : "mes réseaux"}.
-Pour chaque jour : l'accroche (la première phrase qui arrête le doigt), le texte à publier (court, quelques emojis), l'idée d'image ou de vidéo simple ${S.visage === "oui" ? "(face caméra, mains, texte à l'écran, voix, couverture du produit)" : "SANS montrer mon visage (mains, texte à l'écran, voix, couverture du produit)"}, et l'appel à l'action (m'écrire sur WhatsApp ou cliquer sur le lien).
-Varie : astuces gratuites, preuves réelles, présentation du produit. Aucune promesse de revenus, aucune fausse urgence.`,
-  ventes: () => `${base()}
-
-Des gens commencent à m'écrire. Écris-moi, prêts à copier sur WhatsApp :
-1. le message pour répondre à une personne intéressée ;
-2. mes réponses aux 4 doutes fréquents : « c'est cher », « je vais réfléchir », « c'est une arnaque ? », « je n'ai pas d'argent maintenant » ;
-3. 2 relances (après 24 heures et après 3 jours) ;
-4. le message pour demander un avis après l'achat, puis la permission de le partager sans le nom.
-Ton chaleureux et respectueux, jamais de fausse urgence.`
-};
-
-function ecranMessage(cle, titre, sousTitre, apres, retour) {
-  barre(100, retour);
-  $("view").innerHTML = `
-    <p class="eyebrow">Ton message est prêt ✓</p>
-    <h2 style="margin-top:12px">${titre}</h2>
-    <p class="sub">${sousTitre}</p>
-    <div class="prompt-box"><header><span>✳️ Message pour Claude</span><button id="cp">Copier le message</button></header><pre id="pr">${esc(MSG[cle]())}</pre></div>
-    ${apres || ""}`;
-  cta(`<a class="btn coral" href="${CLAUDE_URL}" target="_blank" rel="noopener" id="open">Copier et ouvrir Claude ↗</a><button class="link" id="next">C'est fait, étape suivante →</button>`);
-  const copier = async () => { try { await navigator.clipboard.writeText($("pr").textContent); $("cp").textContent = "✓ Copié"; return true; } catch (e) { $("cp").textContent = "Appuie longuement pour copier"; return false; } };
-  $("cp").onclick = copier;
-  $("open").onclick = () => { copier(); };
-  $("next").onclick = () => { S.faits[cle] = true; S.route = true; aller("route"); };
-}
-function vMessage() {
-  ecranMessage("produit", "Envoie ça à Claude", "Claude te pose quelques petites questions, puis fabrique tout : ton guide PDF avec sa couverture, 2 vidéos publicitaires, et t'explique où et comment vendre. Tu n'installes rien : colle le message dans une nouvelle conversation et réponds-lui.",
-    `<p class="sub" style="font-size:13.5px">💡 Pas encore de compte Claude ? Crée-le sur claude.ai avec ton e-mail. Si Claude te propose de « créer des fichiers », accepte : c'est ce qui te donne ton PDF.</p>`,
-    () => aller("idee"));
+/* ---------- FORFAITS ---------- */
+function vForfaits() {
+  const fs = REGLAGES.forfaits;
+  const bloc = (k, extra) => { const f = fs[k], cur = S.forfait === k;
+    return `<article class="card plan${k === "vip20" ? " vip" : ""}${cur ? " current" : ""}">${k === "vip20" ? '<span class="tag">Le plus complet</span>' : ''}
+      <h3>${esc(f.nom)}</h3><p class="price" style="margin:6px 0">${f.prix ? new Intl.NumberFormat("fr-FR").format(f.prix) : "0"} <small>FCFA${f.jours ? " / mois" : ""}</small></p>
+      <ul><li>${f.quota} guide${f.quota > 1 ? "s" : ""} à snapper (+ leurs vidéos)</li><li>${Math.round(f.taux * 100)} % de chaque vente pour toi</li><li>${f.niches === 1 ? "1 niche" : "Toutes les niches"}</li></ul>
+      <div class="sp">${cur ? '<p class="ok" style="text-align:center;margin:0">✓ Ton forfait actuel</p>' : extra}</div></article>`; };
+  const achat = k => { const l = k === "turbo" ? REGLAGES.lienTurbo : REGLAGES.lienVip;
+    return l ? `<a class="btn${k === "vip20" ? " gold" : ""}" href="${esc(l)}" target="_blank" rel="noopener">Payer en Mobile Money</a>` : `<a class="btn${k === "vip20" ? " gold" : ""}" target="_blank" rel="noopener" href="https://wa.me/${REGLAGES.whatsapp}?text=${encodeURIComponent("Bonjour Mickael, je veux le forfait " + fs[k].nom + ". Mon ID revendeur : " + S.id)}">Prendre ce forfait</a>`; };
+  $("view").innerHTML = `<p class="eyebrow">Forfaits</p><h2 style="margin-top:8px">Choisis combien de guides tu veux revendre</h2>
+    <p class="sub">Quand ton quota est consommé, tu publies et tu attends tes ventes, ou tu reprends un forfait.</p>
+    <div class="plans">${bloc("gratuit", "")}${bloc("turbo", achat("turbo"))}${bloc("vip20", achat("vip20"))}</div>
+    <section class="card sp stack"><h3>J'ai déjà payé</h3><label for="cd">Entre le code d'activation reçu après ton achat</label><input id="cd" placeholder="TURBO-XXXXXX ou VIP20-XXXXXX" autocomplete="off" style="text-transform:uppercase;letter-spacing:1.5px"><p class="err" id="ce" role="alert"></p><button class="btn" id="ac">Activer mon forfait</button></section>`;
+  $("ac").onclick = async () => { const e = await activer($("cd").value, "champ"); if (e) $("ce").textContent = e; else aller("snap"); };
 }
 
-function vRoute() {
-  barre(100, () => aller("accueil"));
-  const etapes = [["produit", "📘", "Ton produit", "Claude crée ton guide PDF"], ["boutique", "🏪", "Ta boutique", S.boutique ? BOUTIQUES[S.boutique][1] : "Maketou, Chariow ou WhatsApp"], ["clients", "📣", "Tes clients", S.reseau ? RESEAUX[S.reseau][1] : "7 jours de publications"], ["ventes", "💰", "Tes ventes", "Répondre, relancer, récolter des avis"]];
-  const next = etapes.find(e => !S.faits[e[0]]);
-  $("view").innerHTML = `
-    <p class="eyebrow">Ta feuille de route</p>
-    <h2 style="margin-top:12px">${S.idee.e} ${esc(S.idee.t)}</h2>
-    <div class="road">${etapes.map(([k, e, t, d]) => `<button class="step ${S.faits[k] ? "done" : next && next[0] === k ? "now" : ""}" data-k="${k}"><span class="n">${S.faits[k] ? "✅" : e}</span><span style="flex:1"><b>${t}</b><small>${esc(d)}</small></span><span style="color:var(--muted)">›</span></button>`).join("")}</div>
-    <div class="card" style="margin-top:18px"><b>🔁 Ta routine de chaque jour</b><ol class="how"><li>Publie le post du jour.</li><li>Réponds à tous les messages dans l'heure.</li><li>Relance une fois ceux qui n'ont pas répondu.</li><li>Après chaque vente, demande un avis.</li></ol></div>`;
-  cta(next ? `<button class="btn" id="go">${next[1]} ${next[2]} →</button><button class="link" id="nv">Créer un autre produit</button>` : `<button class="btn" id="nv">✨ Créer un autre produit</button>`);
-  $("view").querySelectorAll("[data-k]").forEach(b => b.onclick = () => ouvrir(b.dataset.k));
-  if ($("go")) $("go").onclick = () => ouvrir(next[0]);
-  $("nv").onclick = () => { const o = S.ouvert; S = neuf(); S.ouvert = o; S.q = 0; aller("question"); };
+/* ---------- DÉMARRAGE ---------- */
+async function demarrer() {
+  try { CAT = await (await fetch("/revendeurs/catalogue.json", { cache: "no-store" })).json(); } catch (e) { $("view").innerHTML = '<p class="err">Catalogue indisponible. Réessaie dans un instant.</p>'; return; }
+  try { VENTES = await (await fetch("/revendeurs/ventes.json", { cache: "no-store" })).json(); } catch (e) {}
+  if (CAT.boutique) REGLAGES.boutique = CAT.boutique;
+  const r = VENTES.revendeurs && VENTES.revendeurs[S.id];
+  if (r) { const n = r.ventes.length; if (n > S.ventesVues) { const nv = n - S.ventesVues; notif("💰", nv + " nouvelle" + (nv > 1 ? "s" : "") + " vente" + (nv > 1 ? "s" : "") + " !"); setTimeout(() => toast("💰 " + nv + " nouvelle" + (nv > 1 ? "s" : "") + " vente" + (nv > 1 ? "s" : "") + " !"), 600); S.ventesVues = n; sauver(); } }
+  const q = new URLSearchParams(location.search), u = q.get("unlock");
+  if (u) { history.replaceState(null, "", location.pathname); const e = await activer(u, "lien"); if (e) toast(e); }
+  render();
 }
-function ouvrir(k) {
-  if (k === "produit") return aller("message");
-  S.ecran = "route"; sauver(); window.scrollTo(0, 0);
-  const retour = () => aller("route");
-  if (k === "boutique" && !S.boutique) return choixEcran("Où veux-tu vendre ?", "Tu n'as jamais vendu en ligne ? Commence par WhatsApp : la cliente paie sur ton numéro Mobile Money, tu lui envoies le PDF. Quand les ventes arrivent, passe à une boutique (Maketou ou Chariow) : la cliente paie sur un lien et reçoit le PDF toute seule, même la nuit. Tu pourras en ajouter un autre plus tard.", BOUTIQUES, v => { S.boutique = v; ouvrir("boutique"); }, retour);
-  if (k === "clients" && !S.reseau) return choixEcran("Où veux-tu trouver tes clients ?", "Claude te prépare une publication par jour pendant 7 jours.", RESEAUX, v => { S.reseau = v; ouvrir("clients"); }, retour);
-  if (k === "boutique") return ecranMessage("boutique", `Vends sur ${BOUTIQUES[S.boutique][1]}`, "1. Envoie ce message à Claude pour recevoir tes textes. 2. Suis les étapes ci-dessous.",
-    `<div class="card" style="margin-top:14px"><b>📋 Les étapes</b><ol class="how">${BOUTIQUES[S.boutique][3].map(e => `<li>${esc(e)}</li>`).join("")}</ol><button class="link" id="chg" style="align-self:flex-start">Changer d'endroit de vente</button></div>`, retour), lierChg("boutique");
-  if (k === "clients") return ecranMessage("clients", `7 jours sur ${RESEAUX[S.reseau][1]}`, "Envoie ce message à Claude : il te prépare tes publications de la semaine.", `<button class="link" id="chg" style="margin-top:12px">Choisir un autre réseau</button>`, retour), lierChg("reseau");
-  if (k === "ventes") return ecranMessage("ventes", "Transforme les messages en ventes", "Envoie ce message à Claude : il te prépare toutes tes réponses WhatsApp.", "", retour);
-}
-function lierChg(cle) { const c = $("chg"); if (c) c.onclick = () => { S[cle] = null; ouvrir(cle === "reseau" ? "clients" : "boutique"); }; }
-function choixEcran(titre, sous, liste, choix, retour) {
-  barre(100, retour);
-  $("view").innerHTML = `<h2>${titre}</h2><p class="sub">${sous}</p><div class="grid">${Object.entries(liste).map(([k, [e, n, d]]) => `<button class="tile wide" data-k="${k}" style="min-height:76px"><span class="ic">${e}</span><span><b>${esc(n)}</b><br><span style="color:var(--muted);font-size:13px;font-weight:400">${esc(d)}</span></span></button>`).join("")}</div>`;
-  cta("");
-  $("view").querySelectorAll("[data-k]").forEach(b => b.onclick = () => { choix(b.dataset.k); sauver(); });
-}
-
-charger();
-if (new URLSearchParams(location.search).has("zero")) { S = neuf(); sauver(); history.replaceState(null, "", location.pathname); }
-render();
+demarrer();
 </script>
 </body>
 </html>

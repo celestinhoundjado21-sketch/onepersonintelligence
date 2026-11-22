@@ -49,7 +49,7 @@ button{margin-top:14px;width:100%;padding:14px;border:none;border-radius:999px;b
 </main>
 <script>
 const $ = id => document.getElementById(id);
-fetch("catalogue.json", { cache: "no-store" }).then(r => r.json()).then(c => { $("g-niche").innerHTML = c.niches.map(n => `<option value="${n.id}">${n.nom}</option>`).join(""); });
+fetch("/revendeurs/catalogue.json", { cache: "no-store" }).then(r => r.json()).then(c => { $("g-niche").innerHTML = c.niches.map(n => `<option value="${n.id}">${n.nom}</option>`).join(""); });
 $("v-date").value = new Date().toISOString().slice(0, 10);
 $("g-go").onclick = () => {
   const o = { id: $("g-id").value.trim(), titre: $("g-titre").value.trim(), prixXof: +$("g-prix").value || 0, niche: $("g-niche").value, maketouUrl: $("g-url").value.trim(), videoUrl: $("g-video").value.trim(), ordre: +$("g-ordre").value || 99 };
