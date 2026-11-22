@@ -1,19 +1,123 @@
 {
-  "maj": "2026-11-22",
-  "boutique": "https://one-person-intelligence.mymaketou.shop",
-  "niches": [
-    { "id": "elevage", "nom": "Élevage", "icone": "🐔" },
-    { "id": "bien-etre", "nom": "Bien-être et astuces", "icone": "🌿" },
-    { "id": "cuisine", "nom": "Cuisine", "icone": "🍲" },
-    { "id": "business", "nom": "Business et savoir-faire", "icone": "💼" },
-    { "id": "emploi", "nom": "Emploi et carrière", "icone": "📄" }
-  ],
-  "produits": [
-    { "id": "guide-01", "titre": "En 45 jours, vends tes 100 premiers poulets Goliath et signe ton premier contrat avec une poissonnerie", "prixXof": 3000, "niche": "elevage", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 1 },
-    { "id": "guide-02", "titre": "7 nuits avec la feuille de laurier…", "prixXof": 3000, "niche": "bien-etre", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 2 },
-    { "id": "guide-03", "titre": "5 épices qui partent comme des p…", "prixXof": 3000, "niche": "cuisine", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 3 },
-    { "id": "guide-04", "titre": "Transforme ton savoir-faire en un…", "prixXof": 3000, "niche": "business", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 4 },
-    { "id": "guide-05", "titre": "Stoppe l'hémorragie sur la prove…", "prixXof": 3500, "niche": "business", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 5 },
-    { "id": "guide-06", "titre": "Ne laisse plus ton CV finir à la p…", "prixXof": 2000, "niche": "emploi", "maketouUrl": "", "videoUrl": "", "provisoire": true, "ordre": 6 }
-  ]
+ "maj": "2026-11-22",
+ "boutique": "https://one-person-intelligence.mymaketou.shop",
+ "niches": [
+  {
+   "id": "elevage",
+   "nom": "Élevage",
+   "icone": "🐔"
+  },
+  {
+   "id": "petits-metiers",
+   "nom": "Petits métiers (épices, savon…)",
+   "icone": "🧴"
+  },
+  {
+   "id": "business",
+   "nom": "Business et digital",
+   "icone": "💼"
+  },
+  {
+   "id": "bien-etre",
+   "nom": "Bien-être et astuces",
+   "icone": "🌿"
+  },
+  {
+   "id": "emploi",
+   "nom": "Emploi et carrière",
+   "icone": "📄"
+  }
+ ],
+ "produits": [
+  {
+   "id": "guide-01",
+   "titre": "En 45 jours, vends tes 100 premiers poulets Goliath et signe ton premier contrat avec une poissonnerie (sans perte de poids ni mortalité)",
+   "prixXof": 3000,
+   "niche": "elevage",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/en-45-jours-vends-tes-100-premiers-poulets-goliath-et-signe-ton-premier-contrat-avec-une-poissonnerie-sans-perte-de-poids-ni-mortalite",
+   "videoUrl": "",
+   "ordre": 1
+  },
+  {
+   "id": "guide-02",
+   "titre": "7 nuits avec la feuille de laurier : le protocole exact pour débloquer l'argent qui fuit tes mains et attirer des clients fidèles",
+   "prixXof": 3000,
+   "niche": "bien-etre",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/7-nuits-avec-la-feuille-de-laurier-le-protocole-exact-pour-debloquer-largent-qui-fuit-tes-mains-et-attirer-des-clients-fideles",
+   "videoUrl": "",
+   "ordre": 2
+  },
+  {
+   "id": "guide-03",
+   "titre": "5 épices qui partent comme des petits pains : démarre avec 5 000 FCFA, conditionne tes pots étiquetés et dépose-les en boutique en 14 jours",
+   "prixXof": 3000,
+   "niche": "petits-metiers",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/5-epices-qui-partent-comme-des-petits-pains-demarre-avec-5-000-fcfa-conditionne-tes-pots-etiquetes-et-depose-les-en-boutique-en-14-jours",
+   "videoUrl": "",
+   "ordre": 3
+  },
+  {
+   "id": "guide-04",
+   "titre": "Transforme ton savoir-faire en une offre qui se vend tout seul sans forcer",
+   "prixXof": 3000,
+   "niche": "business",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/transforme-ton-savoir-faire-en-une-offre-qui-se-vend-tout-seul-sans-forcer",
+   "videoUrl": "",
+   "ordre": 4
+  },
+  {
+   "id": "guide-05",
+   "titre": "Stoppe l'hémorragie sur la provende : fabrique l'aliment de tes volailles et double tes marges",
+   "prixXof": 3500,
+   "niche": "elevage",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/stoppe-lhemorragie-sur-la-provende-fabrique-laliment-de-tes-volailles-et-doubles-tes-marges",
+   "videoUrl": "",
+   "ordre": 5
+  },
+  {
+   "id": "guide-06",
+   "titre": "Ne laisse plus ton CV finir à la poubelle : démarque-toi dès le premier regard",
+   "prixXof": 2000,
+   "niche": "emploi",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/ne-laisse-plus-ton-cv-finir-a-la-poubelle-demarque-toi-des-le-premier-regard",
+   "videoUrl": "",
+   "ordre": 6
+  },
+  {
+   "id": "guide-07",
+   "titre": "Bâtis une présence digitale qui attire des clients sans courir après eux",
+   "prixXof": 2000,
+   "niche": "business",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/batis-une-presence-digitale-qui-attire-des-clients-sans-courir-apres-eux",
+   "videoUrl": "",
+   "ordre": 7
+  },
+  {
+   "id": "guide-08",
+   "titre": "Retrouve un sommeil réparateur et réveille-toi plein d'énergie, sans épuisement",
+   "prixXof": 2000,
+   "niche": "bien-etre",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/retrouve-un-sommeil-reparateur-et-reveille-toi-plein-denergie-sans-epuisement",
+   "videoUrl": "",
+   "ordre": 8
+  },
+  {
+   "id": "guide-09",
+   "titre": "Développe une activité rentable autour de ce que tu sais déjà faire, sans capital lourd",
+   "prixXof": 2500,
+   "niche": "business",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/developpe-une-activite-rentable-autour-de-ce-que-tu-sais-deja-faire-sans-capital-lourd",
+   "videoUrl": "",
+   "ordre": 9
+  },
+  {
+   "id": "guide-10",
+   "titre": "Savon liquide et lessive : lance ton atelier avec 6 000 FCFA, fabrique, bidonne et place tes ventes au quartier en 14 jours",
+   "prixXof": 3000,
+   "niche": "petits-metiers",
+   "maketouUrl": "https://one-person-intelligence.mymaketou.shop/products/savon-liquide-lessive-lance-ton-atelier-avec-6-000-fcfa-fabrique-bidonne-et-place-tes-ventes-au-quartier-en-14-jours",
+   "videoUrl": "",
+   "ordre": 10
+  }
+ ]
 }
