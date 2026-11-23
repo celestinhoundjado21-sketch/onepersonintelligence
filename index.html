@@ -32,6 +32,45 @@ a{color:inherit}
 .btn-gold{background:linear-gradient(180deg,#FFD166,#F5B301);color:#1d1400;box-shadow:0 0 0 1px rgba(255,209,102,.8),0 14px 44px rgba(245,179,1,.35)}
 .btn-ghost{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line)}
 :focus-visible{outline:2px solid var(--g2);outline-offset:3px}
+/* Équation : logo + WhatsApp = argent */
+.equ{position:relative;display:flex;align-items:flex-start;justify-content:center;gap:clamp(6px,2vw,22px);margin:26px auto 30px;max-width:620px}
+.equ-flow{position:absolute;left:0;right:0;top:-10px;width:100%;height:150px;pointer-events:none;z-index:0;opacity:.9}
+.equ-flow .fl1{stroke-dasharray:4 9;animation:flowdash 1.4s linear infinite;opacity:.55}
+.equ-flow .fl2{stroke-dasharray:28 900;animation:flowrun 2.6s cubic-bezier(.6,0,.3,1) 1.6s infinite;filter:drop-shadow(0 0 6px #60A5FA)}
+@keyframes flowdash{to{stroke-dashoffset:-26}}@keyframes flowrun{from{stroke-dashoffset:40}to{stroke-dashoffset:-620}}
+.eq-item{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:0;opacity:0;transform:translateY(26px) scale(.8);animation:eqin .8s cubic-bezier(.2,1.4,.35,1) forwards}
+.eq-item b{margin-top:10px;font-family:var(--display);font-size:clamp(11.5px,2.6vw,14px);font-weight:700;color:var(--muted);letter-spacing:.01em;white-space:nowrap}
+.t1{animation-delay:.15s}.t2{animation-delay:.55s}.t3{animation-delay:1.05s}
+@keyframes eqin{to{opacity:1;transform:none}}
+.tile{position:relative;width:clamp(78px,19vw,118px);aspect-ratio:1;border-radius:26%;display:grid;place-items:center;animation:float 5s ease-in-out infinite}
+.tile svg{width:74%;height:74%;position:relative;z-index:2}
+.t2 .tile{animation-delay:-1.6s}.t3 .tile{animation-delay:-3.2s}
+@keyframes float{50%{transform:translateY(-7px)}}
+.tile-logo{background:linear-gradient(155deg,#1a2236,#05070d 60%);box-shadow:0 0 0 1px rgba(147,197,253,.35),inset 0 1px 0 rgba(255,255,255,.18),0 18px 40px rgba(0,0,0,.6),0 0 46px rgba(59,130,246,.45)}
+.tile-logo .star{transform-origin:70px 25px;animation:twk 2.4s ease-in-out infinite}
+@keyframes twk{50%{transform:scale(.55) rotate(45deg);opacity:.6}}
+.tile-wa{border-radius:50%;background:radial-gradient(circle at 35% 30%,#4ADE80,#16A34A 70%);box-shadow:0 0 0 1px rgba(187,247,208,.5),inset 0 2px 0 rgba(255,255,255,.35),0 18px 40px rgba(0,0,0,.55),0 0 46px rgba(34,197,94,.5)}
+.tile-wa .dot{animation:typing 1.2s ease-in-out infinite}.tile-wa .d2{animation-delay:.15s}.tile-wa .d3{animation-delay:.3s}
+@keyframes typing{30%{transform:translateY(-4px);opacity:.5}}
+.tile-wa .dot{transform-box:fill-box}
+.tile-bag{background:radial-gradient(circle at 50% 40%,rgba(255,209,102,.22),transparent 70%)}
+.tile-bag svg{width:122%;height:122%;filter:drop-shadow(0 10px 18px rgba(0,0,0,.55)) drop-shadow(0 0 20px rgba(245,179,1,.55));animation:bagpop 2.6s ease-in-out 1.9s infinite;transform-origin:50% 85%}
+@keyframes bagpop{0%,70%,100%{transform:scale(1)}78%{transform:scale(1.09,.94)}86%{transform:scale(.97,1.04)}}
+.tile-bag .shine{animation:shine 2.6s ease-in-out 1.9s infinite}
+@keyframes shine{0%,60%{transform:skewX(-18deg) translateX(0)}100%{transform:skewX(-18deg) translateX(150px)}}
+.rays{position:absolute;inset:-34%;z-index:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,209,102,.22) 0 7deg,transparent 7deg 22deg);-webkit-mask:radial-gradient(circle,#000 20%,transparent 68%);mask:radial-gradient(circle,#000 20%,transparent 68%);animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.coin{position:absolute;z-index:3;left:50%;top:30%;width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF1B8,#F5B301 60%,#A86E00);box-shadow:0 0 10px rgba(255,209,102,.8);opacity:0;animation:coin 2.6s ease-out infinite}
+.c1{animation-delay:2.05s;--x:-38px}.c2{animation-delay:2.2s;--x:30px}.c3{animation-delay:2.35s;--x:-12px}.c4{animation-delay:2.5s;--x:44px}
+@keyframes coin{0%{opacity:0;transform:translate(-50%,0) scale(.4)}12%{opacity:1}55%{opacity:1;transform:translate(calc(-50% + var(--x)),-58px) scale(1) rotateY(360deg)}80%,100%{opacity:0;transform:translate(calc(-50% + var(--x)),-30px) scale(.7)}}
+.ped{width:78%;height:12px;margin-top:10px;border-radius:50%;background:radial-gradient(ellipse,rgba(96,165,250,.75),rgba(59,130,246,.15) 55%,transparent 72%);filter:blur(1px);animation:pedg 5s ease-in-out infinite}
+.ped-gold{background:radial-gradient(ellipse,rgba(255,209,102,.85),rgba(245,179,1,.2) 55%,transparent 72%)}
+.t2 .ped{animation-delay:-1.6s}.t3 .ped{animation-delay:-3.2s}
+@keyframes pedg{50%{transform:scaleX(.82);opacity:.7}}
+.op{position:relative;z-index:1;align-self:flex-start;margin-top:calc(clamp(78px,19vw,118px)/2 - .62em);font-family:var(--display);font-weight:800;font-size:clamp(26px,6vw,42px);line-height:1;color:#fff;text-shadow:0 0 18px rgba(96,165,250,.9);opacity:0;animation:opin .5s ease forwards}
+.o1{animation-delay:.42s}.o2{animation-delay:.9s;color:var(--gold2);text-shadow:0 0 18px rgba(245,179,1,.9)}
+@keyframes opin{from{opacity:0;transform:scale(2.2)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.equ *{animation:none!important;opacity:1!important;transform:none!important}.coin,.equ-flow .fl2{display:none}}
 .apercu{display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:center;padding:26px;border-radius:22px}
 .ap-pages{position:relative;height:170px}
 .ap-pages span{position:absolute;left:20px;top:10px;width:110px;height:150px;border-radius:8px;background:linear-gradient(180deg,#fff,#dbe6fb);box-shadow:0 10px 30px rgba(0,0,0,.45)}
@@ -238,6 +277,38 @@ nav.top{z-index:30}header,section,footer{position:relative;z-index:1}
 <header class="hero">
   <div class="wrap">
     <span class="pill"><i></i>Lancement · sois parmi les premiers revendeurs</span>
+    <div class="equ" aria-label="Nos 10 guides IA plus ton WhatsApp égale tes ventes">
+      <svg class="equ-flow" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="flowG" x1="0" x2="1"><stop offset="0" stop-color="#3B82F6" stop-opacity="0"/><stop offset=".45" stop-color="#60A5FA"/><stop offset=".8" stop-color="#22C55E"/><stop offset="1" stop-color="#FFD166"/></linearGradient></defs>
+        <path d="M70 120 C 200 20, 330 20, 440 90 S 540 130, 560 100" fill="none" stroke="url(#flowG)" stroke-width="2.4" stroke-linecap="round" class="fl1"/>
+        <path d="M70 120 C 200 20, 330 20, 440 90 S 540 130, 560 100" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" class="fl2"/>
+      </svg>
+      <div class="eq-item t1"><div class="tile tile-logo">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><defs><mask id="mk"><rect width="100" height="100" fill="#fff"/><rect x="39.5" y="15" width="13" height="74" rx="6.5" fill="#000"/></mask></defs>
+          <circle cx="46" cy="52.5" r="17.6" fill="none" stroke="#fff" stroke-width="8.4" mask="url(#mk)"/>
+          <rect x="42" y="22" width="8" height="57" rx="4" fill="#fff"/>
+          <path class="star" d="M70 18 Q71 24 77 25 Q71 26 70 32 Q69 26 63 25 Q69 24 70 18Z" fill="#fff"/></svg>
+      </div><div class="ped"></div><b>10 guides IA</b></div>
+      <div class="op o1">+</div>
+      <div class="eq-item t2"><div class="tile tile-wa">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 18c-18.8 0-34 13.4-34 30 0 9 4.5 17.1 11.6 22.6L24 84l14.6-7.4c3.6 1 7.4 1.4 11.4 1.4 18.8 0 34-13.4 34-30S68.8 18 50 18z" fill="#fff"/>
+          <circle class="dot d1" cx="36" cy="48" r="5" fill="#16A34A"/><circle class="dot d2" cx="50" cy="48" r="5" fill="#16A34A"/><circle class="dot d3" cx="64" cy="48" r="5" fill="#16A34A"/></svg>
+      </div><div class="ped"></div><b>Ton WhatsApp</b></div>
+      <div class="op o2">=</div>
+      <div class="eq-item t3"><div class="tile tile-bag">
+        <i class="rays" aria-hidden="true"></i>
+        <svg viewBox="0 0 100 100" aria-hidden="true"><defs>
+          <linearGradient id="bagG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset=".55" stop-color="#F5B301"/><stop offset="1" stop-color="#B57900"/></linearGradient>
+          <linearGradient id="bagH" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+          <path d="M38 30 L33 17 Q42 21 50 16 Q58 21 67 17 L62 30Z" fill="url(#bagG)"/>
+          <path d="M38 30 Q16 46 18 66 Q20 88 50 88 Q80 88 82 66 Q84 46 62 30Z" fill="url(#bagG)"/>
+          <rect x="35" y="27" width="30" height="6" rx="3" fill="#8A5A00"/>
+          <path d="M30 50 Q34 40 42 36" stroke="#FFF3C4" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+          <text x="50" y="70" text-anchor="middle" font-family="Sora,Inter,sans-serif" font-weight="800" font-size="15" fill="#5A3A00">FCFA</text>
+          <rect class="shine" x="-30" y="25" width="22" height="70" fill="url(#bagH)" transform="skewX(-18)"/></svg>
+        <span class="coin c1"></span><span class="coin c2"></span><span class="coin c3"></span><span class="coin c4"></span>
+      </div><div class="ped ped-gold"></div><b class="gold">Tes ventes</b></div>
+    </div>
     <h1 id="h1">10 guides IA <span class="eq">+</span> ton WhatsApp<br><span class="eq">=</span> <span class="money">tes ventes.</span></h1>
     <p class="lead">Les sujets IA les plus recherchés du moment, prêts à revendre. <b class="gold">Une seule offre à 5 000 FCFA</b> débloque les 10 guides avec leurs vidéos pub et tes textes de vente. Tu publies, tu encaisses par Mobile Money, tu gardes 100 % de chaque vente.</p>
     <div class="cta-row">
