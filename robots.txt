@@ -3,5 +3,6 @@ Allow: /
 Disallow: /partenaire/
 Disallow: /revendeurs/admin.html
 Disallow: /ancien/
+Disallow: /admin/
 
 Sitemap: https://onepersonintelligence.com/sitemap.xml
