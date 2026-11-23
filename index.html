@@ -531,6 +531,7 @@ const GUIDES = [
 /* ============================================================================ */
 const fcfa = n => new Intl.NumberFormat("fr-FR").format(Math.round(n)) + " FCFA";
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const DEPART = [22, 35, 28, 46, 31, 40, 24, 37, 33, 48]; /* ventes par semaine affichées au départ */
 const CAT = ["Vidéo & pub", "Photo IA", "Prompts", "Contenu viral", "Automatisation WhatsApp", "Copywriting", "Sans code", "Produits numériques", "Voix IA", "Publicité en ligne"];
 document.getElementById("liste").innerHTML = GUIDES.map(([n, e, t, p, lien, r], i) => `
   <article class="glass g locked rv">
@@ -539,9 +540,9 @@ document.getElementById("liste").innerHTML = GUIDES.map(([n, e, t, p, lien, r], 
     <h3 class="blur" aria-label="Titre dévoilé après déblocage">${esc(t)}</h3>
     <div class="skel" aria-hidden="true"><i style="width:92%"></i><i style="width:78%"></i><i style="width:85%"></i></div>
     <div class="gs">
-      <label for="gs${i}">Si tu le revends <b id="gsv${i}">10</b> fois par semaine à ${fcfa(r)}</label>
-      <input type="range" id="gs${i}" min="1" max="100" value="10" data-r="${r}" data-i="${i}">
-      <div class="gsr"><span>Par semaine <b id="gsw${i}">${fcfa(10 * r)}</b></span><span>Par mois <b id="gsm${i}" class="gold">${fcfa(40 * r)}</b></span></div>
+      <label for="gs${i}">Si tu le revends <b id="gsv${i}">${DEPART[i]}</b> fois par semaine à ${fcfa(r)}</label>
+      <input type="range" id="gs${i}" min="1" max="100" value="${DEPART[i]}" data-r="${r}" data-i="${i}">
+      <div class="gsr"><span>Par semaine <b id="gsw${i}">${fcfa(DEPART[i] * r)}</b></span><span>Par mois <b id="gsm${i}" class="gold">${fcfa(DEPART[i] * 4 * r)}</b></span></div>
       <small>Simulation · dépend de ta prospection</small>
     </div>
     <a class="btn btn-ghost unl" href="#offre"><svg width="18" height="18"><use href="#s-lock"/></svg>Inclus dans l'offre à 5 000 FCFA</a>
