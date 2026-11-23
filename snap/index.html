@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://onepersonintelligence.com/snap/">
+<title>One Person Intelligence — Revends des guides en Mobile Money</title>
+<meta name="description" content="Revends des guides PDF prêts à vendre, avec leur lien et leur vidéo, et touche une commission en Mobile Money.">
+<meta name="theme-color" content="#060a17">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="One Person Intelligence">
+<meta property="og:title" content="One Person Intelligence — Snappe tes guides, reçois le lien et la vidéo">
+<meta property="og:description" content="Revends des guides PDF prêts à vendre, avec leur lien de vente et leur vidéo, et touche ta commission en Mobile Money.">
+<meta property="og:url" content="https://onepersonintelligence.com/snap/">
+<meta property="og:image" content="https://onepersonintelligence.com/partage.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#060a17;--panel:#0c1324;--panel-2:#111a30;--line:#1b2540;--text:#eef2ff;--muted:#8892b0;--blue:#4f7cff;--glow:#6d8dff;--green:#34d399;--violet:#8b5cf6;--gold:#f5c451;--display:"Sora","Segoe UI",system-ui,sans-serif;--body:"Figtree","Segoe UI",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(120% 60% at 50% -10%,#0f1a3a 0%,var(--night) 55%) fixed,var(--night);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.app{max-width:480px;margin:0 auto;padding:18px 18px 110px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:14px;line-height:1.2;color:var(--text);text-decoration:none}
+.brand svg{width:24px;height:24px}
+.plan-chip{white-space:nowrap;font-family:var(--display);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;border:1px solid #2b3a73;color:#a9b8ff;border-radius:999px;padding:5px 10px;background:none;cursor:pointer}
+.plan-chip.vip{border-color:#6b5520;color:var(--gold)}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.5px;line-height:1.15;margin:0}
+h1{font-size:30px}h2{font-size:24px}h3{font-size:17px}
+.sub{color:var(--muted);margin:8px 0 0;font-size:15px}
+.eyebrow{font-family:var(--display);font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:10px;align-items:center}
+.sp{margin-top:22px}
+.btn{appearance:none;border:none;border-radius:999px;padding:15px 18px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;width:100%;background:#f1f1ee;color:#0b0f1c;text-align:center;text-decoration:none;display:block}
+.btn:disabled{background:#1a2238;color:#56607e;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.gold{background:var(--gold);color:#1b1404}
+.btn.small{padding:10px 14px;font-size:14px;width:auto}
+.link{background:none;border:none;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:6px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.niches{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.niche{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--text);font:inherit;font-weight:600;font-size:14.5px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:84px}
+.niche .ic{font-size:22px;line-height:1}
+.niche small{color:var(--muted);font-weight:500;font-size:12px}
+.niche[aria-pressed="true"]{border-color:var(--blue);background:#101c3d}
+.niche:disabled{opacity:.4;cursor:not-allowed}
+.quota{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.quota b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:9px}
+.stepper{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px}
+.stepper button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--panel-2);color:var(--text);font-size:24px;cursor:pointer}
+.stepper button:disabled{opacity:.35;cursor:not-allowed}
+.stepper output{font-family:var(--display);font-size:46px;font-weight:600;min-width:80px;text-align:center;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.chips button{min-width:52px;padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit;font-weight:600;cursor:pointer}
+.chips button[aria-pressed="true"]{border-color:var(--blue);background:#101c3d}
+.chips button:disabled{opacity:.3;cursor:not-allowed}
+.vortex{position:relative;height:340px;display:grid;place-items:center}
+.vortex canvas{position:absolute;inset:0;width:100%;height:100%}
+.vortex .count{position:relative;text-align:center}
+.vortex .count b{display:block;font-family:var(--display);font-size:40px;font-variant-numeric:tabular-nums}
+.vortex .count small{color:#a9b8ff;font-size:13px;letter-spacing:1px}
+.phase{text-align:center;min-height:44px;font-family:var(--display);font-size:16px}
+.phase small{display:block;color:var(--muted);font-family:var(--body);font-size:13px}
+.guide{display:flex;flex-direction:column;gap:12px}
+.guide video{width:100%;border-radius:12px;background:#000;aspect-ratio:9/16;max-height:420px;object-fit:contain}
+.novid{border:1px dashed #2a3556;border-radius:12px;padding:16px;text-align:center;color:var(--muted);font-size:14px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kv div{background:var(--panel-2);border-radius:10px;padding:10px}
+.kv small{display:block;color:var(--muted);font-size:12px}
+.kv b{font-family:var(--display);font-variant-numeric:tabular-nums}
+.linkbox{display:flex;gap:8px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:8px 8px 8px 12px;font-size:13px;color:#b9c2de;overflow:hidden}
+.linkbox span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plans{display:grid;gap:12px;margin-top:16px}
+.plan{position:relative}
+.plan .price{font-family:var(--display);font-size:28px;font-weight:600}
+.plan .price small{font-size:14px;color:var(--muted);font-weight:500}
+.plan ul{margin:6px 0 0;padding-left:18px;color:#cfd6ee;font-size:14.5px;display:grid;gap:4px}
+.plan.vip{border-color:#6b5520;box-shadow:0 0 0 1px rgba(245,196,81,.12),0 20px 50px rgba(120,90,10,.18)}
+.plan .tag{position:absolute;top:14px;right:14px;font-size:11px;font-family:var(--display);letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.plan.current{border-color:var(--blue)}
+label{font-size:14px;color:#cfd6ee}
+input,select{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:13px;color:var(--text);font:inherit;margin-top:6px}
+.err{color:#ff9b8a;font-size:14px}.ok{color:var(--green);font-size:14px}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(6,10,23,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:5}
+nav.tabs .in{display:flex;max-width:480px;width:100%}
+nav.tabs button{flex:1;background:none;border:none;color:var(--muted);font:inherit;font-size:12px;padding:10px 4px 14px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav.tabs button span{font-size:20px;line-height:1}
+nav.tabs button[aria-current="page"]{color:var(--text)}
+.toast{position:fixed;left:50%;top:16px;transform:translateX(-50%) translateY(-160%);background:#0f2a1f;border:1px solid #1f6b4c;color:#d1fae5;border-radius:14px;padding:12px 16px;z-index:9;transition:transform .35s;max-width:92vw;font-size:14.5px}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.notif{display:flex;gap:10px;font-size:14px;color:#cfd6ee;padding:10px 0;border-bottom:1px solid var(--line)}
+.notif:last-child{border-bottom:none}
+.notif.new b{color:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 4px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:500;font-size:12px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;font-size:11px;border-radius:999px;padding:2px 8px;border:1px solid var(--line);color:var(--muted)}
+.badge.green{border-color:#1f6b4c;color:var(--green)}
+.foot{margin-top:28px;font-size:11.5px;color:#59627f;text-align:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (min-width:900px){.app{max-width:960px;padding:28px 40px 110px}.niches{grid-template-columns:repeat(5,minmax(0,1fr))}.plans{grid-template-columns:repeat(3,minmax(0,1fr))}.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}h1{font-size:42px}}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+
+#space{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+body{background:#03050d}
+.app,nav.tabs{position:relative;z-index:2}nav.tabs{position:fixed}.toast{position:fixed;z-index:10}
+header.top{position:sticky;top:0;z-index:3;padding:10px 12px;margin:0 -12px;background:rgba(3,5,13,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:0 0 16px 16px}
+.glass{background:rgba(10,16,38,.55);-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(130,160,255,.18);box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06)}
+.card{background:rgba(12,19,40,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:rgba(130,160,255,.14)}
+.hero-snap{text-align:center;margin-top:4px}
+.glowtitle{font-size:34px;background:linear-gradient(90deg,#fff,#b9c8ff 40%,#7dd3fc 70%,#fff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;text-shadow:0 0 40px rgba(79,124,255,.35)}
+@keyframes shine{to{background-position:200% center}}
+.vortex-space{height:min(30vh,300px)}
+.panel{border-radius:24px;padding:16px 16px 18px;transition:opacity .4s,transform .4s}
+.panel.out{opacity:0;transform:translateY(30px) scale(.97);pointer-events:none}
+.panel-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.panel .lbl{font-family:var(--display);font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:#a9b8ff}
+.quota-pill{background:rgba(79,124,255,.14);border:1px solid rgba(79,124,255,.35);color:#dbe3ff;border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer;white-space:nowrap}
+.panel .stepper{margin-top:4px}
+.panel .stepper output{font-size:44px;text-shadow:0 0 30px rgba(79,124,255,.6)}
+.panel .stepper button{background:rgba(255,255,255,.06);border-color:rgba(130,160,255,.25)}
+.panel .chips button{background:rgba(255,255,255,.04);border-color:rgba(130,160,255,.2)}
+.panel .chips button[aria-pressed="true"]{background:rgba(79,124,255,.3);border-color:#6d8dff;box-shadow:0 0 18px rgba(79,124,255,.45)}
+.niche-row{display:flex;gap:8px;overflow-x:auto;margin:14px -4px 0;padding:2px 4px 6px;scrollbar-width:none}
+.niche-row::-webkit-scrollbar{display:none}
+.npill{flex:none;border-radius:999px;border:1px solid rgba(130,160,255,.22);background:rgba(255,255,255,.04);color:var(--text);font:inherit;font-size:13.5px;padding:8px 12px;cursor:pointer;white-space:nowrap}
+.npill[aria-pressed="true"]{background:rgba(52,211,153,.16);border-color:#34d399;box-shadow:0 0 16px rgba(52,211,153,.35)}
+.npill:disabled{opacity:.35;cursor:not-allowed}
+.mini{color:var(--muted);font-size:12.5px;text-align:center;margin:8px 0 12px}
+.snapbtn{position:relative;overflow:hidden;background:linear-gradient(90deg,#4f7cff,#7c5cff 50%,#22d3ee);color:#fff;box-shadow:0 10px 40px rgba(79,124,255,.45)}
+.snapbtn:disabled{background:#1a2238;color:#56607e;box-shadow:none}
+.snapbtn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);animation:sweep 2.8s ease-in-out infinite}
+.snapbtn:disabled::after{display:none}
+@keyframes sweep{0%,55%{left:-60%}100%{left:130%}}
+.snap-hud{position:fixed;left:50%;top:40%;transform:translate(-50%,-50%);z-index:4;text-align:center;pointer-events:none}
+.snap-hud b{display:block;font-family:var(--display);font-size:46px;font-variant-numeric:tabular-nums;text-shadow:0 0 30px rgba(79,124,255,.9)}
+.snap-hud small{color:#a9b8ff;letter-spacing:2px;font-size:11px}
+.snap-hud p{margin-top:calc(min(30vh,300px)*.55);font-family:var(--display);font-size:15px;color:#dbe3ff}
+nav.tabs{background:rgba(6,10,23,.7);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+@media (min-width:900px){.glowtitle{font-size:52px}.panel{max-width:560px;margin:0 auto}.vortex-space{height:min(24vh,260px)}.snap-hud{top:42%}}
+@media (prefers-reduced-motion:reduce){.glowtitle,.snapbtn::after{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="app">
+  <header class="top">
+    <a class="brand" href="/"><svg viewBox="0 0 1024 1024" aria-hidden="true"><g transform="translate(-40,-12)"><circle cx="512" cy="548" r="178" fill="none" stroke="#fff" stroke-width="84"/><rect x="470" y="236" width="84" height="584" rx="42" fill="#fff" stroke="#060a17" stroke-width="22" paint-order="stroke"/><path d="M760 196 C768 246 778 256 828 264 C778 272 768 282 760 332 C752 282 742 272 692 264 C742 256 752 246 760 196 Z" fill="#6d8dff"/></g></svg>One Person Intelligence</a>
+    <button class="plan-chip" id="chip"></button>
+  </header>
+  <main id="view" class="sp"></main>
+  <p class="foot">Aucun revenu n'est garanti : tes commissions dépendent uniquement des ventes que tu fais.</p>
+</div>
+<nav class="tabs" aria-label="Navigation"><div class="in">
+  <button data-tab="snap"><span aria-hidden="true">🎯</span>Snap</button>
+  <button data-tab="guides"><span aria-hidden="true">📦</span>Mes guides</button>
+  <button data-tab="univers"><span aria-hidden="true">🪐</span>Mon Univers</button>
+  <button data-tab="forfaits"><span aria-hidden="true">⚡</span>Forfaits</button>
+</div></nav>
+
+<script>
+/* ================= RÉGLAGES DE MICKAEL ================= */
+const REGLAGES = {
+  boutique: "https://one-person-intelligence.mymaketou.shop",
+  whatsapp: "2290152024486",
+  // Liens Maketou des 2 forfaits (à remplir). Vide : le bouton ouvre WhatsApp.
+  lienTurbo: "",
+  lienVip: "",
+  forfaits: {
+    gratuit: { nom: "Gratuit", prix: 0, quota: 1, taux: 0.50, niches: 1, jours: null },
+    turbo:   { nom: "Turbo", prix: 2000, quota: 10, taux: 0.65, niches: 99, jours: 30 },
+    vip20:   { nom: "VIP Pack 20", prix: 5000, quota: 20, taux: 0.70, niches: 99, jours: 30 }
+  },
+  // Empreintes SHA-256 des codes d'activation (les codes eux-mêmes sont dans le dépôt privé).
+  codes: {"turbo": ["4e76aaf3a5792835583ea9af05c266837b2d280fd5f7171cba1c137160056aca", "358f5794ae99c93702817ca5c3b9be5f3bea867cdd93eb8e410b75bc412af0e2", "c89ebbbc14b6b377ade673b23d629fb7e6a00ea089bc9673955b56d291a53049", "1aef5179473038dce67173e76134e6a95d2f268286352e62ba8d1011ddd09e2e", "42af998a3c9fdf5eddea256eb4cc9c843d7bf9dc0e3c697389bd0a75f582c8d0", "eac1365efbf298b40d5a1f792e4c23edf3ca6476bb3e5709b8b2539e605e5dcd", "13ae86ba791dee4e908e08760a1354372dedb0fd51503efc4132d80bbd321309", "9d584eb2fa7e7d23f513434b868b15240cfb6ae66a1e5a8205b5f8d9564b1b57", "490c14c332c67eb03f9f3bfd1829bcc566c42df9d8187fe217cf2068e0a9aaaf", "0720b2bb03035392f619b4683c8ac75c28bad6c1df8ce7256ebca9aa09c00c24"], "vip20": ["609156d7e300b68dac01c2d3ff31366ce9972db636fc98277a594bdf8da6b606", "4bfe1f667b10ea2439c0f8772fe9b7b8915e917d38e2dadd87ffa6258ab17131", "ed36bcc49eaae5e94c1e2db20c3d8424e55f0bbf78392d808e76a66774489b6a", "027b6b6729df4f71e33ab03f3053592fe54b5dd3310e86e58d4373b17bf521c2", "576bb4f8748516a36537ce2637bad958e4a5edba3950b780464b16b74ce3d451", "7077da3c8a59ac4f77172e8ae6d147988f7d44785781c1563487e25d000c6e76", "1e3d17ab221ea36bef73a6ab25fc3163f760f640dfddfb3ea04791ae7fb07c1f", "39d39c857c59219296f07c8b9a3b7ac015dca2c5d6ae9cfc053a68c194150050", "e3d5c1122775470e3f6b0059cba19bb5a7fac8e369c3d1b316221da83f17a711", "3229688d98a019b1e32af398f717b44fdd19392efeb9e28e9beeed9bf44f2c32"]}
+};
+/* ======================================================= */
+
+const CLE = "opi-revendeur-v1";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fcfa = n => new Intl.NumberFormat("fr-FR").format(Math.round(n)) + " FCFA";
+let CAT = { niches: [], produits: [] }, VENTES = { revendeurs: {} };
+let S = charger();
+let onglet = "snap", choix = 1, enCours = false;
+
+function neuf() {
+  return { id: "R-" + Array.from(crypto.getRandomValues(new Uint8Array(4)), b => "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[b % 32]).join(""),
+    forfait: "gratuit", achat: null, quota: REGLAGES.forfaits.gratuit.quota, utilises: 0,
+    niches: [], snaps: [], codesUtilises: [], profil: { prenom: "", momo: "", operateur: "" },
+    ventesVues: 0, notifs: [] };
+}
+function charger() { try { const d = JSON.parse(localStorage.getItem(CLE)); if (d && d.id) return d; } catch (e) {} return neuf(); }
+function sauver() { try { localStorage.setItem(CLE, JSON.stringify(S)); } catch (e) {} }
+async function sha(t) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)); return Array.from(new Uint8Array(b), x => x.toString(16).padStart(2, "0")).join(""); }
+function toast(t) { const el = $("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 3800); }
+
+function F() { return REGLAGES.forfaits[S.forfait]; }
+function expire() { const f = F(); return f.jours && S.achat ? (Date.now() - S.achat) > f.jours * 864e5 : false; }
+function restant() { return expire() ? 0 : Math.max(0, S.quota - S.utilises); }
+function lienVente(p) {
+  const base = p.maketouUrl || REGLAGES.boutique;
+  return base + (base.includes("?") ? "&" : "?") + "ref=" + encodeURIComponent(S.id);
+}
+function codePromo() { const r = VENTES.revendeurs[S.id]; return r && r.actif ? r.codePromo : null; }
+
+async function activer(code, source) {
+  const c = String(code || "").trim().toUpperCase();
+  if (!c) return "Entre ton code.";
+  if (S.codesUtilises.includes(c)) return "Ce code a déjà été utilisé sur ce téléphone.";
+  const h = await sha(c);
+  const plan = REGLAGES.codes.turbo.includes(h) ? "turbo" : REGLAGES.codes.vip20.includes(h) ? "vip20" : null;
+  if (!plan) return "Code non reconnu. Vérifie-le ou écris à Mickael sur WhatsApp.";
+  S.forfait = plan; S.achat = Date.now(); S.quota = REGLAGES.forfaits[plan].quota; S.utilises = 0;
+  S.codesUtilises.push(c);
+  notif("⚡", "Forfait " + REGLAGES.forfaits[plan].nom + " activé : " + S.quota + " snaps.");
+  sauver(); toast("✅ Forfait " + REGLAGES.forfaits[plan].nom + " activé (" + S.quota + " snaps)");
+  return null;
+}
+function notif(ic, t) { S.notifs.unshift({ ic, t, d: Date.now(), nv: true }); S.notifs = S.notifs.slice(0, 40); }
+
+function puce() {
+  const c = $("chip"), f = F();
+  c.textContent = f.nom + " · " + restant() + " snap" + (restant() > 1 ? "s" : "");
+  c.className = "plan-chip" + (S.forfait === "vip20" ? " vip" : "");
+  c.onclick = () => aller("forfaits");
+}
+function aller(t) { onglet = t; render(); window.scrollTo(0, 0); }
+function render() {
+  puce();
+  if (onglet !== "snap") { document.body.classList.remove("snapmode"); Space.attenuer(0.75); }
+  document.querySelectorAll("nav.tabs button").forEach(b => { b.setAttribute("aria-current", b.dataset.tab === onglet ? "page" : "false"); b.onclick = () => aller(b.dataset.tab); });
+  ({ snap: vSnap, guides: vGuides, univers: vUnivers, forfaits: vForfaits })[onglet]();
+}
+
+/* ---------- ESPACE 3D (vortex + fiches qui flottent) ---------- */
+const Space = (() => {
+  const cv = document.getElementById("space"), ctx = cv.getContext("2d");
+  const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W = 0, H = 0, dpr = 1, mode = "idle", dim = 0, dimCible = 0, t0 = performance.now(), snapT = 0, snapDur = 3200;
+  let cartes = [], points = [], traits = [], verrous = [], onCount = null, onDone = null, nbVerrou = 0, compte = 0;
+  const COUL = [["#4f7cff", "#1b2a6b"], ["#34d399", "#0f4d3a"], ["#f5c451", "#6b5212"], ["#e07a5f", "#6b2a1a"], ["#8b5cf6", "#3b2470"], ["#22d3ee", "#0e4a57"]];
+  const ICONES = ["📘", "🐔", "🌿", "🧴", "💼", "📄", "🍲", "💡"];
+  const sprites = [];
+  function sprite(c, ic) {
+    const s = document.createElement("canvas"); s.width = 72; s.height = 96; const g = s.getContext("2d");
+    const gr = g.createLinearGradient(0, 0, 72, 96); gr.addColorStop(0, c[0]); gr.addColorStop(1, c[1]);
+    g.fillStyle = gr; g.beginPath(); g.roundRect ? g.roundRect(2, 2, 68, 92, 9) : g.rect(2, 2, 68, 92); g.fill();
+    g.fillStyle = "rgba(255,255,255,.9)"; g.fillRect(10, 66, 52, 6); g.fillStyle = "rgba(255,255,255,.5)"; g.fillRect(10, 77, 36, 5);
+    g.font = "30px system-ui, 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji'"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(ic, 36, 36);
+    return s;
+  }
+  function init() {
+    for (let i = 0; i < 12; i++) sprites.push(sprite(COUL[i % COUL.length], ICONES[i % ICONES.length]));
+    taille(); addEventListener("resize", taille);
+    const n = W < 700 ? 170 : 320;
+    for (let i = 0; i < n; i++) cartes.push(nouvelle(true));
+    for (let i = 0; i < (W < 700 ? 900 : 1600); i++) points.push({ a: Math.random() * 6.283, r: 1 + (Math.random() - .5) * .14 * (Math.random() < .7 ? 1 : 2.4), s: Math.random() * 1.9 + .6, v: .6 + Math.random() * .8 });
+    for (let i = 0; i < 140; i++) traits.push({ a: Math.random() * 6.283, d: Math.random(), v: .2 + Math.random() * .8 });
+    requestAnimationFrame(frame);
+  }
+  function nouvelle(debut) {
+    const a = Math.random() * 6.283, r = 260 + Math.random() * 900;
+    return { a, r, z: debut ? 380 + Math.random() * 2200 : 2300 + Math.random() * 300, gone: false, sp: (Math.random() * sprites.length) | 0, rot: (Math.random() - .5) * .5, va: (Math.random() - .5) * .0015 };
+  }
+  function taille() { dpr = Math.min(1.6, devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function centre() { return { x: W / 2, y: H * (W < 700 ? 0.37 : 0.36) }; }
+  function frame(now) {
+    const t = (now - t0) / 1000; dim += (dimCible - dim) * 0.06;
+    ctx.globalCompositeOperation = "source-over"; ctx.fillStyle = "#03050d"; ctx.fillRect(0, 0, W, H);
+    const c = centre(), F = Math.min(W, H) * 0.9, R = Math.min(W, H) * (W < 700 ? 0.34 : 0.23);
+    let k = 0; if (mode === "snap") { k = Math.min(1, (now - snapT) / snapDur); }
+    const pulse = mode === "snap" ? Math.sin(k * Math.PI) : 0;
+    // halo
+    const gh = ctx.createRadialGradient(c.x, c.y, R * .2, c.x, c.y, R * 2.2);
+    gh.addColorStop(0, `rgba(40,80,255,${.10 + .25 * pulse})`); gh.addColorStop(.5, "rgba(20,40,140,.10)"); gh.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = gh; ctx.fillRect(0, 0, W, H);
+    // traînées
+    ctx.globalCompositeOperation = "lighter";
+    traits.forEach(s => { if (!reduit) s.d += s.v * (mode === "snap" ? .035 : .004); if (s.d > 1) { s.d = 0; s.a = Math.random() * 6.283; }
+      const d0 = R * (.15 + s.d * 1.6), d1 = d0 + (mode === "snap" ? 90 * (1 + pulse * 2) : 22) * s.v;
+      ctx.strokeStyle = `rgba(120,170,255,${(1 - s.d) * (.25 + .5 * pulse)})`; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(c.x + Math.cos(s.a) * d0, c.y + Math.sin(s.a) * d0); ctx.lineTo(c.x + Math.cos(s.a) * d1, c.y + Math.sin(s.a) * d1); ctx.stroke(); });
+    // fiches
+    ctx.globalCompositeOperation = "source-over";
+    cartes.sort((a, b) => b.z - a.z);
+    cartes.forEach((q, i) => {
+      if (!reduit) {
+        if (mode === "snap" && k < .8) { q.r *= .955; q.a += .045; q.z += (900 - q.z) * .05; if (q.r < 120) q.gone = true; }
+        else { if (q.gone) Object.assign(q, nouvelle(false)); q.z -= 1.4; q.a += q.va; if (q.z < 380) Object.assign(q, nouvelle(false)); }
+      }
+      const s = F / q.z, x = c.x + Math.cos(q.a) * q.r * s, y = c.y + Math.sin(q.a) * q.r * s * .92, w = 15 * s * 2.2;
+      if (q.gone || x < -60 || x > W + 60 || y < -80 || y > H + 80 || w < 2) return;
+      const al = Math.min(1, (2400 - q.z) / 500) * Math.min(1, (q.z - 380) / 160) * (1 - dim * .6) * (mode === "snap" ? Math.min(1, q.r / 300) : 1);
+      ctx.globalAlpha = Math.max(0, al); ctx.save(); ctx.translate(x, y); ctx.rotate(q.rot); ctx.drawImage(sprites[q.sp], -w / 2, -w * .67, w, w * 1.33); ctx.restore();
+    });
+    ctx.globalAlpha = 1;
+    // anneau de particules
+    ctx.globalCompositeOperation = "lighter";
+    const rot = reduit ? 0 : t * (mode === "snap" ? .9 : .12);
+    points.forEach(p => { const a = p.a + rot * p.v, rr = R * p.r * (1 + .06 * pulse);
+      const x = c.x + Math.cos(a) * rr, y = c.y + Math.sin(a) * rr;
+      ctx.fillStyle = `rgba(${90 + 80 * pulse},${160 + 60 * pulse},255,${.75 + .25 * pulse})`; ctx.fillRect(x, y, p.s, p.s); });
+    ctx.globalCompositeOperation = "source-over";
+    // fiches verrouillées qui sortent du vortex
+    if (mode === "snap") {
+      const n = verrous.length;
+      verrous.forEach((v, i) => { const st = .45 + .45 * i / Math.max(1, n); if (k < st) return;
+        const e = Math.min(1, (k - st) / .12), col = i % 5, ligne = (i / 5) | 0, cols = Math.min(5, n);
+        const tx = c.x + (col - (cols - 1) / 2) * Math.min(64, W / 6.5), ty = c.y + (ligne - (Math.ceil(n / 5) - 1) / 2) * 78;
+        const x = c.x + (tx - c.x) * e, y = c.y + (ty - c.y) * e, w = 50 * (.3 + .7 * e);
+        ctx.shadowColor = "rgba(52,211,153,.9)"; ctx.shadowBlur = 18 * e; ctx.drawImage(sprites[v % sprites.length], x - w / 2, y - w * .67, w, w * 1.33); ctx.shadowBlur = 0;
+        ctx.strokeStyle = `rgba(52,211,153,${e})`; ctx.lineWidth = 2; ctx.strokeRect(x - w / 2 - 3, y - w * .67 - 3, w + 6, w * 1.33 + 6); });
+      const nb = verrous.filter((v, i) => k >= .45 + .45 * i / Math.max(1, n) + .06).length;
+      if (nb !== compte) { compte = nb; onCount && onCount(nb); }
+      if (k >= 1) { mode = "idle"; const f = onDone; onDone = null; f && f(); }
+    }
+    requestAnimationFrame(frame);
+  }
+  return {
+    init,
+    snap(n, cb1, cb2) { verrous = Array.from({ length: n }, (_, i) => i * 7 + 3); compte = 0; onCount = cb1; onDone = cb2; snapDur = reduit ? 600 : 2600 + n * 120; snapT = performance.now(); mode = "snap"; dimCible = 0; },
+    attenuer(v) { dimCible = v; }
+  };
+})();
+
+/* ---------- SNAP ---------- */
+function dispo() {
+  const pris = new Set(S.snaps.map(s => s.id));
+  return CAT.produits.filter(p => !pris.has(p.id) && (!S.niches.length || S.niches.includes(p.niche))).sort((a, b) => (a.ordre || 99) - (b.ordre || 99));
+}
+function vSnap() {
+  Space.attenuer(0); document.body.classList.add("snapmode");
+  const f = F(), r = restant(), max = Math.min(r, dispo().length);
+  choix = Math.max(max ? 1 : 0, Math.min(choix, max));
+  const limNiche = f.niches;
+  $("view").innerHTML = `
+    <div class="hero-snap">
+      <p class="eyebrow">Moteur de snap · ${CAT.produits.length} guides en boutique</p>
+      <h1 class="glowtitle">Snappe tes guides.</h1>
+      <p class="sub">Le lien de vente et la vidéo, prêts à publier.</p>
+    </div>
+    <div class="vortex-space" aria-hidden="true"></div>
+    <section class="glass panel" id="panel">
+      <div class="panel-top"><span class="lbl">Guides à snapper</span><button class="quota-pill" id="plus">${r} / ${S.quota} snaps · ${esc(f.nom)}</button></div>
+      <div class="stepper"><button id="moins" aria-label="Un guide de moins" ${choix <= 1 ? "disabled" : ""}>−</button><output id="nb" aria-live="polite">${choix}</output><button id="ajout" aria-label="Un guide de plus" ${choix >= max ? "disabled" : ""}>+</button></div>
+      <div class="chips">${[1, 5, 10, 15, 20].map(v => `<button data-v="${v}" aria-pressed="${choix === v}" ${v > max ? "disabled" : ""}>${v}</button>`).join("")}</div>
+      <div class="niche-row" role="group" aria-label="Niche ${limNiche === 1 ? '(forfait Gratuit : 1 niche)' : ''}">${CAT.niches.map(n => {
+        const on = S.niches.includes(n.id), bloque = !on && S.niches.length >= limNiche;
+        return `<button class="npill" data-n="${esc(n.id)}" aria-pressed="${on}" ${bloque ? "disabled" : ""}><span aria-hidden="true">${esc(n.icone)}</span> ${esc(n.nom)}</button>`; }).join("")}</div>
+      <p class="mini">${!S.niches.length ? "Choisis ta niche" + (limNiche === 1 ? " (1 avec le forfait Gratuit)" : "") : max + " guide" + (max > 1 ? "s" : "") + " disponible" + (max > 1 ? "s" : "")}${expire() ? " · forfait expiré" : ""}${r === 0 ? " · quota épuisé" : ""}</p>
+      <button class="btn snapbtn" id="go" ${!S.niches.length || !max ? "disabled" : ""}><span>Lancer le snap</span></button>
+    </section>`;
+  document.querySelectorAll(".npill").forEach(b => b.onclick = () => {
+    const id = b.dataset.n;
+    if (S.niches.includes(id)) { if (S.forfait === "gratuit" && S.snaps.length) { toast("Forfait Gratuit : ta niche est fixée après ton premier snap."); return; } S.niches = S.niches.filter(x => x !== id); }
+    else if (S.niches.length < limNiche) S.niches.push(id);
+    sauver(); render();
+  });
+  $("moins").onclick = () => { choix--; render(); };
+  $("ajout").onclick = () => { choix++; render(); };
+  document.querySelectorAll(".chips button").forEach(b => b.onclick = () => { choix = +b.dataset.v; render(); });
+  $("plus").onclick = () => aller("forfaits");
+  $("go").onclick = lancer;
+}
+
+function lancer() {
+  if (enCours) return;
+  const r = restant(), liste = dispo().slice(0, Math.min(choix, r));
+  if (!liste.length) return;
+  enCours = true;
+  $("panel").classList.add("out");
+  const ov = document.createElement("div"); ov.className = "snap-hud"; ov.setAttribute("aria-live", "polite");
+  ov.innerHTML = `<b id="cpt">0/${liste.length}</b><small>GUIDES VERROUILLÉS</small><p id="ph">Ouverture du catalogue…</p>`;
+  document.body.appendChild(ov);
+  const phases = [[0, "Ouverture du catalogue…"], [800, "Filtrage de ta niche…"], [1700, "Verrouillage de tes guides…"]];
+  phases.forEach(([d, txt]) => setTimeout(() => { const p = $("ph"); if (p) p.textContent = txt; }, d));
+  Space.snap(liste.length, n => { const c = $("cpt"); if (c) c.textContent = n + "/" + liste.length; }, () => {
+    liste.forEach(p => S.snaps.push({ id: p.id, d: Date.now() }));
+    S.utilises += liste.length;
+    notif("🎯", liste.length + " guide" + (liste.length > 1 ? "s" : "") + " snappé" + (liste.length > 1 ? "s" : "") + ".");
+    sauver(); enCours = false;
+    const p = $("ph"); if (p) p.textContent = "C'est prêt ✓";
+    setTimeout(() => { ov.remove(); resultats(liste); }, 650);
+  });
+}
+
+function carte(p) {
+  const f = F(), lien = lienVente(p), code = codePromo();
+  const msg = "📘 " + p.titre + "\n" + fcfa(p.prixXof) + ", payé en Mobile Money.\n👉 " + lien + (code ? "\nCode promo : " + code : "");
+  return `<article class="card guide">
+    <div><p class="eyebrow">${esc(p.id)}${p.provisoire ? " · provisoire" : ""}</p><h3 style="margin-top:6px">${esc(p.titre)}</h3></div>
+    ${p.videoUrl ? `<video src="${esc(p.videoUrl)}" controls playsinline preload="metadata"></video>` : '<div class="novid">🎬 Vidéo bientôt disponible pour ce guide</div>'}
+    <div class="kv"><div><small>Prix de vente</small><b>${fcfa(p.prixXof)}</b></div><div><small>Ta part (${Math.round(f.taux * 100)} %)</small><b>${fcfa(p.prixXof * f.taux)}</b></div></div>
+    <div class="linkbox"><span>${esc(lien)}</span><button class="btn small ghost" data-copy="${esc(lien)}">Copier</button></div>
+    ${code ? '<p class="ok" style="margin:0">Ton code promo : <b>' + esc(code) + '</b> (à donner à tes clients)</p>' : '<p class="sub" style="margin:0;font-size:13px">Pour que tes ventes soient comptées, active ton code revendeur dans Mon Univers.</p>'}
+    <div class="row"><a class="btn small" style="flex:1" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(msg)}">Partager sur WhatsApp</a>${p.videoUrl ? `<a class="btn small ghost" style="flex:1" href="${esc(p.videoUrl)}" download>Télécharger la vidéo</a>` : ""}</div>
+  </article>`;
+}
+function brancherCopie() { document.querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.copy); toast("Lien copié ✓"); } catch (e) { toast("Copie impossible : appuie longtemps sur le lien."); } }); }
+function resultats(liste) {
+  $("view").innerHTML = `<p class="eyebrow">Snap terminé ✓</p><h2 style="margin-top:8px">${liste.length} guide${liste.length > 1 ? "s" : ""} prêt${liste.length > 1 ? "s" : ""} à vendre</h2>
+    <p class="sub">Snaps restants : ${restant()} / ${S.quota}</p><div class="results stack sp">${liste.map(carte).join("")}</div>
+    <div class="sp stack"><button class="btn ghost" id="enc">Snapper d'autres guides</button></div>`;
+  brancherCopie(); $("enc").onclick = () => aller("snap"); puce();
+}
+function vGuides() {
+  const mes = S.snaps.map(s => CAT.produits.find(p => p.id === s.id)).filter(Boolean);
+  $("view").innerHTML = `<p class="eyebrow">Mes guides</p><h2 style="margin-top:8px">${mes.length} guide${mes.length > 1 ? "s" : ""} snappé${mes.length > 1 ? "s" : ""}</h2>
+    ${mes.length ? '<div class="results stack sp">' + mes.map(carte).join("") + "</div>" : '<p class="sub">Tu n\'as encore rien snappé.</p><div class="sp"><button class="btn" id="vs">Aller au snap</button></div>'}`;
+  brancherCopie(); if ($("vs")) $("vs").onclick = () => aller("snap");
+}
+
+/* ---------- MON UNIVERS ---------- */
+function vUnivers() {
+  const r = VENTES.revendeurs[S.id], ventes = r ? r.ventes : [];
+  const total = ventes.reduce((a, v) => a + v.commissionXof, 0), paye = ventes.filter(v => v.payee).reduce((a, v) => a + v.commissionXof, 0);
+  const p = S.profil;
+  const msg = "Bonjour Mickael, je veux activer mon code revendeur.\nID : " + S.id + "\nPrénom : " + (p.prenom || "…") + "\nMobile Money : " + (p.operateur || "…") + " " + (p.momo || "…");
+  $("view").innerHTML = `<p class="eyebrow">Mon Univers</p><h2 style="margin-top:8px">${p.prenom ? "Salut " + esc(p.prenom) + " 👋🏾" : "Ton espace revendeur"}</h2>
+    <section class="card sp stack">
+      <div class="kv"><div><small>Commissions gagnées</small><b>${fcfa(total)}</b></div><div><small>Déjà payé</small><b>${fcfa(paye)}</b></div><div><small>Ventes</small><b>${ventes.length}</b></div><div><small>Forfait</small><b>${esc(F().nom)}</b></div></div>
+      <p class="sub" style="margin:0;font-size:12.5px">Mis à jour le ${esc(VENTES.maj || "—")}. Paiement chaque dimanche par Mobile Money.</p>
+    </section>
+    <section class="sp"><h3>Mes ventes</h3>
+      ${ventes.length ? '<table class="sp"><thead><tr><th>Date</th><th>Guide</th><th class="num">Ta part</th><th>Statut</th></tr></thead><tbody>' + ventes.slice().reverse().map(v => '<tr><td>' + esc(v.date) + '</td><td>' + esc(v.guide) + '</td><td class="num">' + fcfa(v.commissionXof) + '</td><td>' + (v.payee ? '<span class="badge green">payé</span>' : '<span class="badge">à payer</span>') + '</td></tr>').join("") + '</tbody></table>' : '<p class="sub">Aucune vente pour l\'instant. Partage tes guides sur WhatsApp et Facebook.</p>'}
+    </section>
+    <section class="sp"><h3>Notifications</h3><div class="card" style="margin-top:10px">${S.notifs.length ? S.notifs.map(n => '<div class="notif' + (n.nv ? " new" : "") + '"><span aria-hidden="true">' + n.ic + '</span><div><b>' + esc(n.t) + '</b><br><small class="sub" style="margin:0;font-size:12px">' + new Date(n.d).toLocaleString("fr-FR") + '</small></div></div>').join("") : '<p class="sub" style="margin:0">Rien pour l\'instant.</p>'}</div></section>
+    <section class="card sp stack"><h3>Mon profil et mon paiement</h3>
+      <p class="sub" style="margin:0">Ton ID revendeur : <b style="color:var(--text)">${esc(S.id)}</b> · Code promo : ${codePromo() ? '<b class="ok">' + esc(codePromo()) + '</b>' : '<span class="badge">pas encore activé</span>'}</p>
+      <label>Prénom<input id="pr" value="${esc(p.prenom)}" autocomplete="given-name"></label>
+      <label>Opérateur Mobile Money<select id="op">${["", "MTN MoMo", "Moov Money", "Orange Money", "Wave", "Autre"].map(o => '<option' + (o === p.operateur ? " selected" : "") + '>' + o + '</option>').join("")}</select></label>
+      <label>Numéro Mobile Money (avec l'indicatif)<input id="mm" value="${esc(p.momo)}" inputmode="tel" autocomplete="tel" placeholder="+229 …"></label>
+      <button class="btn" id="save">Enregistrer</button>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/${REGLAGES.whatsapp}?text=${encodeURIComponent(msg)}">Activer mon code revendeur sur WhatsApp</a>
+      <p class="sub" style="margin:0;font-size:12.5px">Ton numéro reste sur ton téléphone : il n'est envoyé à Mickael que si tu appuies sur le bouton WhatsApp.</p>
+    </section>`;
+  $("save").onclick = () => { S.profil = { prenom: $("pr").value.trim(), operateur: $("op").value, momo: $("mm").value.trim() }; sauver(); toast("Profil enregistré ✓"); render(); };
+  S.notifs.forEach(n => n.nv = false); sauver();
+}
+
+/* ---------- FORFAITS ---------- */
+function vForfaits() {
+  const fs = REGLAGES.forfaits;
+  const bloc = (k, extra) => { const f = fs[k], cur = S.forfait === k;
+    return `<article class="card plan${k === "vip20" ? " vip" : ""}${cur ? " current" : ""}">${k === "vip20" ? '<span class="tag">Le plus complet</span>' : ''}
+      <h3>${esc(f.nom)}</h3><p class="price" style="margin:6px 0">${f.prix ? new Intl.NumberFormat("fr-FR").format(f.prix) : "0"} <small>FCFA${f.jours ? " / mois" : ""}</small></p>
+      <ul><li>${f.quota} guide${f.quota > 1 ? "s" : ""} à snapper (+ leurs vidéos)</li><li>${Math.round(f.taux * 100)} % de chaque vente pour toi</li><li>${f.niches === 1 ? "1 niche" : "Toutes les niches"}</li></ul>
+      <div class="sp">${cur ? '<p class="ok" style="text-align:center;margin:0">✓ Ton forfait actuel</p>' : extra}</div></article>`; };
+  const achat = k => { const l = k === "turbo" ? REGLAGES.lienTurbo : REGLAGES.lienVip;
+    return l ? `<a class="btn${k === "vip20" ? " gold" : ""}" href="${esc(l)}" target="_blank" rel="noopener">Payer en Mobile Money</a>` : `<a class="btn${k === "vip20" ? " gold" : ""}" target="_blank" rel="noopener" href="https://wa.me/${REGLAGES.whatsapp}?text=${encodeURIComponent("Bonjour Mickael, je veux le forfait " + fs[k].nom + ". Mon ID revendeur : " + S.id)}">Prendre ce forfait</a>`; };
+  $("view").innerHTML = `<p class="eyebrow">Forfaits</p><h2 style="margin-top:8px">Choisis combien de guides tu veux revendre</h2>
+    <p class="sub">Quand ton quota est consommé, tu publies et tu attends tes ventes, ou tu reprends un forfait.</p>
+    <div class="plans">${bloc("gratuit", "")}${bloc("turbo", achat("turbo"))}${bloc("vip20", achat("vip20"))}</div>
+    <section class="card sp stack"><h3>J'ai déjà payé</h3><label for="cd">Entre le code d'activation reçu après ton achat</label><input id="cd" placeholder="TURBO-XXXXXX ou VIP20-XXXXXX" autocomplete="off" style="text-transform:uppercase;letter-spacing:1.5px"><p class="err" id="ce" role="alert"></p><button class="btn" id="ac">Activer mon forfait</button></section>`;
+  $("ac").onclick = async () => { const e = await activer($("cd").value, "champ"); if (e) $("ce").textContent = e; else aller("snap"); };
+}
+
+/* ---------- DÉMARRAGE ---------- */
+async function demarrer() {
+  try { CAT = await (await fetch("/revendeurs/catalogue.json", { cache: "no-store" })).json(); } catch (e) { $("view").innerHTML = '<p class="err">Catalogue indisponible. Réessaie dans un instant.</p>'; return; }
+  try { VENTES = await (await fetch("/revendeurs/ventes.json", { cache: "no-store" })).json(); } catch (e) {}
+  if (CAT.boutique) REGLAGES.boutique = CAT.boutique;
+  const r = VENTES.revendeurs && VENTES.revendeurs[S.id];
+  if (r) { const n = r.ventes.length; if (n > S.ventesVues) { const nv = n - S.ventesVues; notif("💰", nv + " nouvelle" + (nv > 1 ? "s" : "") + " vente" + (nv > 1 ? "s" : "") + " !"); setTimeout(() => toast("💰 " + nv + " nouvelle" + (nv > 1 ? "s" : "") + " vente" + (nv > 1 ? "s" : "") + " !"), 600); S.ventesVues = n; sauver(); } }
+  const q = new URLSearchParams(location.search), u = q.get("unlock");
+  if (u) { history.replaceState(null, "", location.pathname); const e = await activer(u, "lien"); if (e) toast(e); }
+  render();
+}
+Space.init();
+demarrer();
+</script>
+</body>
+</html>
