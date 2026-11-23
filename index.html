@@ -506,7 +506,7 @@ if (LIEN_OFFRE) document.querySelectorAll('a[href="#offre"], #payer').forEach(a 
 
 /* Suivi des visites (GoatCounter, gratuit, sans cookies).
    Mets ici ton code GoatCounter (ex. "onepersonintelligence"). Vide = pas de suivi. */
-const GOATCOUNTER = "";
+const GOATCOUNTER = "onepersonintelligence";
 if (GOATCOUNTER) {
   document.querySelectorAll('a[href^="https://one-person-intelligence.mymaketou.shop"]').forEach((a, i) => a.dataset.goatcounterClick = "clic-acheter");
   const d = document.getElementById('dlApercu'); if (d) d.dataset.goatcounterClick = "telechargement-apercu";
