@@ -421,7 +421,7 @@ body.bf-live .bf-note{display:block}
 </style>
 </head>
 <body>
-<a class="bf" id="bf" href="#offre"><span class="bf-tag">BLACK FRIDAY</span><span class="bf-txt"><s>5&nbsp;000</s> <b>3&nbsp;500 FCFA</b> · −30 % jusqu'au lundi 30 nov. à 23 h 59</span><span class="bf-cd" id="bfcd"><span id="bfd">0<small>JOURS</small></span><span id="bfh">00<small>H</small></span><span id="bfm">00<small>MIN</small></span><span id="bfs">00<small>SEC</small></span></span></a>
+<a class="bf" id="bf" href="#offre"><span class="bf-tag">BLACK FRIDAY</span><span class="bf-txt"><b>5&nbsp;000 FCFA</b> jusqu'au lundi 30 nov. à 23 h 59 · ensuite <b>15&nbsp;000 FCFA</b></span><span class="bf-cd" id="bfcd"><span id="bfd">0<small>JOURS</small></span><span id="bfh">00<small>H</small></span><span id="bfm">00<small>MIN</small></span><span id="bfs">00<small>SEC</small></span></span></a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="s-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
@@ -625,8 +625,8 @@ body.bf-live .bf-note{display:block}
     <div class="offer rv">
       <div class="lockbig" aria-hidden="true"><svg width="34" height="34"><use href="#s-lock"/></svg></div>
       <p class="eyebrow">L'offre unique</p>
-      <h2 class="h2" style="margin-top:10px">Les 10 guides. <span class="gold"><span class="bf-old" hidden>5 000</span><span class="px">5 000</span> FCFA.</span></h2>
-      <p class="bf-note">Prix Black Friday · jusqu'au lundi 30 novembre à 23 h 59, puis retour à 5 000 FCFA.</p>
+      <h2 class="h2" style="margin-top:10px">Les 10 guides. <span class="gold"><span class="px">5 000</span> FCFA.</span></h2>
+      <p class="bf-note">Prix Black Friday jusqu'au lundi 30 novembre à 23 h 59. À partir du 1er décembre : 15&nbsp;000 FCFA.</p>
       <p class="lead" style="margin:12px auto 0">Un seul paiement, et tout est à toi.</p>
       <ul class="incl">
         <li><svg><use href="#s-check"/></svg>Les 10 guides PDF complets</li>
@@ -837,16 +837,15 @@ function fillPays(){var box=document.getElementById('pcPays');box.innerHTML='';v
 })();
 </script>
 <script>
-/* ===== BLACK FRIDAY : vrai compte à rebours (heure du Bénin, UTC+1) ===== */
+/* ===== BLACK FRIDAY : 5 000 FCFA jusqu'au 30 nov. 23:59 (heure du Bénin), puis 15 000 FCFA ===== */
 (function(){
-  var DEBUT=Date.parse("2026-11-25T00:00:00+01:00"), FIN=Date.parse("2026-11-30T23:59:59+01:00");
-  var now=Date.now(); if(now<DEBUT||now>FIN) return;
-  document.body.classList.add('bf-live'); document.getElementById('bf').classList.add('on');
-  var o=document.querySelector('.bf-old'); if(o) o.hidden=false;
-  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n,L=[];
-  while(n=w.nextNode()){ if(n.parentNode.closest&&n.parentNode.closest('.bf,.bf-old,.bf-note,script,style')) continue; if(/5 000/.test(n.nodeValue)) L.push(n); }
-  L.forEach(function(t){t.nodeValue=t.nodeValue.replace(/5 000/g,'3\u00a0500')});
-  var nv=document.querySelector('nav.top'),bf=document.getElementById('bf');function pos(){var h=bf.offsetHeight;if(nv)nv.style.top=h+'px';document.body.style.paddingTop=h+'px'}pos();addEventListener('resize',pos);
+  var DEBUT=Date.parse("2026-11-25T00:00:00+01:00"), FIN=Date.parse("2026-11-30T23:59:59+01:00"), now=Date.now();
+  if(now>FIN){ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n,L=[];
+    while(n=w.nextNode()){ if(n.parentNode.closest&&n.parentNode.closest('.bf,.bf-note,script,style')) continue; if(/5 000/.test(n.nodeValue)) L.push(n); }
+    L.forEach(function(t){t.nodeValue=t.nodeValue.replace(/(^|[^0-9])5 000/g,'$115\u00a0000')}); return; }
+  if(now<DEBUT) return;
+  document.body.classList.add('bf-live'); var bf=document.getElementById('bf'); bf.classList.add('on');
+  var nv=document.querySelector('nav.top'); function pos(){var h=bf.offsetHeight;if(nv)nv.style.top=h+'px';document.body.style.paddingTop=h+'px'} pos(); addEventListener('resize',pos);
   function z(x){return (x<10?'0':'')+x}
   function tick(){var d=FIN-Date.now(); if(d<=0){location.reload();return}
     var s=Math.floor(d/1000); document.getElementById('bfd').firstChild.nodeValue=Math.floor(s/86400);
