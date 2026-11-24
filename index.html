@@ -407,9 +407,22 @@ nav.top{z-index:30}header,section,footer{position:relative;z-index:1}
 .pc-pn .mm{flex:none;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-weight:800;font-size:11px;background:#FFD166;color:#111}
 .pc-pn b{display:block;font-size:12px}.pc-pn p{margin:1px 0 0;font-size:12px}.pc-pn em{font-style:normal;font-size:10px;opacity:.7;align-self:flex-start;margin-left:auto;white-space:nowrap}
 
+.bf{position:fixed;top:0;left:0;right:0;z-index:60;display:none;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px 14px;background:linear-gradient(90deg,#000,#1a1400 50%,#000);border-bottom:1px solid rgba(255,209,102,.45);color:#fff;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+.bf.on{display:flex}
+.bf-tag{font-family:var(--display);font-weight:900;letter-spacing:.06em;font-size:14px;padding:4px 10px;border-radius:6px;background:#FFD166;color:#111}
+.bf-txt{font-size:13.5px;font-weight:700}.bf-txt s{opacity:.55;font-weight:500}.bf-txt b{color:#FFD166}
+.bf-cd{display:flex;gap:5px}.bf-cd span{min-width:40px;text-align:center;padding:3px 5px;border-radius:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,209,102,.25);font-family:var(--display);font-weight:800;font-size:15px;line-height:1.1}
+.bf-cd small{display:block;font-size:8.5px;font-weight:600;opacity:.7;letter-spacing:.06em}
+@media(max-width:560px){.bf{gap:8px;padding:8px 10px}.bf-txt{font-size:12.5px;width:100%;text-align:center;order:3}.bf-cd span{min-width:34px;font-size:13.5px}}
+.bf-old{text-decoration:line-through;opacity:.5;font-size:.6em;margin-right:8px}
+.bf-note{display:none;margin-top:10px;font-size:13px;font-weight:700;color:#FFD166}
+body.bf-live .bf-note{display:block}
+
 </style>
 </head>
 <body>
+<a class="bf" id="bf" href="#offre"><span class="bf-tag">BLACK FRIDAY</span><span class="bf-txt"><s>5&nbsp;000</s> <b>3&nbsp;500 FCFA</b> · −30 % jusqu'au lundi 30 nov. à 23 h 59</span><span class="bf-cd" id="bfcd"><span id="bfd">0<small>JOURS</small></span><span id="bfh">00<small>H</small></span><span id="bfm">00<small>MIN</small></span><span id="bfs">00<small>SEC</small></span></span></a>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="s-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
   <symbol id="s-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
@@ -612,7 +625,8 @@ nav.top{z-index:30}header,section,footer{position:relative;z-index:1}
     <div class="offer rv">
       <div class="lockbig" aria-hidden="true"><svg width="34" height="34"><use href="#s-lock"/></svg></div>
       <p class="eyebrow">L'offre unique</p>
-      <h2 class="h2" style="margin-top:10px">Les 10 guides. <span class="gold">5 000 FCFA.</span></h2>
+      <h2 class="h2" style="margin-top:10px">Les 10 guides. <span class="gold"><span class="bf-old" hidden>5 000</span><span class="px">5 000</span> FCFA.</span></h2>
+      <p class="bf-note">Prix Black Friday · jusqu'au lundi 30 novembre à 23 h 59, puis retour à 5 000 FCFA.</p>
       <p class="lead" style="margin:12px auto 0">Un seul paiement, et tout est à toi.</p>
       <ul class="incl">
         <li><svg><use href="#s-check"/></svg>Les 10 guides PDF complets</li>
@@ -820,6 +834,26 @@ function fillPays(){var box=document.getElementById('pcPays');box.innerHTML='';v
   st.forEach(function(e){e.addEventListener('click',function(){show(+e.dataset.i)})});
   var io=new IntersectionObserver(function(es){es.forEach(function(en){ if(en.isIntersecting&&!run){run=true;show(i);raf=requestAnimationFrame(tick)} else if(!en.isIntersecting&&run){run=false;cancelAnimationFrame(raf)} })},{threshold:.35});
   io.observe(document.querySelector('.pc-phone'));
+})();
+</script>
+<script>
+/* ===== BLACK FRIDAY : vrai compte à rebours (heure du Bénin, UTC+1) ===== */
+(function(){
+  var DEBUT=Date.parse("2026-11-25T00:00:00+01:00"), FIN=Date.parse("2026-11-30T23:59:59+01:00");
+  var now=Date.now(); if(now<DEBUT||now>FIN) return;
+  document.body.classList.add('bf-live'); document.getElementById('bf').classList.add('on');
+  var o=document.querySelector('.bf-old'); if(o) o.hidden=false;
+  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n,L=[];
+  while(n=w.nextNode()){ if(n.parentNode.closest&&n.parentNode.closest('.bf,.bf-old,.bf-note,script,style')) continue; if(/5 000/.test(n.nodeValue)) L.push(n); }
+  L.forEach(function(t){t.nodeValue=t.nodeValue.replace(/5 000/g,'3\u00a0500')});
+  var nv=document.querySelector('nav.top'),bf=document.getElementById('bf');function pos(){var h=bf.offsetHeight;if(nv)nv.style.top=h+'px';document.body.style.paddingTop=h+'px'}pos();addEventListener('resize',pos);
+  function z(x){return (x<10?'0':'')+x}
+  function tick(){var d=FIN-Date.now(); if(d<=0){location.reload();return}
+    var s=Math.floor(d/1000); document.getElementById('bfd').firstChild.nodeValue=Math.floor(s/86400);
+    document.getElementById('bfh').firstChild.nodeValue=z(Math.floor(s%86400/3600));
+    document.getElementById('bfm').firstChild.nodeValue=z(Math.floor(s%3600/60));
+    document.getElementById('bfs').firstChild.nodeValue=z(s%60);}
+  tick(); setInterval(tick,1000);
 })();
 </script>
 </body>
